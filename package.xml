@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0">
+  <name>HTML_QuickForm_advmultiselect</name>
+  <summary>Element for HTML_QuickForm that emulate a multi-select.</summary>
+  <description>The HTML_QuickForm_advmultiselect package adds an element to the
+HTML_QuickForm package that is two select boxes next to each other
+emulating a multi-select.</description>
+  <maintainers>
+    <maintainer>
+      <user>farell</user>
+      <name>Laurent Laville</name>
+      <email>pear@laurent-laville.org</email>
+      <role>lead</role>
+    </maintainer>
+  </maintainers>
+  <release>
+    <version>0.4.0</version>
+    <date>2005-06-25</date>
+    <license>PHP License 3.0</license>
+    <state>beta</state>
+    <notes>This is the initial release of the HTML_QuickForm_advmultiselect package.
+
+Live demos, screenshots, source codes and much more are available on my
+project homepage at http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect</notes>
+    <deps>
+      <dep type="php" rel="ge" version="4.2.0" optional="no"/>
+      <dep type="pkg" rel="has" optional="no">PEAR</dep>
+      <dep type="pkg" rel="ge" version="1.2.1" optional="no">HTML_Common</dep>
+      <dep type="pkg" rel="gt" version="3.2.4" optional="no">HTML_QuickForm</dep>
+    </deps>
+    <provides type="class" name="HTML_QuickForm_advmultiselect" extends="HTML_QuickForm_select" />
+    <provides type="function" name="HTML_QuickForm_advmultiselect::setButtonAttributes" />
+    <provides type="function" name="HTML_QuickForm_advmultiselect::setElementTemplate" />
+    <provides type="function" name="HTML_QuickForm_advmultiselect::setJsElement" />
+    <provides type="function" name="HTML_QuickForm_advmultiselect::getElementCss" />
+    <provides type="function" name="HTML_QuickForm_advmultiselect::toHtml" />
+    <filelist>
+      <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/bluestar-12.gif"/>
+      <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/down.png"/>
+      <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/goldstar-12.gif"/>
+      <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/itdynamic.html"/>
+      <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_basic_1.php"/>
+      <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_custom_1.php"/>
+      <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_custom_2.php"/>
+      <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_custom_3.php"/>
+      <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_custom_4.php"/>
+      <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_multiple_1.php"/>
+      <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_template_1.php"/>
+      <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/up.png"/>
+      <file role="php" baseinstalldir="HTML/QuickForm" name="advmultiselect.php">
+        <replace type="package-info" from="@package_version@" to="version"/>
+      </file>
+    </filelist>
+  </release>
+  <changelog>
+    <release>
+      <version>0.4.0</version>
+      <date>2005-06-25</date>
+      <license>PHP License 3.0</license>
+      <state>beta</state>
+      <notes>This is the initial release of the HTML_QuickForm_advmultiselect package.
+
+Live demos, screenshots, source codes and much more are available on my
+project homepage at http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect</notes>
+    </release>
+  </changelog>
+</package>
