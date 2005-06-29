@@ -14,7 +14,7 @@
 require_once 'HTML/QuickForm.php';
 require_once 'HTML/QuickForm/advmultiselect.php';
 
-$form = new HTML_QuickForm('amsCustom3');
+$form = new HTML_QuickForm('amsCustom4');
 $form->removeAttribute('name');        // XHTML compliance
 
 $fruit_styles = array(
