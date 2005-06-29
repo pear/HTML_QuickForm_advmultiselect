@@ -1,40 +1,40 @@
 <?php
 /**
- * Element for HTML_QuickForm that emulate a multi-select.
- *
- * The HTML_QuickForm_advmultiselect package adds an element to the
- * HTML_QuickForm package that is two select boxes next to each other
- * emulating a multi-select.
- *
- * PHP versions 4 and 5
- *
- * LICENSE: This source file is subject to version 3.0 of the PHP license
- * that is available through the world-wide-web at the following URI:
- * http://www.php.net/license/3_0.txt.  If you did not receive a copy of
- * the PHP License and are unable to obtain it through the web, please
- * send a note to license@php.net so we can mail you a copy immediately.
- *
- * @category   HTML
- * @package    HTML_QuickForm_advmultiselect
- * @author     Laurent Laville <pear@laurent-laville.org>
- * @copyright  1997-2005 The PHP Group
- * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id$
- * @link       http://pear.php.net/package/HTML_QuickForm_advmultiselect
- */
+* Element for HTML_QuickForm that emulate a multi-select.
+*
+* The HTML_QuickForm_advmultiselect package adds an element to the
+* HTML_QuickForm package that is two select boxes next to each other
+* emulating a multi-select.
+*
+* PHP versions 4 and 5
+*
+* LICENSE: This source file is subject to version 3.0 of the PHP license
+* that is available through the world-wide-web at the following URI:
+* http://www.php.net/license/3_0.txt.  If you did not receive a copy of
+* the PHP License and are unable to obtain it through the web, please
+* send a note to license@php.net so we can mail you a copy immediately.
+*
+* @category   HTML
+* @package    HTML_QuickForm_advmultiselect
+* @author     Laurent Laville <pear@laurent-laville.org>
+* @copyright  1997-2005 The PHP Group
+* @license    http://www.php.net/license/3_0.txt  PHP License 3.0
+* @version    CVS: $Id$
+* @link       http://pear.php.net/package/HTML_QuickForm_advmultiselect
+*/
 
 require_once 'HTML/QuickForm/select.php';
 
 /**
- * Replace PHP_EOL constant
- *
- * @category    PHP
- * @package     PHP_Compat
- * @link        http://php.net/reserved.constants.core
- * @author      Aidan Lister <aidan@php.net>
- * @version     $Revision$
- * @since       PHP 5.0.2
- */
+* Replace PHP_EOL constant
+*
+* @category    PHP
+* @package     PHP_Compat
+* @link        http://php.net/reserved.constants.core
+* @author      Aidan Lister <aidan@php.net>
+* @version     $Revision$
+* @since       PHP 5.0.2
+*/
 if (!defined('PHP_EOL')) {
     switch (strtoupper(substr(PHP_OS, 0, 3))) {
         // Windows
@@ -54,28 +54,28 @@ if (!defined('PHP_EOL')) {
 }
 
 /**
- * Element for HTML_QuickForm that emulate a multi-select.
- *
- * The HTML_QuickForm_advmultiselect package adds an element to the
- * HTML_QuickForm package that is two select boxes next to each other
- * emulating a multi-select.
- *
- * PHP versions 4 and 5
- *
- * LICENSE: This source file is subject to version 3.0 of the PHP license
- * that is available through the world-wide-web at the following URI:
- * http://www.php.net/license/3_0.txt.  If you did not receive a copy of
- * the PHP License and are unable to obtain it through the web, please
- * send a note to license@php.net so we can mail you a copy immediately.
- *
- * @category   HTML
- * @package    HTML_QuickForm_advmultiselect
- * @author     Laurent Laville <pear@laurent-laville.org>
- * @copyright  1997-2005 The PHP Group
- * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    Release: @package_version@
- * @link       http://pear.php.net/package/HTML_QuickForm_advmultiselect
- */
+* Element for HTML_QuickForm that emulate a multi-select.
+*
+* The HTML_QuickForm_advmultiselect package adds an element to the
+* HTML_QuickForm package that is two select boxes next to each other
+* emulating a multi-select.
+*
+* PHP versions 4 and 5
+*
+* LICENSE: This source file is subject to version 3.0 of the PHP license
+* that is available through the world-wide-web at the following URI:
+* http://www.php.net/license/3_0.txt.  If you did not receive a copy of
+* the PHP License and are unable to obtain it through the web, please
+* send a note to license@php.net so we can mail you a copy immediately.
+*
+* @category   HTML
+* @package    HTML_QuickForm_advmultiselect
+* @author     Laurent Laville <pear@laurent-laville.org>
+* @copyright  1997-2005 The PHP Group
+* @license    http://www.php.net/license/3_0.txt  PHP License 3.0
+* @version    Release: 0.4.0
+* @link       http://pear.php.net/package/HTML_QuickForm_advmultiselect
+*/
 class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
 {
     /**
@@ -117,6 +117,37 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      * @access     private
      */
     var $_removeButtonAttributes;
+
+    /**
+     * Associative array of the move up button attributes
+     *
+     * @var        array
+     * @access     private
+     * @since      0.5.0
+     */
+    var $_upButtonAttributes;
+
+    /**
+     * Associative array of the move up button attributes
+     *
+     * @var        array
+     * @access     private
+     * @since      0.5.0
+     */
+    var $_downButtonAttributes;
+
+    /**
+     * Defines if both list (unselected, selected) will have their elements be
+     * arranged from lowest to highest (or reverse) depending on comparaison function.
+     *
+     * SORT_ASC  is used to sort in ascending order
+     * SORT_DESC is used to sort in descending order
+     *
+     * @var        integer
+     * @access     private
+     * @since      0.5.0
+     */
+    var $_sort;
 
     /**
      * Associative array of the unselected item box attributes
@@ -196,8 +227,9 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      * @access     public
      * @return     void
      */
-    function HTML_QuickForm_advmultiselect($elementName=null, $elementLabel=null,
-                                           $options=null, $attributes=null)
+    function HTML_QuickForm_advmultiselect($elementName = null, $elementLabel = null,
+                                           $options = null, $attributes = null,
+                                           $sortOptions = null)
     {
         $this->HTML_QuickForm_select($elementName, $elementLabel, $options, $attributes);
 
@@ -226,8 +258,19 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
         $this->setButtonAttributes('add');
         // set default remove button attributes
         $this->setButtonAttributes('remove');
+        // set default move up button attributes
+        $this->setButtonAttributes('moveup');
+        // set default move up button attributes
+        $this->setButtonAttributes('movedown');
         // defines javascript functions names
         $this->setJsElement();
+
+        // set select boxes sort order (none by default)
+        if (isset($sortOptions)) {
+            $this->_sort = $sortOptions;
+        } else {
+            $this->_sort = false;
+        }
     }
 
     /**
@@ -266,6 +309,30 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
                                                           );
                 } else {
                     $this->_updateAttrArray($this->_removeButtonAttributes,
+                                            $this->_parseAttributes($attributes)
+                    );
+                }
+                break;
+            case 'moveup':
+                if (is_null($attributes)) {
+                    $this->_upButtonAttributes = array('name'  => 'up',
+                                                       'value' => ' Up ',
+                                                       'type'  => 'button'
+                                                      );
+                } else {
+                    $this->_updateAttrArray($this->_upButtonAttributes,
+                                            $this->_parseAttributes($attributes)
+                    );
+                }
+                break;
+            case 'movedown':
+                if (is_null($attributes)) {
+                    $this->_downButtonAttributes = array('name'  => 'down',
+                                                         'value' => ' Down ',
+                                                         'type'  => 'button'
+                                                        );
+                } else {
+                    $this->_updateAttrArray($this->_downButtonAttributes,
                                             $this->_parseAttributes($attributes)
                     );
                 }
@@ -389,6 +456,8 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
             $strHtmlUnselected = '';
             $strHtmlAdd = '';
             $strHtmlRemove = '';
+            $strHtmlMoveUp = '';
+            $strHtmlMoveDown = '';
 
         } else {
             // ... or a dual multi-select
@@ -408,50 +477,85 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
             $this->_attributesHidden = array_merge($this->_attributes, $this->_attributesHidden);
             $attrHidden = $this->_getAttrString($this->_attributesHidden);
 
-            // The 'unselected' multi-select which appears on the left
-            $strHtmlUnselected = "<select$attrUnselected>". PHP_EOL;
-            // The 'selected' multi-select which appears on the right
-            $strHtmlSelected = "<select$attrSelected>". PHP_EOL;
-            // The 'hidden' multi-select
-            $strHtmlHidden = "<select$attrHidden>". PHP_EOL;
+            // prepare option tables to be displayed as in POST order
+            $append = count($this->_values);
+            if ($append > 0) {
+                $arrHtmlSelected = array_fill(0, $append, ' ');
+            }
+            $arrHtmlHidden = array_fill(0, count($this->_options), ' ');
 
             foreach ($this->_options as $option) {
-                if (is_array($this->_values) && in_array((string)$option['attr']['value'], $this->_values)) {
+                if (is_array($this->_values) &&
+                    in_array((string)$option['attr']['value'], $this->_values)) {
+                    // Get the post order
+                    $key = array_search($option['attr']['value'], $this->_values);
+
                     // The items is *selected* so we want to put it in the 'selected' multi-select
-                    $strHtmlSelected .= $tabs . $tab
-                                     . '<option' . $this->_getAttrString($option['attr']) . '>'
-                                     . $option['text'] . '</option>' . PHP_EOL;
+                    $arrHtmlSelected[$key] = $option;
                     // Add it to the 'hidden' multi-select and set it as 'selected'
-                    $strHtmlHidden .= $tabs . $tab
-                                   . '<option' . $this->_getAttrString($option['attr'])
-                                   . ' selected="selected">'
-                                   . $option['text'] . '</option>' . PHP_EOL;
-                }
-                else {
+                    $option['attr']['selected'] = 'selected';
+                    $arrHtmlHidden[$key] = $option;
+                } else {
                     // The item is *unselected* so we want to put it in the 'unselected' multi-select
-                    $html = $tabs . $tab
-                          . '<option' . $this->_getAttrString($option['attr']) . '>'
-                          . $option['text'] . '</option>' . PHP_EOL;
-                    $strHtmlUnselected .= $html;
+                    $arrHtmlUnselected[] = $option;
                     // Add it to the hidden multi-select as 'unselected'
-                    $strHtmlHidden .= $html;
+                    $arrHtmlHidden[$append] = $option;
+                    $append++;
+                }
+            }
+
+            // The 'unselected' multi-select which appears on the left
+            $strHtmlUnselected = "<select$attrUnselected>". PHP_EOL;
+            foreach ($arrHtmlUnselected as $data) {
+                $strHtmlUnselected .= $tabs . $tab
+                                   . '<option' . $this->_getAttrString($data['attr']) . '>'
+                                   . $data['text'] . '</option>' . PHP_EOL;
+            }
+            $strHtmlUnselected .= '</select>';
+
+            // The 'selected' multi-select which appears on the right
+            $strHtmlSelected = "<select$attrSelected>". PHP_EOL;
+            if (isset($arrHtmlSelected)) {
+                foreach ($arrHtmlSelected as $data) {
+                    $strHtmlSelected .= $tabs . $tab
+                                     . '<option' . $this->_getAttrString($data['attr']) . '>'
+                                     . $data['text'] . '</option>' . PHP_EOL;
                 }
             }
             $strHtmlSelected   .= '</select>';
-            $strHtmlUnselected .= '</select>';
+
+            // The 'hidden' multi-select
+            $strHtmlHidden = "<select$attrHidden>". PHP_EOL;
+            foreach ($arrHtmlHidden as $data) {
+                $strHtmlHidden .= $tabs . $tab
+                               . '<option' . $this->_getAttrString($data['attr']) . '>'
+                               . $data['text'] . '</option>' . PHP_EOL;
+            }
             $strHtmlHidden     .= '</select>';
 
             // build the remove button with all its attributes
             $attributes = array('onclick' => "{$this->_jsPrefix}{$this->_jsPostfix}(this.form.elements['__" . $selectName . "'], this.form.elements['_" . $selectName . "'], this.form.elements['" . $selectName . "'], 'remove'); return false;");
             $this->_removeButtonAttributes = array_merge($this->_removeButtonAttributes, $attributes);
             $attrStrRemove = $this->_getAttrString($this->_removeButtonAttributes);
-            $strHtmlRemove = "<input $attrStrRemove />". PHP_EOL;
+            $strHtmlRemove = "<input$attrStrRemove />". PHP_EOL;
 
             // build the add button with all its attributes
             $attributes = array('onclick' => "{$this->_jsPrefix}{$this->_jsPostfix}(this.form.elements['__" . $selectName . "'], this.form.elements['_" . $selectName . "'], this.form.elements['" . $selectName . "'], 'add'); return false;");
             $this->_addButtonAttributes = array_merge($this->_addButtonAttributes, $attributes);
             $attrStrAdd = $this->_getAttrString($this->_addButtonAttributes);
-            $strHtmlAdd = "<input $attrStrAdd />". PHP_EOL;
+            $strHtmlAdd = "<input$attrStrAdd />". PHP_EOL;
+
+            // build the move up button with all its attributes
+            $attributes = array('onclick' => "{$this->_jsPrefix}moveUp(this.form.elements['_" . $selectName . "'], this.form.elements['" . $selectName . "']); return false;");
+            $this->_upButtonAttributes = array_merge($this->_upButtonAttributes, $attributes);
+            $attrStrUp = $this->_getAttrString($this->_upButtonAttributes);
+            $strHtmlMoveUp = "<input$attrStrUp />". PHP_EOL;
+
+            // build the move down button with all its attributes
+            $attributes = array('onclick' => "{$this->_jsPrefix}moveDown(this.form.elements['_" . $selectName . "'], this.form.elements['" . $selectName . "']); return false;");
+            $this->_downButtonAttributes = array_merge($this->_downButtonAttributes, $attributes);
+            $attrStrDown = $this->_getAttrString($this->_downButtonAttributes);
+            $strHtmlMoveDown = "<input$attrStrDown />". PHP_EOL;
         }
 
         // render all part of the multi select component with the template
@@ -479,12 +583,14 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
         $placeHolders = array(
             '{stylesheet}', '{javascript}', '{class}',
             '{unselected}', '{selected}',
-            '{add}', '{remove}'
+            '{add}', '{remove}',
+            '{moveup}', '{movedown}'
         );
         $htmlElements = array(
             $this->getElementCss(false), $this->getElementJs(false), $this->_tableAttributes,
             $strHtmlUnselected, $strHtmlSelected . $strHtmlHidden,
-            $strHtmlAdd, $strHtmlRemove
+            $strHtmlAdd, $strHtmlRemove,
+            $strHtmlMoveUp, $strHtmlMoveDown
         );
 
         $strHtml = str_replace($placeHolders, $htmlElements, $strHtml);
@@ -530,27 +636,104 @@ function {$jsfuncName}(selectLeft, selectRight, selectHidden, action) {
     }
 
     // Remove items from the 'FROM' list.
-    for (i = (menuFrom.length - 1); i>=0; i--){
+    for (i=(menuFrom.length - 1); i>=0; i--){
         if (menuFrom.options[i].selected == true ) {
             menuFrom.options[i] = null;
         }
     }
+";
+            if ($this->_sort === false) {
+                $js .= "
+    // Set the appropriate items as 'selected in the hidden select.
+    // These are the values that will actually be posted with the form.
+    {$this->_jsPrefix}updateHidden(selectHidden, selectRight);
+}
+";
+            } else {
+                $reverse = ($this->_sort === SORT_DESC) ? 'options.reverse();' : '';
 
-    // Unselect all options in the hidden select.
-    for (i=0; i < selectHidden.length; i++) {
-        selectHidden.options[i].selected = false;
-    }
+                $js .= "
+    // Sort list if required
+    {$this->_jsPrefix}sortList(menuTo, {$this->_jsPrefix}compareText);
 
     // Set the appropriate items as 'selected in the hidden select.
     // These are the values that will actually be posted with the form.
-    for (i=0; i < selectRight.length; i++) {
-        selectHidden.options[selectHidden.length] = new Option(selectRight.options[i].text, selectRight.options[i].value);
-        selectHidden.options[selectHidden.length-1].selected = true;
+    {$this->_jsPrefix}updateHidden(selectHidden, selectRight);
+}
+
+function {$this->_jsPrefix}sortList(list, compareFunction) {
+    var options = new Array (list.options.length);
+    for (var i = 0; i < options.length; i++) {
+        options[i] = new Option (
+            list.options[i].text,
+            list.options[i].value,
+            list.options[i].defaultSelected,
+            list.options[i].selected
+        );
+    }
+    options.sort(compareFunction);
+    {$reverse}
+    list.options.length = 0;
+    for (var i = 0; i < options.length; i++) {
+        list.options[i] = options[i];
     }
 }
+
+function {$this->_jsPrefix}compareText(option1, option2) {
+    if (option1.text == option2.text) {
+        return 0;
+    }
+    return option1.text < option2.text ? -1 : 1;
+}
+";
+            }
+
+            $js .= "
+function {$this->_jsPrefix}updateHidden(h,r) {
+    for (i=0; i < h.length; i++) {
+        h.options[i].selected = false;
+    }
+
+    for (i=0; i < h.length; i++) {
+        h.options[h.length] = new Option(r.options[i].text, r.options[i].value);
+        h.options[h.length-1].selected = true;
+    }
+}
+
+function {$this->_jsPrefix}moveUp(l,h) {
+    var indice = l.selectedIndex;
+    if (indice < 0) {
+        return;
+    }
+    if (indice > 0) {
+        {$this->_jsPrefix}moveSwap(l, indice, indice-1);
+        {$this->_jsPrefix}updateHidden(h, l);
+    }
+}
+
+function {$this->_jsPrefix}moveDown(l,h) {
+    var indice = l.selectedIndex;
+    if (indice < 0) {
+        return;
+    }
+    if (indice < l.options.length-1) {
+        {$this->_jsPrefix}moveSwap(l, indice, indice+1);
+        {$this->_jsPrefix}updateHidden(h, l);
+    }
+}
+
+function {$this->_jsPrefix}moveSwap(l,i,j) {
+    var valeur = l.options[i].value;
+    var texte = l.options[i].text;
+    l.options[i].value = l.options[j].value;
+    l.options[i].text = l.options[j].text;
+    l.options[j].value = valeur;
+    l.options[j].text = texte;
+    l.selectedIndex = j
+}
+
 /* end javascript for HTML_QuickForm_advmultiselect */
 ";
-
             if ($raw !== true) {
                 $js = '<script type="text/javascript">' . PHP_EOL
                     . '//<![CDATA[' . $js . '//]]>'     . PHP_EOL
