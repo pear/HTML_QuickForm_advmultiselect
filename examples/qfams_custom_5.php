@@ -29,15 +29,29 @@ $fruit_array = array(
 );
 
 // decides either both select list will have their elements be arranged or not
-if (isset($_POST['sortasc'])) {
-    $sort = SORT_ASC;
-} elseif (isset($_POST['sortdesc'])) {
-    $sort = SORT_DESC;
+if (isset($_POST['autoArrange'])) {
+    if ($_POST['autoArrange'] == 'A') {
+        $sort = SORT_ASC;
+    } elseif ($_POST['autoArrange'] == 'D') {
+        $sort = SORT_DESC;
+    } else {
+        $sort = false;
+    }
 } else {
     $sort = false;
 }
 
 // rendering with QF renderer engine and template system
+$form->addElement('header', null,
+                  'For demo purpose only: must be validate to be active');
+$arrange[] =& $form->createElement('radio', null, null, 'Auto arrange asc.',  'A');
+$arrange[] =& $form->createElement('radio', null, null, 'Auto arrange desc.', 'D');
+$arrange[] =& $form->createElement('radio', null, null, 'No auto arrange',    'N');
+$form->addGroup($arrange, 'autoArrange', 'Sort list:');
+$form->setDefaults(array('autoArrange' => 'N'));
+
+$validate =& $form->addElement('submit', null, 'Validate');
+
 $form->addElement('header', null, 'Advanced Multiple Select: custom layout ');
 
 $ams =& $form->addElement('advmultiselect', 'fruit', null, $fruit_array,
@@ -58,7 +72,9 @@ $template = '
 <!-- BEGIN label_3 --><th>&nbsp;</th><th>{label_3}</th></tr><!-- END label_3 -->
 <tr>
   <td>{unselected}</td>
-  <td align="center">{add}<br />{remove}<br /><br />{moveup}<br />{movedown}<br /></td>
+  <td align="center">
+    {add}<br />{remove}<br /><br />{moveup}<br />{movedown}<br />
+  </td>
   <td>{selected}</td>
 </tr>
 </table>
@@ -75,12 +91,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 
 $buttons[] =& $form->createElement('submit', null, 'Submit');
-$buttons[] =& $form->createElement('reset', null, 'Reset');
-$buttons[] =& $form->createElement('submit', 'sortasc', 'Auto arrange asc');
-$buttons[] =& $form->createElement('submit', 'sortdesc', 'Auto arrange desc');
-$buttons[] =& $form->createElement('submit', 'nonesort', 'No auto arrange (default)');
+$buttons[] =& $form->createElement('reset',  null, 'Reset');
 $form->addGroup($buttons);
-
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3c.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
