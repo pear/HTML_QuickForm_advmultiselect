@@ -73,7 +73,7 @@ if (!defined('PHP_EOL')) {
 * @author     Laurent Laville <pear@laurent-laville.org>
 * @copyright  1997-2005 The PHP Group
 * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
-* @version    Release: 0.4.0
+* @version    Release: @package_version@
 * @link       http://pear.php.net/package/HTML_QuickForm_advmultiselect
 */
 class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
@@ -223,6 +223,9 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      * @param      mixed     Label(s) for the select boxes
      * @param      mixed     Data to be used to populate options
      * @param      mixed     Either a typical HTML attribute string or an associative array
+     * @param      integer   Either SORT_ASC for auto ascending arrange,
+     *                              SORT_DESC for auto descending arrange, or
+     *                              NULL for no sort (append at end: default)
      *
      * @access     public
      * @return     void
