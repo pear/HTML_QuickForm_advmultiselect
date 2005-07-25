@@ -15,11 +15,13 @@ emulating a multi-select.</description>
     </maintainer>
   </maintainers>
   <release>
-    <version>0.4.0</version>
-    <date>2005-06-25</date>
+    <version>0.5.0</version>
+    <date>2005-07-25</date>
     <license>PHP License 3.0</license>
     <state>beta</state>
-    <notes>This is the initial release of the HTML_QuickForm_advmultiselect package.
+    <notes>* news
+- add auto arrange feature (developer issue) asked by Jamie Alessio
+- ability to manage (sort) list with two buttons (Up and Down)
 
 Live demos, screenshots, source codes and much more are available on my
 project homepage at http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect</notes>
@@ -45,6 +47,7 @@ project homepage at http://pear.laurent-laville.org/HTML_QuickForm_advmultiselec
       <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_custom_2.php"/>
       <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_custom_3.php"/>
       <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_custom_4.php"/>
+      <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_custom_5.php"/>
       <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_multiple_1.php"/>
       <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_template_1.php"/>
       <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/up.png"/>
@@ -54,6 +57,18 @@ project homepage at http://pear.laurent-laville.org/HTML_QuickForm_advmultiselec
     </filelist>
   </release>
   <changelog>
+    <release>
+      <version>0.5.0</version>
+      <date>2005-07-25</date>
+      <license>PHP License 3.0</license>
+      <state>beta</state>
+      <notes>* news
+- add auto arrange feature (developer issue) asked by Jamie Alessio
+- ability to manage (sort) list with two buttons (Up and Down)
+
+Live demos, screenshots, source codes and much more are available on my
+project homepage at http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect</notes>
+    </release>
     <release>
       <version>0.4.0</version>
       <date>2005-06-25</date>
