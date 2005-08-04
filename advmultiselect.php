@@ -697,7 +697,7 @@ function {$this->_jsPrefix}updateHidden(h,r) {
         h.options[i].selected = false;
     }
 
-    for (i=0; i < h.length; i++) {
+    for (i=0; i < r.length; i++) {
         h.options[h.length] = new Option(r.options[i].text, r.options[i].value);
         h.options[h.length-1].selected = true;
     }
