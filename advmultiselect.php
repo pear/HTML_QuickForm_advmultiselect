@@ -28,11 +28,10 @@ require_once 'HTML/QuickForm/select.php';
 /**
 * Replace PHP_EOL constant
 *
-* @category    PHP
-* @package     PHP_Compat
+*  category    PHP
+*  package     PHP_Compat
 * @link        http://php.net/reserved.constants.core
 * @author      Aidan Lister <aidan@php.net>
-* @version     $Revision$
 * @since       PHP 5.0.2
 */
 if (!defined('PHP_EOL')) {
@@ -83,6 +82,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      *
      * @var        string
      * @access     private
+     * @since      0.4.0
      */
     var $_jsPrefix;
 
@@ -91,6 +91,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      *
      * @var        string
      * @access     private
+     * @since      0.4.0
      */
     var $_jsPostfix;
 
@@ -99,6 +100,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      *
      * @var        array
      * @access     private
+     * @since      0.4.0
      */
     var $_tableAttributes;
 
@@ -107,6 +109,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      *
      * @var        array
      * @access     private
+     * @since      0.4.0
      */
     var $_addButtonAttributes;
 
@@ -115,6 +118,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      *
      * @var        array
      * @access     private
+     * @since      0.4.0
      */
     var $_removeButtonAttributes;
 
@@ -154,6 +158,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      *
      * @var        array
      * @access     private
+     * @since      0.4.0
      */
     var $_attributesUnselected;
 
@@ -162,6 +167,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      *
      * @var        array
      * @access     private
+     * @since      0.4.0
      */
     var $_attributesSelected;
 
@@ -170,6 +176,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      *
      * @var        array
      * @access     private
+     * @since      0.4.0
      */
     var $_attributesHidden;
 
@@ -178,6 +185,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      *
      * @var        string
      * @access     private
+     * @since      0.4.0
      */
     var $_elementTemplate = '
 {javascript}
@@ -197,6 +205,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      *
      * @var        string
      * @access     private
+     * @since      0.4.0
      */
     var $_elementCSS = '
 #{id}amsSelected {
@@ -219,16 +228,17 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
     /**
      * Class constructor
      *
-     * @param      string    Dual Select name attribute
-     * @param      mixed     Label(s) for the select boxes
-     * @param      mixed     Data to be used to populate options
-     * @param      mixed     Either a typical HTML attribute string or an associative array
-     * @param      integer   Either SORT_ASC for auto ascending arrange,
-     *                              SORT_DESC for auto descending arrange, or
-     *                              NULL for no sort (append at end: default)
+     * @param      string    $elementName   Dual Select name attribute
+     * @param      mixed     $elementLabel  Label(s) for the select boxes
+     * @param      mixed     $options       Data to be used to populate options
+     * @param      mixed     $attributes    Either a typical HTML attribute string or an associative array
+     * @param      integer   $sortOptions   Either SORT_ASC for auto ascending arrange,
+     *                                             SORT_DESC for auto descending arrange, or
+     *                                             NULL for no sort (append at end: default)
      *
      * @access     public
      * @return     void
+     * @since      0.4.0
      */
     function HTML_QuickForm_advmultiselect($elementName = null, $elementLabel = null,
                                            $options = null, $attributes = null,
@@ -277,12 +287,37 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
     }
 
     /**
-     * Sets the button Add|Remove attributes
+     * Sets the button attributes
      *
-     * @param      string    Button identifier, either 'add' or 'remove'
-     * @param      mixed     (optional) Either a typical HTML attribute string
-     *                                  or an associative array
+     * In <b>custom example 1</b>, the <i>add</i> and <i>remove</i> buttons have look set
+     * by the css class <i>inputCommand</i>. See especially lines 43-48 and 98-103.
+     *
+     * In <b>custom example 2</b>, the basic text <i>add</i> and <i>remove</i> buttons
+     * are now replaced by images. See lines 43-44.
+     *
+     * In <b>custom example 5</b>, we have ability to sort the selection list (on right side)
+     * by :
+     * <pre>
+     *  - <b>user-end</b>: with <i>Up</i> and <i>Down</i> buttons
+     *    (see lines 65,65,76 and 128-130)
+     *  - <b>programming</b>: with the QF element constructor $sort option
+     *    (see lines 34,36,38 and 59)
+     * </pre>
+     *
+     * @example    examples/qfams_custom_5.php                                      Custom example 5: source code
+     * @link       http://www.laurent-laville.org/img/qfams/screenshot/custom5.png  Custom example 5: screenshot
+     *
+     * @example    examples/qfams_custom_2.php                                      Custom example 2: source code
+     * @link       http://www.laurent-laville.org/img/qfams/screenshot/custom2.png  Custom example 2: screenshot
+     *
+     * @example    examples/qfams_custom_1.php                                      Custom example 1: source code
+     * @link       http://www.laurent-laville.org/img/qfams/screenshot/custom1.png  Custom example 1: screenshot
+     *
+     * @param      string    $button        Button identifier, either 'add', 'remove', 'moveup' or 'movedown'
+     * @param      mixed     $attributes    (optional) Either a typical HTML attribute string
+     *                                      or an associative array
      * @access     public
+     * @since      0.4.0
      */
     function setButtonAttributes($button, $attributes = null)
     {
@@ -349,10 +384,11 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
     /**
      * Sets element template
      *
-     * @param      string    The HTML surrounding select boxes and buttons
+     * @param      string    $html          The HTML surrounding select boxes and buttons
      *
      * @access     public
      * @return     void
+     * @since      0.4.0
      */
     function setElementTemplate($html)
     {
@@ -362,11 +398,19 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
     /**
      * Sets JavaScript function name parts. Maybe usefull to avoid conflict names
      *
-     * @param      string    (optional) Prefix name
-     * @param      string    (optional) Postfix name
+     * In <b>multiple example 1</b>, the javascript function prefix is set to not null
+     * (see line 60).
+     *
+     * @example    examples/qfams_multiple_1.php                                      Multiple example 1: source code
+     * @link       http://www.laurent-laville.org/img/qfams/screenshot/multiple1.png  Multiple example 1: screenshot
+     *
+     * @param      string    $pref          (optional) Prefix name
+     * @param      string    $post          (optional) Postfix name
      *
      * @access     public
      * @return     void
+     * @see        getElementJs()
+     * @since      0.4.0
      */
     function setJsElement($pref = null, $post = 'moveSelections')
     {
@@ -375,12 +419,21 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
     }
 
     /**
-     * Gets default element stylesheet for a basic render
+     * Gets default element stylesheet for a single multi-select shape render
      *
-     * @param      boolean   (optional) html output with script tags or just raw data
+     * In <b>custom example 4</b>, the template defined lines 80-87 allows
+     * a single multi-select checkboxes shape. Useful when javascript is disabled
+     * (or when browser is not js compliant). In our example, no need to add javascript code
+     * (see lines 170-172), but css is mandatory (see line 142).
+     *
+     * @example    qfams_custom_4.php                                               Custom example 4: source code
+     * @link       http://www.laurent-laville.org/img/qfams/screenshot/custom4.png  Custom example 4: screenshot
+     *
+     * @param      boolean   $raw           (optional) html output with style tags or just raw data
      *
      * @access     public
      * @return     string
+     * @since      0.4.0
      */
     function getElementCss($raw = true)
     {
@@ -400,6 +453,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      *
      * @access     public
      * @return     string
+     * @since      0.4.0
      */
     function toHtml()
     {
@@ -604,8 +658,12 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
     /**
      * Returns the javascript code generated to handle this element
      *
-     * @access     private
+     * @param      boolean   $raw           (optional) html output with script tags or just raw data
+     *
+     * @access     public
      * @return     string
+     * @see        setJsElement()
+     * @since      0.4.0
      */
     function getElementJs($raw = true)
     {
