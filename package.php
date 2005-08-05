@@ -28,14 +28,22 @@ DESCR;
 $summary = 'Element for HTML_QuickForm that emulate a multi-select.';
 
 // New version and state of the package
-$version = '0.5.0';
+$version = '0.5.1';
 $state   = 'beta';
 
 // Notes about this new release
 $notes = <<<NOTE
-* news
-- add auto arrange feature (developer issue) asked by Jamie Alessio
-- ability to manage (sort) list with two buttons (Up and Down)
+* bugs
+- fix bug #4993 javascript error: r.options[i] has no properties
+  only since version 0.5.0
+
+* QA
+- add more phpdoc tags for screenshots link and examples source code
+- fix minor other phpdoc tags
+- include ChangeLog and NEWS files
+
+PDF and HTML online docs are available at
+http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect/docs
 
 Live demos, screenshots, source codes and much more are available on my
 project homepage at http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect

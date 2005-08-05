@@ -15,13 +15,21 @@ emulating a multi-select.</description>
     </maintainer>
   </maintainers>
   <release>
-    <version>0.5.0</version>
-    <date>2005-07-25</date>
+    <version>0.5.1</version>
+    <date>2005-08-05</date>
     <license>PHP License 3.0</license>
     <state>beta</state>
-    <notes>* news
-- add auto arrange feature (developer issue) asked by Jamie Alessio
-- ability to manage (sort) list with two buttons (Up and Down)
+    <notes>* bugs
+- fix bug #4993 javascript error: r.options[i] has no properties
+  only since version 0.5.0
+
+* QA
+- add more phpdoc tags for screenshots link and examples source code
+- fix minor other phpdoc tags
+- include ChangeLog and NEWS files
+
+PDF and HTML online docs are available at
+http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect/docs
 
 Live demos, screenshots, source codes and much more are available on my
 project homepage at http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect</notes>
@@ -54,9 +62,31 @@ project homepage at http://pear.laurent-laville.org/HTML_QuickForm_advmultiselec
       <file role="php" baseinstalldir="HTML/QuickForm" name="advmultiselect.php">
         <replace type="package-info" from="@package_version@" to="version"/>
       </file>
+      <file role="data" baseinstalldir="HTML/QuickForm" name="ChangeLog"/>
+      <file role="data" baseinstalldir="HTML/QuickForm" name="NEWS"/>
     </filelist>
   </release>
   <changelog>
+    <release>
+      <version>0.5.1</version>
+      <date>2005-08-05</date>
+      <license>PHP License 3.0</license>
+      <state>beta</state>
+      <notes>* bugs
+- fix bug #4993 javascript error: r.options[i] has no properties
+  only since version 0.5.0
+
+* QA
+- add more phpdoc tags for screenshots link and examples source code
+- fix minor other phpdoc tags
+- include ChangeLog and NEWS files
+
+PDF and HTML online docs are available at
+http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect/docs
+
+Live demos, screenshots, source codes and much more are available on my
+project homepage at http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect</notes>
+    </release>
     <release>
       <version>0.5.0</version>
       <date>2005-07-25</date>
