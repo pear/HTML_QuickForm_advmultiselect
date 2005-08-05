@@ -1,0 +1,43 @@
+2005-08-05 Laurent Laville <pear@laurent-laville.org>
+
+    * VERSION: Version 0.5.1 released.
+
+    * Added @since tag on initial functions release 0.4.0
+
+    * Added param name on each @param tag
+
+    * Added @link (for screenshot), @example (for source code) and explains
+      on getElementCss() method
+
+    * Added @link (for screenshot), @example (for source code) and explains
+      on setButtonAttributes() method
+
+    * Added @link (for screenshot), @example (for source code) and explains
+      on setJsElement() method
+
+    * Added ChangeLog, and NEWS files
+
+2005-08-04 Laurent Laville <pear@laurent-laville.org>
+
+    * Fixed bug #4993 http://pear.php.net/bugs/bug.php?id=4993
+
+    JavaScript Error:  r.options[i] has no properties
+    Fixed typo error in javascript::updateHidden() function
+
+2005-07-25 Laurent Laville <pear@laurent-laville.org>
+
+    * VERSION: Version 0.5.0 released.
+
+    This is an add-on features version:
+    - add auto arrange feature (developer issue) asked by Jamie Alessio
+    - ability to manage (sort) list with two buttons (Up and Down)
+
+2005-06-25 Laurent Laville <pear@laurent-laville.org>
+
+    * VERSION: Version 0.4.0 released.
+
+    This is the initial public release of the HTML_QuickForm_advmultiselect
+    package. It follow the official PEAR proposal
+    http://pear.php.net/pepr/pepr-proposal-show.php?id=255
+    which was accepted, on june 21 2005.
+
