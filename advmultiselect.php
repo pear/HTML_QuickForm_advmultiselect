@@ -232,7 +232,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      * @param      mixed     $elementLabel  Label(s) for the select boxes
      * @param      mixed     $options       Data to be used to populate options
      * @param      mixed     $attributes    Either a typical HTML attribute string or an associative array
-     * @param      integer   $sortOptions   Either SORT_ASC for auto ascending arrange,
+     * @param      integer   $sort          Either SORT_ASC for auto ascending arrange,
      *                                             SORT_DESC for auto descending arrange, or
      *                                             NULL for no sort (append at end: default)
      *
@@ -242,7 +242,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      */
     function HTML_QuickForm_advmultiselect($elementName = null, $elementLabel = null,
                                            $options = null, $attributes = null,
-                                           $sortOptions = null)
+                                           $sort = null)
     {
         $this->HTML_QuickForm_select($elementName, $elementLabel, $options, $attributes);
 
@@ -279,8 +279,8 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
         $this->setJsElement();
 
         // set select boxes sort order (none by default)
-        if (isset($sortOptions)) {
-            $this->_sort = $sortOptions;
+        if (isset($sort)) {
+            $this->_sort = $sort;
         } else {
             $this->_sort = false;
         }
@@ -316,6 +316,9 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      * @param      string    $button        Button identifier, either 'add', 'remove', 'moveup' or 'movedown'
      * @param      mixed     $attributes    (optional) Either a typical HTML attribute string
      *                                      or an associative array
+     * @throws     PEAR_Error               $button argument
+     *                                      is not a string
+     *                                      or not in range (add, remove, moveup, movedown)
      * @access     public
      * @since      0.4.0
      */
