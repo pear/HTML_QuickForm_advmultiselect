@@ -1,3 +1,9 @@
+2005-08-18 Laurent Laville <pear@laurent-laville.org>
+
+    * Added @example tag to have ability to display (highlight) source code
+
+    * Added @link tag to have ability to display a screenshot (PNG image)
+
 2005-08-05 Laurent Laville <pear@laurent-laville.org>
 
     * VERSION: Version 0.5.1 released.
