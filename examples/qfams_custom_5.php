@@ -8,6 +8,10 @@
  * @package    HTML_QuickForm_advmultiselect
  * @subpackage Examples
  * @access     public
+ * @example    examples/qfams_custom_5.php
+ *             qfams_custom_5 source code
+ * @link       http://www.laurent-laville.org/img/qfams/screenshot/custom5.png
+ *             screenshot (Image PNG, 609x318 pixels) 9.94 Kb
  */
 
 require_once 'HTML/QuickForm.php';

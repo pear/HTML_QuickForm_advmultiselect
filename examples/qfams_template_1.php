@@ -8,6 +8,10 @@
  * @package    HTML_QuickForm_advmultiselect
  * @subpackage Examples
  * @access     public
+ * @example    examples/qfams_template_1.php
+ *             qfams_template_1 source code
+ * @link       http://www.laurent-laville.org/img/qfams/screenshot/template1.png
+ *             screenshot (Image PNG, 665x376 pixels) 23.3 Kb
  */
 
 require_once 'HTML/Template/Sigma.php';
