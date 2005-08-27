@@ -541,57 +541,70 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
             $append = count($this->_values);
             if ($append > 0) {
                 $arrHtmlSelected = array_fill(0, $append, ' ');
+            } else {
+                $arrHtmlSelected = array();
             }
-            $arrHtmlHidden = array_fill(0, count($this->_options), ' ');
 
-            foreach ($this->_options as $option) {
-                if (is_array($this->_values) &&
-                    in_array((string)$option['attr']['value'], $this->_values)) {
-                    // Get the post order
-                    $key = array_search($option['attr']['value'], $this->_values);
+            $options = count($this->_options);
+            $arrHtmlUnselected = array();
+            if ($options > 0) {
+                $arrHtmlHidden = array_fill(0, $options, ' ');
 
-                    // The items is *selected* so we want to put it in the 'selected' multi-select
-                    $arrHtmlSelected[$key] = $option;
-                    // Add it to the 'hidden' multi-select and set it as 'selected'
-                    $option['attr']['selected'] = 'selected';
-                    $arrHtmlHidden[$key] = $option;
-                } else {
-                    // The item is *unselected* so we want to put it in the 'unselected' multi-select
-                    $arrHtmlUnselected[] = $option;
-                    // Add it to the hidden multi-select as 'unselected'
-                    $arrHtmlHidden[$append] = $option;
-                    $append++;
+                foreach ($this->_options as $option) {
+                    if (is_array($this->_values) &&
+                        in_array((string)$option['attr']['value'], $this->_values)) {
+                        // Get the post order
+                        $key = array_search($option['attr']['value'], $this->_values);
+
+                        // The items is *selected* so we want to put it in the 'selected' multi-select
+                        $arrHtmlSelected[$key] = $option;
+                        // Add it to the 'hidden' multi-select and set it as 'selected'
+                        $option['attr']['selected'] = 'selected';
+                        $arrHtmlHidden[$key] = $option;
+                    } else {
+                        // The item is *unselected* so we want to put it in the 'unselected' multi-select
+                        $arrHtmlUnselected[] = $option;
+                        // Add it to the hidden multi-select as 'unselected'
+                        $arrHtmlHidden[$append] = $option;
+                        $append++;
+                    }
                 }
+            } else {
+                $arrHtmlHidden = array();
             }
 
             // The 'unselected' multi-select which appears on the left
             $strHtmlUnselected = "<select$attrUnselected>". PHP_EOL;
-            foreach ($arrHtmlUnselected as $data) {
-                $strHtmlUnselected .= $tabs . $tab
-                                   . '<option' . $this->_getAttrString($data['attr']) . '>'
-                                   . $data['text'] . '</option>' . PHP_EOL;
+            if (count($arrHtmlUnselected) > 0) {
+                foreach ($arrHtmlUnselected as $data) {
+                    $strHtmlUnselected .= $tabs . $tab
+                                       . '<option' . $this->_getAttrString($data['attr']) . '>'
+                                       . $data['text'] . '</option>' . PHP_EOL;
+                }
             }
             $strHtmlUnselected .= '</select>';
 
             // The 'selected' multi-select which appears on the right
             $strHtmlSelected = "<select$attrSelected>". PHP_EOL;
-            if (isset($arrHtmlSelected)) {
+            if (count($arrHtmlSelected) > 0) {
                 foreach ($arrHtmlSelected as $data) {
                     $strHtmlSelected .= $tabs . $tab
                                      . '<option' . $this->_getAttrString($data['attr']) . '>'
                                      . $data['text'] . '</option>' . PHP_EOL;
                 }
             }
-            $strHtmlSelected   .= '</select>';
+            $strHtmlSelected .= '</select>';
 
             // The 'hidden' multi-select
             $strHtmlHidden = "<select$attrHidden>". PHP_EOL;
-            foreach ($arrHtmlHidden as $data) {
-                $strHtmlHidden .= $tabs . $tab
-                               . '<option' . $this->_getAttrString($data['attr']) . '>'
-                               . $data['text'] . '</option>' . PHP_EOL;
+            if (count($arrHtmlHidden) > 0) {
+                foreach ($arrHtmlHidden as $data) {
+                    $strHtmlHidden .= $tabs . $tab
+                                   . '<option' . $this->_getAttrString($data['attr']) . '>'
+                                   . $data['text'] . '</option>' . PHP_EOL;
+                }
             }
-            $strHtmlHidden     .= '</select>';
+            $strHtmlHidden .= '</select>';
 
             // build the remove button with all its attributes
             $attributes = array('onclick' => "{$this->_jsPrefix}{$this->_jsPostfix}(this.form.elements['__" . $selectName . "'], this.form.elements['_" . $selectName . "'], this.form.elements['" . $selectName . "'], 'remove'); return false;");
