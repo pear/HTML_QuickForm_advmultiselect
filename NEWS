@@ -1,5 +1,13 @@
 Changes since version 0.5.1 (2005-08-05)
 
+Changes to advmultiselect.php
+
+  | 2005-08-27 Laurent Laville <pear@laurent-laville.org>
+  |
+  |     * Fixed bug #5216: Warning: Invalid argument supplied for foreach()
+  |
+  |     * Fixed two others problem with array and foreach(), bug #5216 related
+
 Changes to examples/qfams_*.php
 
   | 2005-08-18  Laurent Laville <pear@laurent-laville.org>

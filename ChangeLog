@@ -1,3 +1,9 @@
+2005-08-27 Laurent Laville <pear@laurent-laville.org>
+
+    * Fixed bug #5216: Warning: Invalid argument supplied for foreach()
+
+    * Fixed two others problem with array and foreach(), bug #5216 related
+
 2005-08-18 Laurent Laville <pear@laurent-laville.org>
 
     * Added @example tag to have ability to display (highlight) source code
