@@ -33,7 +33,7 @@ NOTES;
 
 // specify files to exclude entirely from the package.xml
 $release['ignore'] = array(
-    'package.xml', 'package.php', basename(__FILE__),
+    'package.xml', 'packageV1.php', basename(__FILE__),
     'Thumbs.db'
 );
 
