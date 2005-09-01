@@ -1,0 +1,115 @@
+/*
+    ========================================================
+  ================================================================
+       Stylesheet for DocBook QFams Manual
+  ================================================================
+    ========================================================
+
+    $Id$
+    author - Laurent Laville <pear@laurent-laville.org> aka farell
+*/
+
+body {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+div.revhistory table, div.revhistory td  {
+  border: none;
+}
+div.revhistory table {
+  background-color: #339900;
+}
+div.revhistory th  {
+  color: #FFF;
+}
+div.revhistory td  {
+  background-color: #EEE;
+}
+
+div.funcsynopsisinfo {
+  background-color: #EEE;
+}
+
+div.example {
+  background-image: url('img/example.png');
+  background-repeat: no-repeat;
+  background-position: top left;
+  padding-left: 55px;
+}
+
+pre.programlisting {
+  background-color: #EEE;
+  padding: 1em;
+  border-left: 10px solid darkgray;
+}
+
+div.note, div.tip, div.warning, div.caution, div.important {
+  background-color: lightyellow;
+  border: 2px solid silver;
+}
+
+div.screenshot {
+  border: 1px solid darkgray;
+  padding: 1em;
+  text-align: center;
+}
+
+/*
+   Give size to all admonition graphics
+   to allow to fix the PNG behavior for IE 5+ (alpha channel)
+   See also: pngbehavior.htc
+             http://webfx.eae.net/dhtml/pngbehavior/pngbehavior.html
+*/
+div.note img, div.tip img, div.warning img, div.caution img, div.important img {
+  width: 48px;
+  height: 48px;
+  behavior: url("pngbehavior.htc");
+}
+
+
+h1.title {
+  display: none;
+}
+
+h3.editor {
+  font-weight: normal;
+  font-size: 0.8em;
+}
+
+p.copyright {
+  color: #006600;
+}
+
+/*
+   callout graphic text-alternative rendering
+*/
+pre.programlisting img {
+  color: white;
+  background-color: black;
+}
+
+table.qfamsHeader, table.qfamsFooter {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  spacing: 0;
+  background-color: lightgreen;
+}
+table.qfamsHeader td {
+  vertical-align: bottom;
+}
+table.qfamsHeader td h1 {
+  text-align: right;
+}
+table.qfamsHeader td img {
+  text-align: left;
+}
+table.qfamsHeader h1 {
+  color: #006600;
+}
+table.qfamsFooter {
+  font-size: 0.7em;
+  font-style: italic;
+}
+

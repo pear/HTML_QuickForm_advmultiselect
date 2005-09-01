@@ -1,0 +1,133 @@
+<html xmlns:cf="http://docbook.sourceforge.net/xmlns/chunkfast/1.0"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Extended usage </title><link rel="stylesheet" href="book.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.69.0"><link rel="start" href="index.html" title="HTML_QuickForm_advmultiselect Manual"><link rel="up" href="ch08.html" title="Chapter 8. Examples"><link rel="prev" href="ch08.html" title="Chapter 8. Examples"><link rel="next" href="ch08s03.html" title="Sort usage "></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><table class="qfamsHeader"><tr><td><img src="img/pearsmall.gif" align="left" alt="PEAR logo"><h1>HTML_QuickForm_advmultiselect : The Definitive Guide</h1><p><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Extended usage </th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch08.html">Prev</a> </td><th width="60%" align="center">Chapter 8. Examples</th><td width="20%" align="right"> <a accesskey="n" href="ch08s03.html">Next</a></td></tr></table></div></p></td></tr></table><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="examples.custom"></a>Extended usage </h2></div></div></div><div class="toc"><dl><dt><span class="sect2"><a href="ch08s02.html#examples.custom.1"></a></span></dt></dl></div><div class="sect2" lang="en"><div class="titlepage"></div><p>
+    </p><div class="figure"><a name="id4782527"></a><p class="title"><b>Figure 8.2. Custom usage with a simple template</b></p><div class="screenshot"><div><img src="img/custom1.png" alt="Custom usage with a simple template"></div></div></div><p>
+   </p><p>
+    In this example, here are our goals :
+    </p><div class="itemizedlist"><ul type="disc"><li>change the buttons (add, remove) position. Move at bottom of lists. </li><li>center headers at top of lists </li><li>set list item visible to 5. Default is 10. </li><li>enlarge both list width to 300 pixels. Default width is only 100 pixels. </li><li>change background colors element. </li></ul></div><p>
+   </p><p>
+    </p><div class="example"><a name="id4782988"></a><p class="title"><b>Example 8.2. Your first template element</b></p><pre class="programlisting">
+      
+&lt;?php
+/**
+ * Custom advMultiSelect HTML_QuickForm element
+ * using stylesheet rules selectors and a template.
+ *
+ * The template allows to add label as headers of dual select box
+ * and moves the button to another location (below each select box).
+ *
+ * @version    $Id$
+ * @author     Laurent Laville &lt;pear@laurent-laville.org&gt;
+ * @package    HTML_QuickForm_advmultiselect
+ * @subpackage Examples
+ * @access     public
+ */
+
+require_once 'HTML/QuickForm.php';
+require_once 'HTML/QuickForm/advmultiselect.php';
+
+$form = new HTML_QuickForm('amsCustom1');
+$form-&gt;removeAttribute('name');        // XHTML compliance
+
+$fruit_array = array(
+    'apple'     =&gt;  'Apple',
+    'orange'    =&gt;  'Orange',
+    'pear'      =&gt;  'Pear',
+    'banana'    =&gt;  'Banana',
+    'cherry'    =&gt;  'Cherry',
+    'kiwi'      =&gt;  'Kiwi',
+    'lemon'     =&gt;  'Lemon',
+    'lime'      =&gt;  'Lime',
+    'tangerine' =&gt;  'Tangerine',
+);
+
+// rendering with QF renderer engine and template system
+$form-&gt;addElement('header', null, 'Advanced Multiple Select: custom layout ');
+
+$ams =&amp; $form-&gt;addElement('advmultiselect', 'fruit', null, $fruit_array,
+                           array('size' =&gt; 5,
+                                 'class' =&gt; 'pool', 'style' =&gt; 'width:300px;'
+                                )
+);
+$ams-&gt;setLabel(array('Fruit:', 'Available', 'Selected'));
+$ams-&gt;setButtonAttributes('add',    array('value' =&gt; 'Add &gt;&gt;',
+                                           'class' =&gt; 'inputCommand'
+));
+$ams-&gt;setButtonAttributes('remove', array('value' =&gt; '&lt;&lt; Remove',
+                                           'class' =&gt; 'inputCommand'
+));
+$template = '
+&lt;table{class}&gt;
+&lt;!-- BEGIN label_2 --&gt;&lt;tr&gt;&lt;th align="center"&gt;{label_2}&lt;/th&gt;&lt;!-- END label_2 --&gt;
+&lt;!-- BEGIN label_3 --&gt;&lt;th align="center"&gt;{label_3}&lt;/th&gt;&lt;/tr&gt;&lt;!-- END label_3 --&gt;
+&lt;tr&gt;
+  &lt;td&gt;{unselected}&lt;/td&gt;
+  &lt;td&gt;{selected}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td align="center"&gt;{add}&lt;/td&gt;
+  &lt;td align="center"&gt;{remove}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;';
+$ams-&gt;setElementTemplate($template);
+
+if (isset($_POST['fruit'])) {
+    $form-&gt;setDefaults(array('fruit' =&gt; $_POST['fruit']));
+}
+
+$form-&gt;addElement('submit', 'send', 'Send');
+
+?&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3c.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /&gt;
+&lt;title&gt;HTML_QuickForm::advMultiSelect custom example 1&lt;/title&gt;
+&lt;style type="text/css"&gt;
+&lt;!--
+body {
+  background-color: #FFF;
+  font-family: Verdana, Arial, helvetica;
+  font-size: 10pt;
+}
+
+table.pool {
+  border: 0;
+  background-color: lightyellow;
+}
+table.pool th {
+  font-size: 80%;
+  font-style: italic;
+  text-align: center;
+}
+table.pool select {
+  background-color: lightblue;
+}
+
+.inputCommand {
+    background-color: #d0d0d0;
+    border: 1px solid #7B7B88;
+    width: 7em;
+    margin-bottom: 2px;
+}
+// --&gt;
+&lt;/style&gt;
+&lt;?php echo $ams-&gt;getElementJs(false); ?&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;?php
+if ($form-&gt;validate()) {
+    $clean = $form-&gt;getSubmitValues();
+
+    echo '&lt;pre&gt;';
+    print_r($clean);
+    echo '&lt;/pre&gt;';
+}
+$form-&gt;display();
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+      
+     </pre></div><p>
+   </p></div></div><table class="qfamsFooter"><tr><td align="left">HTML_QuickForm_advmultiselect : The Definitive Guide</td><td align="right">v
+        1.0.0 :
+        September 1, 2005</td></tr></table><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch08.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch08.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch08s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 8. Examples </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Sort usage </td></tr></table></div></body></html>
