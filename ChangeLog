@@ -1,3 +1,9 @@
+2005-09-14 Laurent Laville <pear@laurent-laville.org>
+
+    * Fixed custom 4 example (qfams_custom_4.php) and avoid notice error
+      with QuickForm 3.2.5
+      => we should use addGroupRule() with a QFAMS element
+
 2005-09-01 Laurent Laville <pear@laurent-laville.org>
 
     * VERSION: Version 1.0.0 released.
