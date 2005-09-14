@@ -1,5 +1,8 @@
 2005-09-14 Laurent Laville <pear@laurent-laville.org>
 
+    * uses server side validation, and addGroupRule() to validate the QFAMS element
+      into template 1 example (qfams_template_1.php)
+
     * Fixed custom 4 example (qfams_custom_4.php) and avoid notice error
       with QuickForm 3.2.5
       => we should use addGroupRule() with a QFAMS element
