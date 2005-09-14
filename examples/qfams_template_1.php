@@ -70,10 +70,8 @@ if (isset($_POST['fruit'])) {
 
 $form->addElement('submit', 'send', 'Send', array('class' => 'inputCommand'));
 
-$form->addRule('name', 'Your name is required', 'required',
-               null, 'client');
-$form->addRule('fruit', 'At least one fruit is required', 'required',
-               null, 'client');
+$form->addRule('name', 'Your name is required', 'required');
+$form->addGroupRule('fruit', 'At least one fruit is required', 'required', null, 1);
 
 $form->applyFilter('__ALL__', 'trim');
 $form->applyFilter('__ALL__', 'strip_tags');
