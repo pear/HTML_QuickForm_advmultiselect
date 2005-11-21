@@ -1,3 +1,8 @@
+2005-11-21 Laurent Laville <pear@laurent-laville.org>
+
+    * Added new example (qfams_custom_7.php) on custom category : demonstrate
+      extended buttons feature (select all, select none, toggle selection)
+
 2005-09-14 Laurent Laville <pear@laurent-laville.org>
 
     * uses server side validation, and addGroupRule() to validate the QFAMS element
