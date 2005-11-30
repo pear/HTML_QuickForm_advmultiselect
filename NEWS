@@ -1,3 +1,21 @@
+Changes since version 1.0.0 (2005-09-01)
+
+Changes to advmultiselect.php
+
+  | 2005-11-21 Laurent Laville <pear@laurent-laville.org>
+  |
+  |     * Added new example (qfams_custom_7.php) on custom category : demonstrate
+  |       extended buttons feature (select all, select none, toggle selection)
+
+Changes to examples/qfams_custom_4.php
+
+  | 2005-09-14 Laurent Laville <pear@laurent-laville.org>
+  |
+  |     * Fixed custom 4 example (qfams_custom_4.php) and avoid notice error
+  |       with QuickForm 3.2.5
+  |       => we should use addGroupRule() with a QFAMS element
+
+
 Changes since version 0.5.1 (2005-08-05)
 
 Changes to advmultiselect.php
