@@ -55,7 +55,7 @@ $optionsUpdate = array(
     'filelistgenerator' => 'cvs',
     'baseinstalldir'    => $baseinstalldir,
     'changelogoldtonew' => false,
-    'simpleoutput'      => true,
+    'simpleoutput'      => false,
     'ignore'            => $release['ignore'],
     'exceptions'        => $release['exceptions']
 );
