@@ -346,12 +346,14 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      * @example    examples/qfams_custom_1.php                                      Custom example 1: source code
      * @link       http://www.laurent-laville.org/img/qfams/screenshot/custom1.png  Custom example 1: screenshot
      *
-     * @param      string    $button        Button identifier, either 'add', 'remove', 'moveup' or 'movedown'
+     * @param      string    $button        Button identifier, either 'add', 'remove',
+     *                                                                'all', 'none', 'toggle',
+     *                                                                'moveup' or 'movedown'
      * @param      mixed     $attributes    (optional) Either a typical HTML attribute string
      *                                      or an associative array
      * @throws     PEAR_Error               $button argument
      *                                      is not a string
-     *                                      or not in range (add, remove, moveup, movedown)
+     *                                      or not in range (add, remove, all, none, toggle, moveup, movedown)
      * @access     public
      * @since      0.4.0
      */
