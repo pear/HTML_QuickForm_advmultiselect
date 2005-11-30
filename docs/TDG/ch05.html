@@ -1,30 +1,95 @@
-<html xmlns:cf="http://docbook.sourceforge.net/xmlns/chunkfast/1.0"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Chapter 5. Advanced features</title><link rel="stylesheet" href="book.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.69.0"><link rel="start" href="index.html" title="HTML_QuickForm_advmultiselect Manual"><link rel="up" href="pt02.html" title="Part II. Getting Started"><link rel="prev" href="ch04.html" title="Chapter 4. Your first form"><link rel="next" href="ch05s02.html" title="Headers"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><table class="qfamsHeader"><tr><td><img src="img/pearsmall.gif" align="left" alt="PEAR logo"><h1>HTML_QuickForm_advmultiselect : The Definitive Guide</h1><p><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 5. Advanced features</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04.html">Prev</a> </td><th width="60%" align="center">Part II. Getting Started</th><td width="20%" align="right"> <a accesskey="n" href="ch05s02.html">Next</a></td></tr></table></div></p></td></tr></table><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="developers.advanced"></a>Chapter 5. Advanced features</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="ch05.html#developers.advanced.purpose">In brief</a></span></dt><dt><span class="sect1"><a href="ch05s02.html">Headers</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch05s02.html#id4771707">Introduction</a></span></dt><dt><span class="sect2"><a href="ch05s02.html#id4772349">Naming with QuickForm Default Renderer</a></span></dt><dt><span class="sect2"><a href="ch05s02.html#id4772441">Naming with QuickForm ITDynamic Renderer</a></span></dt><dt><span class="sect2"><a href="ch05s02.html#id4772555">In practice</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch05s03.html">Buttons</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch05s03.html#id4772108">Introduction</a></span></dt><dt><span class="sect2"><a href="ch05s03.html#id4773195">Appearance</a></span></dt><dt><span class="sect2"><a href="ch05s03.html#id4773266">Attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch05s04.html">Sorts</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch05s04.html#id4772939">Introduction</a></span></dt><dt><span class="sect2"><a href="ch05s04.html#id4773902">Auto-arrange</a></span></dt><dt><span class="sect2"><a href="ch05s04.html#id4773984">With buttons</a></span></dt></dl></dd></dl></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="developers.advanced.purpose"></a>In brief</h2></div></div></div><p>
-    You should now have an understanding of basic HTML_QuickForm_advmultiselect functionality,
-    but there are many more features in the package, each of them deserving
-    a separate tutorial. This section will give a short overview of them
-    and point you to the complete documentation.
-   </p><p>
-    The advmultiselect element offers a lot of possibilities to customize its layout
-    and appearance. Remember that form output is done via
-    <a href="http://pear.php.net/manual/en/package.html.html-quickform.intro-renderers.php" target="_top">renderers</a>
-    - special classes containing necessary logic. There are QuickForm renderers that
-    <a href="http://pear.php.net/manual/en/package.html.html-quickform.html-quickform-renderer-default.php" target="_top">
-     directly output HTML
-    </a> and those that
-    <a href="http://pear.php.net/manual/en/package.html.html-quickform.php#package.html.html-quickform.output.template-renderers" target="_top">
-    use template engines
-    </a> for this.
-   </p><p>
-    <a href="ch05s02.html" title="Headers">Headers</a>
-    allow to give caption (label) to one or both list as any other QuickForm element
-    that support multi-labels system.
-   </p><p>
-    <a href="ch05s03.html" title="Buttons">Buttons</a>
-    allow to swap items from one list to the other, or arrange order of your selection.
-   </p><p>
-    <a href="ch05s04.html" title="Sorts">Sorts</a>
-    allow to re-arrange order of the selection, by the user-end. Its also allow
-    to set (by programming) a pre-set order (alphabetic or reverse) to each list.
-   </p></div></div><table class="qfamsFooter"><tr><td align="left">HTML_QuickForm_advmultiselect : The Definitive Guide</td><td align="right">v
-        1.0.0 :
-        September 1, 2005</td></tr></table><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="pt02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch05s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 4. Your first form </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Headers</td></tr></table></div></body></html>
+<html>
+<head>
+   <meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type">
+   <title>Chapter 5. Advanced features</title>
+   <link href="book.css" rel="stylesheet" type="text/css">
+   <meta content="DocBook XSL Stylesheets V1.69.1" name="generator">
+   <link href="index.html" rel="start" title="HTML_QuickForm_advmultiselect Manual">
+   <link href="pt02.html" rel="up" title="Part II. Getting Started">
+   <link href="ch04.html" rel="prev" title="Chapter 4. Your first form">
+   <link href="ch05s02.html" rel="next" title="Headers">
+</head>
+<body alink="#0000FF" bgcolor="white" link="#0000FF" text="black" vlink="#840084">
+<table class="qfamsHeader">
+   <tr>
+      <td><img align="left" alt="PEAR logo" src="img/pearsmall.gif">
+         <h1>HTML_QuickForm_advmultiselect : The Definitive Guide</h1>
+
+         <p>
+         <div class="navheader">
+            <table summary="Navigation header" width="100%">
+               <tr>
+                  <th align="center" colspan="3">Chapter 5. Advanced features</th>
+               </tr>
+               <tr>
+                  <td align="left" width="20%"><a accesskey="p" href="ch04.html">Prev</a> </td>
+                  <th align="center" width="60%">Part II. Getting Started</th><td align="right" width="20%"> <a accesskey="n" href="ch05s02.html">Next</a></td>
+               </tr>
+            </table>
+         </div></p>
+      </td>
+   </tr>
+</table>
+<div class="chapter" lang="en"><div class="titlepage"><div><div>
+            <h2 class="title"><a name="developers.advanced"></a>Chapter 5. Advanced features</h2></div>
+      </div>
+   </div>
+   <div class="toc">
+
+      <p><b>Table of Contents</b></p>
+      <dl><dt><span class="sect1"><a href="ch05.html#developers.advanced.purpose">In brief</a></span></dt><dt><span class="sect1"><a href="ch05s02.html">Headers</a></span></dt>
+         <dd>
+         <dl><dt><span class="sect2"><a href="ch05s02.html#id4772038">Introduction</a></span></dt><dt><span class="sect2"><a href="ch05s02.html#id4772720">Naming with QuickForm Default Renderer</a></span></dt><dt><span class="sect2"><a href="ch05s02.html#id4772812">Naming with QuickForm ITDynamic Renderer</a></span></dt><dt><span class="sect2"><a href="ch05s02.html#id4772926">In practice</a></span></dt>
+         </dl></dd><dt><span class="sect1"><a href="ch05s03.html">Buttons</a></span></dt>
+         <dd>
+         <dl><dt><span class="sect2"><a href="ch05s03.html#id4772438">Introduction</a></span></dt><dt><span class="sect2"><a href="ch05s03.html#id4773598">Appearance</a></span></dt><dt><span class="sect2"><a href="ch05s03.html#id4773670">Attributes</a></span></dt>
+         </dl></dd><dt><span class="sect1"><a href="ch05s04.html">Sorts</a></span></dt>
+         <dd>
+         <dl><dt><span class="sect2"><a href="ch05s04.html#id4773425">Introduction</a></span></dt><dt><span class="sect2"><a href="ch05s04.html#id4773460">Auto-arrange</a></span></dt><dt><span class="sect2"><a href="ch05s04.html#id4774486">With buttons</a></span></dt>
+         </dl></dd>
+      </dl>
+   </div>
+   <div class="sect1" lang="en"><div class="titlepage"><div><div>
+               <h2 class="title" style="clear: both">
+               <a name="developers.advanced.purpose"></a>In brief</h2></div>
+         </div>
+      </div>
+
+      <p>You should now have an understanding of basic HTML_QuickForm_advmultiselect functionality, but there are many more features in the package, each of them deserving a separate tutorial. This section will give a short overview of them and point you to the complete documentation. </p>
+
+      <p>The advmultiselect element offers a lot of possibilities to customize its layout and appearance. Remember that form output is done via 
+      <a class="external" href="http://pear.php.net/manual/en/package.html.html-quickform.intro-renderers.php" title="http://pear.php.net/manual/en/package.html.html-quickform.intro-renderers.php">renderers</a> - special classes containing necessary logic. There are QuickForm renderers that 
+      <a class="external" href="http://pear.php.net/manual/en/package.html.html-quickform.html-quickform-renderer-default.php" title="http://pear.php.net/manual/en/package.html.html-quickform.html-quickform-renderer-default.php"> directly output HTML 
+      </a> and those that 
+      <a class="external" href="http://pear.php.net/manual/en/package.html.html-quickform.php#package.html.html-quickform.output.template-renderers" title="http://pear.php.net/manual/en/package.html.html-quickform.php#package.html.html-quickform.output.template-renderers"> use template engines 
+      </a> for this. </p>
+
+      <p><a href="ch05s02.html" title="Headers">Headers</a> allow to give caption (label) to one or both list as any other QuickForm element that support multi-labels system. </p>
+
+      <p><a href="ch05s03.html" title="Buttons">Buttons</a> allow to swap items from one list to the other, or arrange order of your selection. </p>
+
+      <p><a href="ch05s04.html" title="Sorts">Sorts</a> allow to re-arrange order of the selection, by the user-end. Its also allow to set (by programming) a pre-set order (alphabetic or reverse) to each list. </p>
+   </div>
+</div>
+<table class="qfamsFooter">
+   <tr>
+      <td align="left">HTML_QuickForm_advmultiselect : The Definitive Guide</td>
+      <td align="right">v 1.1.0 : December 1, 2005</td>
+   </tr>
+</table>
+<div class="navfooter"><hr>
+   <table summary="Navigation footer" width="100%">
+      <tr>
+         <td align="left" width="40%"><a accesskey="p" href="ch04.html">Prev</a> </td>
+         <td align="center" width="20%"><a accesskey="u" href="pt02.html">Up</a></td>
+         <td align="right" width="40%"> <a accesskey="n" href="ch05s02.html">Next</a></td>
+      </tr>
+      <tr>
+         <td align="left" valign="top" width="40%">Chapter 4. Your first form </td>
+         <td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td>
+         <td align="right" valign="top" width="40%"> Headers</td>
+      </tr>
+   </table>
+</div>
+</body>
+</html> 

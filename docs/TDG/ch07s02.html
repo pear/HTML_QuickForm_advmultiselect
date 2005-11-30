@@ -1,16 +1,101 @@
-<html xmlns:cf="http://docbook.sourceforge.net/xmlns/chunkfast/1.0"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Outputting the form element</title><link rel="stylesheet" href="book.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.69.0"><link rel="start" href="index.html" title="HTML_QuickForm_advmultiselect Manual"><link rel="up" href="ch07.html" title="Chapter 7. API - Application Programming Interface"><link rel="prev" href="re02.html" title="HTML_QuickForm_advmultiselect::setJsElement"><link rel="next" href="re03.html" title="HTML_QuickForm_advmultiselect::setButtonAttributes"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><table class="qfamsHeader"><tr><td><img src="img/pearsmall.gif" align="left" alt="PEAR logo"><h1>HTML_QuickForm_advmultiselect : The Definitive Guide</h1><p><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Outputting the form element</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="re02.html">Prev</a> </td><th width="60%" align="center">Chapter 7. API - Application Programming Interface</th><td width="20%" align="right"> <a accesskey="n" href="re03.html">Next</a></td></tr></table></div></p></td></tr></table><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="reference.api.output"></a>Outputting the form element</h2></div></div></div><div class="toc"><dl><dt><span class="sect2"><a href="ch07s02.html#reference.api.output.buttons">Setting buttons values</a></span></dt><dt><span class="sect2"><a href="ch07s02.html#reference.api.output.renderer.basic">Basic renderer</a></span></dt><dt><span class="sect2"><a href="ch07s02.html#reference.api.output.renderer.template">Template-based renderer</a></span></dt></dl></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="reference.api.output.buttons"></a>Setting buttons values</h3></div></div></div><div class="toc"><dl><dt><span class="refentrytitle"><a href="re03.html"><code class="function">HTML_QuickForm_advmultiselect::setButtonAttributes</code></a></span><span class="refpurpose"> - Sets the button attributes</span></dt></dl></div><p>
-    Here, you can choose between standard form text or image button. You can also
-    set the CSS class used to change the look and feel of buttons.
-   </p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="reference.api.output.renderer.basic"></a>Basic renderer</h3></div></div></div><div class="toc"><dl><dt><span class="refentrytitle"><a href="re04.html"><code class="function">HTML_QuickForm_advmultiselect::toHtml</code></a></span><span class="refpurpose"> - Returns the HTML generated for the advanced mutliple select component</span></dt></dl></div><p>
-    This renderer is based on HTML_QuickForm_advmultiselect code and require no external classes to do its job.
-    It's very similar to HTML_QuickForm
-    <a href="http://pear.php.net/manual/en/package.html.html-quickform.html-quickform-renderer-default.php" target="_top">
-     default renderer
-    </a>.
-   </p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="reference.api.output.renderer.template"></a>Template-based renderer</h3></div></div></div><div class="toc"><dl><dt><span class="refentrytitle"><a href="re05.html"><code class="function">HTML_QuickForm_advmultiselect::getElementCss</code></a></span><span class="refpurpose"> - Gets default element stylesheet for a single multi-select shape render</span></dt><dt><span class="refentrytitle"><a href="re06.html"><code class="function">HTML_QuickForm_advmultiselect::getElementJs</code></a></span><span class="refpurpose"> - Returns the javascript code generated to handle this element</span></dt><dt><span class="refentrytitle"><a href="re07.html"><code class="function">HTML_QuickForm_advmultiselect::setElementTemplate</code></a></span><span class="refpurpose"> - Sets element template</span></dt></dl></div><p>
-    Here is the core of customization of this QuickForm element. With the three
-    methods below, you can easily include it in an existing template page
-    with all parts (CSS, JS, lists, buttons) at the right place.
-   </p></div></div><table class="qfamsFooter"><tr><td align="left">HTML_QuickForm_advmultiselect : The Definitive Guide</td><td align="right">v
-        1.0.0 :
-        September 1, 2005</td></tr></table><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="re02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch07.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="re03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"><code class="function">HTML_QuickForm_advmultiselect::setJsElement</code> </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> <code class="function">HTML_QuickForm_advmultiselect::setButtonAttributes</code></td></tr></table></div></body></html>
+<html>
+<head>
+   <meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type">
+   <title>Outputting the form element</title>
+   <link href="book.css" rel="stylesheet" type="text/css">
+   <meta content="DocBook XSL Stylesheets V1.69.1" name="generator">
+   <link href="index.html" rel="start" title="HTML_QuickForm_advmultiselect Manual">
+   <link href="ch07.html" rel="up" title="Chapter 7. API - Application Programming Interface">
+   <link href="re02.html" rel="prev" title="HTML_QuickForm_advmultiselect::setJsElement">
+   <link href="re03.html" rel="next" title="HTML_QuickForm_advmultiselect::setButtonAttributes">
+</head>
+<body alink="#0000FF" bgcolor="white" link="#0000FF" text="black" vlink="#840084">
+<table class="qfamsHeader">
+   <tr>
+      <td><img align="left" alt="PEAR logo" src="img/pearsmall.gif">
+         <h1>HTML_QuickForm_advmultiselect : The Definitive Guide</h1>
+
+         <p>
+         <div class="navheader">
+            <table summary="Navigation header" width="100%">
+               <tr>
+                  <th align="center" colspan="3">Outputting the form element</th>
+               </tr>
+               <tr>
+                  <td align="left" width="20%"><a accesskey="p" href="re02.html">Prev</a> </td>
+                  <th align="center" width="60%">Chapter 7. API - Application Programming Interface</th><td align="right" width="20%"> <a accesskey="n" href="re03.html">Next</a></td>
+               </tr>
+            </table>
+         </div></p>
+      </td>
+   </tr>
+</table>
+<div class="sect1" lang="en"><div class="titlepage"><div><div>
+            <h2 class="title" style="clear: both">
+            <a name="reference.api.output"></a>Outputting the form element</h2></div>
+      </div>
+   </div>
+   <div class="toc">
+      <dl><dt><span class="sect2"><a href="ch07s02.html#reference.api.output.buttons">Setting buttons values</a></span></dt><dt><span class="sect2"><a href="ch07s02.html#reference.api.output.renderer.basic">Basic renderer</a></span></dt><dt><span class="sect2"><a href="ch07s02.html#reference.api.output.renderer.template">Template-based renderer</a></span></dt>
+      </dl>
+   </div>
+   <div class="sect2" lang="en"><div class="titlepage"><div><div>
+               <h3 class="title"><a name="reference.api.output.buttons"></a>Setting buttons values</h3></div>
+         </div>
+      </div>
+      <div class="toc">
+         <dl><dt><span class="refentrytitle"><a href="re03.html"><code class="function">HTML_QuickForm_advmultiselect::setButtonAttributes</code></a></span><span class="refpurpose"> - Sets the button attributes</span></dt>
+         </dl>
+      </div>
+
+      <p>Here, you can choose between standard form text or image button. You can also set the CSS class used to change the look and feel of buttons. </p>
+   </div>
+   <div class="sect2" lang="en"><div class="titlepage"><div><div>
+               <h3 class="title">
+               <a name="reference.api.output.renderer.basic"></a>Basic renderer</h3></div>
+         </div>
+      </div>
+      <div class="toc">
+         <dl><dt><span class="refentrytitle"><a href="re04.html"><code class="function">HTML_QuickForm_advmultiselect::toHtml</code></a></span><span class="refpurpose"> - Returns the HTML generated for the advanced mutliple select component</span></dt>
+         </dl>
+      </div>
+
+      <p>This renderer is based on HTML_QuickForm_advmultiselect code and require no external classes to do its job. It's very similar to HTML_QuickForm 
+      <a class="external" href="http://pear.php.net/manual/en/package.html.html-quickform.html-quickform-renderer-default.php" title="http://pear.php.net/manual/en/package.html.html-quickform.html-quickform-renderer-default.php"> default renderer 
+      </a>. </p>
+   </div>
+   <div class="sect2" lang="en"><div class="titlepage"><div><div>
+               <h3 class="title">
+               <a name="reference.api.output.renderer.template"></a>Template-based renderer</h3></div>
+         </div>
+      </div>
+      <div class="toc">
+         <dl><dt><span class="refentrytitle"><a href="re05.html"><code class="function">HTML_QuickForm_advmultiselect::getElementCss</code></a></span><span class="refpurpose"> - Gets default element stylesheet for a single multi-select shape render</span></dt><dt><span class="refentrytitle"><a href="re06.html"><code class="function">HTML_QuickForm_advmultiselect::getElementJs</code></a></span><span class="refpurpose"> - Returns the javascript code generated to handle this element</span></dt><dt><span class="refentrytitle"><a href="re07.html"><code class="function">HTML_QuickForm_advmultiselect::setElementTemplate</code></a></span><span class="refpurpose"> - Sets element template</span></dt>
+         </dl>
+      </div>
+
+      <p>Here is the core of customization of this QuickForm element. With the three methods below, you can easily include it in an existing template page with all parts (CSS, JS, lists, buttons) at the right place. </p>
+   </div>
+</div>
+<table class="qfamsFooter">
+   <tr>
+      <td align="left">HTML_QuickForm_advmultiselect : The Definitive Guide</td>
+      <td align="right">v 1.1.0 : December 1, 2005</td>
+   </tr>
+</table>
+<div class="navfooter"><hr>
+   <table summary="Navigation footer" width="100%">
+      <tr>
+         <td align="left" width="40%"><a accesskey="p" href="re02.html">Prev</a> </td>
+         <td align="center" width="20%"><a accesskey="u" href="ch07.html">Up</a></td>
+         <td align="right" width="40%"> <a accesskey="n" href="re03.html">Next</a></td>
+      </tr>
+      <tr>
+         <td align="left" valign="top" width="40%"><code class="function">HTML_QuickForm_advmultiselect::setJsElement</code> </td>
+         <td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td>
+         <td align="right" valign="top" width="40%"> <code class="function">HTML_QuickForm_advmultiselect::setButtonAttributes</code></td>
+      </tr>
+   </table>
+</div>
+</body>
+</html> 

@@ -1,27 +1,91 @@
-<html xmlns:cf="http://docbook.sourceforge.net/xmlns/chunkfast/1.0"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Combines multiple elements </title><link rel="stylesheet" href="book.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.69.0"><link rel="start" href="index.html" title="HTML_QuickForm_advmultiselect Manual"><link rel="up" href="ch08.html" title="Chapter 8. Examples"><link rel="prev" href="ch08s03.html" title="Sort usage "><link rel="next" href="ch08s05.html" title="Template engine usage "></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><table class="qfamsHeader"><tr><td><img src="img/pearsmall.gif" align="left" alt="PEAR logo"><h1>HTML_QuickForm_advmultiselect : The Definitive Guide</h1><p><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Combines multiple elements </th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch08s03.html">Prev</a> </td><th width="60%" align="center">Chapter 8. Examples</th><td width="20%" align="right"> <a accesskey="n" href="ch08s05.html">Next</a></td></tr></table></div></p></td></tr></table><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="examples.multiple"></a>Combines multiple elements </h2></div></div></div><div class="toc"><dl><dt><span class="sect2"><a href="ch08s04.html#examples.multiple.1"></a></span></dt></dl></div><div class="sect2" lang="en"><div class="titlepage"></div><p>
-    </p><div class="figure"><a name="id4782793"></a><p class="title"><b>Figure 8.4. Multiple usage with two different layouts</b></p><div class="screenshot"><div><img src="img/multiple1.png" alt="Multiple usage with two different layouts"></div></div></div><p>
-   </p><p>
-    In this example, here are our goals :
-    </p><div class="itemizedlist"><ul type="disc"><li>use two advmultiselect elements on the same page. </li><li>use two different layouts. </li></ul></div><p>
-   </p><p>
-    </p><div class="example"><a name="id4783981"></a><p class="title"><b>Example 8.4. Two different layouts on the same page</b></p><pre class="programlisting">
+<html>
+<head>
+   <meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type">
+   <title>Sort usage </title>
+   <link href="book.css" rel="stylesheet" type="text/css">
+   <meta content="DocBook XSL Stylesheets V1.69.1" name="generator">
+   <link href="index.html" rel="start" title="HTML_QuickForm_advmultiselect Manual">
+   <link href="ch08.html" rel="up" title="Chapter 8. Examples">
+   <link href="ch08s03.html" rel="prev" title="Advanced selection usage ">
+   <link href="ch08s05.html" rel="next" title="Combines multiple elements ">
+</head>
+<body alink="#0000FF" bgcolor="white" link="#0000FF" text="black" vlink="#840084">
+<table class="qfamsHeader">
+   <tr>
+      <td><img align="left" alt="PEAR logo" src="img/pearsmall.gif">
+         <h1>HTML_QuickForm_advmultiselect : The Definitive Guide</h1>
+
+         <p>
+         <div class="navheader">
+            <table summary="Navigation header" width="100%">
+               <tr>
+                  <th align="center" colspan="3">Sort usage </th>
+               </tr>
+               <tr>
+                  <td align="left" width="20%"><a accesskey="p" href="ch08s03.html">Prev</a> </td>
+                  <th align="center" width="60%">Chapter 8. Examples</th><td align="right" width="20%"> <a accesskey="n" href="ch08s05.html">Next</a></td>
+               </tr>
+            </table>
+         </div></p>
+      </td>
+   </tr>
+</table>
+<div class="sect1" lang="en"><div class="titlepage"><div><div>
+            <h2 class="title" style="clear: both"><a name="examples.sort"></a>Sort usage </h2>
+         </div>
+      </div>
+   </div>
+   <div class="toc">
+      <dl><dt><span class="sect2"><a href="ch08s04.html#examples.custom.5"></a></span></dt>
+      </dl>
+   </div>
+   <div class="sect2" lang="en"><div class="titlepage"></div>
+
+      <p></p>
+      <div class="figure"><a name="id4783421"></a>
+
+         <p class="title"><b>Figure 8.4. Auto-arrange feature usage </b></p><div class="screenshot"><div><img alt="Auto-arrange feature usage" src="img/custom5.png"></div>
+         </div>
+      </div>
+
+      <p></p>
+
+      <p>In this example, here are our goals : </p>
+      <div class="itemizedlist">
+         <ul type="disc">
+            <li>add the user-end sort buttons (up, down). </li>
+            <li>add the ability to sort lists in alphabetic order or reverse (by programming). </li>
+         </ul>
+      </div>
+
+      <p></p>
+
+      <p></p>
+      <div class="example"><a name="id4783375"></a>
+
+         <p class="title"><b>Example 8.4. How to sort the select boxes</b></p>
+<pre class="programlisting">
       
 &lt;?php
 /**
- * Mixed advMultiSelect HTML_QuickForm elements.
- * Two widgets on the same page/form with each its own javascript function
+ * Custom advMultiSelect HTML_QuickForm element
+ * that allows to manage sort of select boxes.
  *
  * @version    $Id$
  * @author     Laurent Laville &lt;pear@laurent-laville.org&gt;
  * @package    HTML_QuickForm_advmultiselect
  * @subpackage Examples
  * @access     public
+ * @example    examples/qfams_custom_5.php
+ *             qfams_custom_5 source code
+ * @link       http://www.laurent-laville.org/img/qfams/screenshot/custom5.png
+ *             screenshot (Image PNG, 609x318 pixels) 9.94 Kb
  */
 
 require_once 'HTML/QuickForm.php';
 require_once 'HTML/QuickForm/advmultiselect.php';
 
-$form = new HTML_QuickForm('amsMultiple1');
+$form = new HTML_QuickForm('amsCustom5');
 $form-&gt;removeAttribute('name');        // XHTML compliance
 
 $fruit_array = array(
@@ -36,57 +100,78 @@ $fruit_array = array(
     'tangerine' =&gt;  'Tangerine',
 );
 
-$car_array = array(
-    'dodge'     =&gt;  'Dodge',
-    'chevy'     =&gt;  'Chevy',
-    'bmw'       =&gt;  'BMW',
-    'audi'      =&gt;  'Audi',
-    'porsche'   =&gt;  'Porsche',
-    'kia'       =&gt;  'Kia',
-    'subaru'    =&gt;  'Subaru',
-    'mazda'     =&gt;  'Mazda',
-    'isuzu'     =&gt;  'Isuzu',
-);
-
-// rendering with all default options
-$form-&gt;addElement('header', null, 'Advanced Multiple Select: default layout ');
-
-$ams1 =&amp; $form-&gt;addElement('advmultiselect', 'cars', 'Cars:', $car_array);
-
-if (isset($_POST['cars'])) {
-    $form-&gt;setDefaults(array('cars' =&gt; $_POST['cars']));
+// decides either both select list will have their elements be arranged or not
+if (isset($_POST['autoArrange'])) {
+    if ($_POST['autoArrange'] == 'A') {
+        $sort = SORT_ASC;
+    } elseif ($_POST['autoArrange'] == 'D') {
+        $sort = SORT_DESC;
+    } else {
+        $sort = false;
+    }
+} else {
+    $sort = false;
 }
 
-// rendering with css selectors and API selLabel(), setButtonAttributes()
+// rendering with QF renderer engine and template system
+$form-&gt;addElement('header', null,
+                  'For demo purpose only: must be validate to be active');
+$arrange[] =&amp; $form-&gt;createElement('radio', null, null, 'Auto arrange asc.',  'A');
+$arrange[] =&amp; $form-&gt;createElement('radio', null, null, 'Auto arrange desc.', 'D');
+$arrange[] =&amp; $form-&gt;createElement('radio', null, null, 'No auto arrange',    'N');
+$form-&gt;addGroup($arrange, 'autoArrange', 'Sort list:');
+$form-&gt;setDefaults(array('autoArrange' =&gt; 'N'));
+
+$validate =&amp; $form-&gt;addElement('submit', null, 'Validate');
+
 $form-&gt;addElement('header', null, 'Advanced Multiple Select: custom layout ');
 
-$ams2 =&amp; $form-&gt;addElement('advmultiselect', 'fruit', null, $fruit_array,
-                           array('size' =&gt; 5,
-                                 'class' =&gt; 'pool', 'style' =&gt; 'width:200px;'
-                                )
+$ams =&amp; $form-&gt;addElement('advmultiselect', 'fruit', null, $fruit_array,
+                           array('class' =&gt; 'pool', 'style' =&gt; 'width:200px;'),
+                           $sort
 );
-$ams2-&gt;setJsElement('fruit_');
-$ams2-&gt;setLabel(array('Fruit:', 'Available', 'Selected'));
-$ams2-&gt;setButtonAttributes('add',    array('value' =&gt; 'Add', 'name' =&gt; 'add1',
-                                           'class' =&gt; 'inputCommand'
-));
-$ams2-&gt;setButtonAttributes('remove', array('value' =&gt; 'Remove', 'name' =&gt; 'remove1',
-                                           'class' =&gt; 'inputCommand'
-));
+$ams-&gt;setLabel(array('Fruit:', 'Available', 'Selected'));
 
-if (isset($_POST['fruit'])) {
+$ams-&gt;setButtonAttributes('add'     , 'class=inputCommand');
+$ams-&gt;setButtonAttributes('remove'  , 'class=inputCommand');
+$ams-&gt;setButtonAttributes('moveup'  , 'class=inputCommand');
+$ams-&gt;setButtonAttributes('movedown', 'class=inputCommand');
+
+// template for a dual multi-select element shape
+$template = '
+&lt;table{class}&gt;
+&lt;!-- BEGIN label_2 --&gt;&lt;tr&gt;&lt;th&gt;{label_2}&lt;/th&gt;&lt;!-- END label_2 --&gt;
+&lt;!-- BEGIN label_3 --&gt;&lt;th&gt;&amp;nbsp;&lt;/th&gt;&lt;th&gt;{label_3}&lt;/th&gt;&lt;/tr&gt;&lt;!-- END label_3 --&gt;
+&lt;tr&gt;
+  &lt;td&gt;{unselected}&lt;/td&gt;
+  &lt;td align="center"&gt;
+    {add}&lt;br /&gt;{remove}&lt;br /&gt;&lt;br /&gt;{moveup}&lt;br /&gt;{movedown}&lt;br /&gt;
+  &lt;/td&gt;
+  &lt;td&gt;{selected}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+';
+$ams-&gt;setElementTemplate($template);
+
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    // fruit default values already selected without any end-user actions
+    $form-&gt;setDefaults(array('fruit' =&gt; array('kiwi','lime')));
+
+} elseif (isset($_POST['fruit'])) {
+    // fruit end-user selection
     $form-&gt;setDefaults(array('fruit' =&gt; $_POST['fruit']));
 }
 
-$form-&gt;addElement('submit', 'send', 'Send');
-
+$buttons[] =&amp; $form-&gt;createElement('submit', null, 'Submit');
+$buttons[] =&amp; $form-&gt;createElement('reset',  null, 'Reset');
+$form-&gt;addGroup($buttons);
 ?&gt;
 &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3c.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
 &lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"&gt;
 &lt;head&gt;
 &lt;meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /&gt;
-&lt;title&gt;HTML_QuickForm::advMultiSelect multiple example 1&lt;/title&gt;
+&lt;title&gt;HTML_QuickForm::advMultiSelect custom example 5&lt;/title&gt;
 &lt;style type="text/css"&gt;
 &lt;!--
 body {
@@ -98,12 +183,14 @@ body {
 table.pool {
   border: 0;
   background-color: #339900;
-  width:450px;
+}
+table.pool td {
+  padding-left: 1em;
 }
 table.pool th {
   font-size: 80%;
   font-style: italic;
-  text-align: left;
+  text-align: center;
 }
 table.pool select {
   color: white;
@@ -111,22 +198,11 @@ table.pool select {
 }
 
 .inputCommand {
-    background-color: #d0d0d0;
-    border: 1px solid #7B7B88;
-    width: 7em;
-    margin-bottom: 2px;
+  width: 60px;
 }
 // --&gt;
 &lt;/style&gt;
-&lt;script type="text/javascript"&gt;
-&lt;!--
-&lt;?php
-echo $ams1-&gt;getElementJs();
-
-echo $ams2-&gt;getElementJs();
-?&gt;
-// --&gt;
-&lt;/script&gt;
+&lt;?php echo $ams-&gt;getElementJs(false); ?&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;?php
@@ -142,7 +218,32 @@ $form-&gt;display();
 &lt;/body&gt;
 &lt;/html&gt;
       
-     </pre></div><p>
-   </p></div></div><table class="qfamsFooter"><tr><td align="left">HTML_QuickForm_advmultiselect : The Definitive Guide</td><td align="right">v
-        1.0.0 :
-        September 1, 2005</td></tr></table><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch08s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch08.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch08s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Sort usage  </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Template engine usage </td></tr></table></div></body></html>
+     </pre>
+      </div>
+
+      <p></p>
+   </div>
+</div>
+<table class="qfamsFooter">
+   <tr>
+      <td align="left">HTML_QuickForm_advmultiselect : The Definitive Guide</td>
+      <td align="right">v 1.1.0 : December 1, 2005</td>
+   </tr>
+</table>
+<div class="navfooter"><hr>
+   <table summary="Navigation footer" width="100%">
+      <tr>
+         <td align="left" width="40%"><a accesskey="p" href="ch08s03.html">Prev</a> </td>
+         <td align="center" width="20%"><a accesskey="u" href="ch08.html">Up</a></td>
+         <td align="right" width="40%"> <a accesskey="n" href="ch08s05.html">Next</a></td>
+      </tr>
+      <tr>
+         <td align="left" valign="top" width="40%">Advanced selection usage  </td>
+         <td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td>
+         <td align="right" valign="top" width="40%"> Combines multiple elements 
+         </td>
+      </tr>
+   </table>
+</div>
+</body>
+</html> 

@@ -1,10 +1,55 @@
-<html xmlns:cf="http://docbook.sourceforge.net/xmlns/chunkfast/1.0"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Chapter 4. Your first form</title><link rel="stylesheet" href="book.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.69.0"><link rel="start" href="index.html" title="HTML_QuickForm_advmultiselect Manual"><link rel="up" href="pt02.html" title="Part II. Getting Started"><link rel="prev" href="ch03s02.html" title="Basic concepts"><link rel="next" href="ch05.html" title="Chapter 5. Advanced features"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><table class="qfamsHeader"><tr><td><img src="img/pearsmall.gif" align="left" alt="PEAR logo"><h1>HTML_QuickForm_advmultiselect : The Definitive Guide</h1><p><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 4. Your first form</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s02.html">Prev</a> </td><th width="60%" align="center">Part II. Getting Started</th><td width="20%" align="right"> <a accesskey="n" href="ch05.html">Next</a></td></tr></table></div></p></td></tr></table><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="developers.firstform"></a>Chapter 4. Your first form</h2></div></div></div><p>
-    We will start by creating a very simple form. Our goals are :
-    </p><div class="itemizedlist"><ul type="disc"><li>change the buttons (add, remove) position. Move at bottom of lists. </li><li>center headers at top of lists </li><li>set list item visible to 5. Default is 10. </li><li>enlarge both list width to 300 pixels. Default width is only 100 pixels. </li><li>change background colors element. </li></ul></div><p>
-   </p><p>
-    Copy the following code to a file, give it a .php extension, and display it
-    in your browser:
-    </p><pre class="programlisting">
+<html>
+<head>
+   <meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type">
+   <title>Chapter 4. Your first form</title>
+   <link href="book.css" rel="stylesheet" type="text/css">
+   <meta content="DocBook XSL Stylesheets V1.69.1" name="generator">
+   <link href="index.html" rel="start" title="HTML_QuickForm_advmultiselect Manual">
+   <link href="pt02.html" rel="up" title="Part II. Getting Started">
+   <link href="ch03s02.html" rel="prev" title="Basic concepts">
+   <link href="ch05.html" rel="next" title="Chapter 5. Advanced features">
+</head>
+<body alink="#0000FF" bgcolor="white" link="#0000FF" text="black" vlink="#840084">
+<table class="qfamsHeader">
+   <tr>
+      <td><img align="left" alt="PEAR logo" src="img/pearsmall.gif">
+         <h1>HTML_QuickForm_advmultiselect : The Definitive Guide</h1>
+
+         <p>
+         <div class="navheader">
+            <table summary="Navigation header" width="100%">
+               <tr>
+                  <th align="center" colspan="3">Chapter 4. Your first form</th>
+               </tr>
+               <tr>
+                  <td align="left" width="20%"><a accesskey="p" href="ch03s02.html">Prev</a> </td>
+                  <th align="center" width="60%">Part II. Getting Started</th><td align="right" width="20%"> <a accesskey="n" href="ch05.html">Next</a></td>
+               </tr>
+            </table>
+         </div></p>
+      </td>
+   </tr>
+</table>
+<div class="chapter" lang="en"><div class="titlepage"><div><div>
+            <h2 class="title"><a name="developers.firstform"></a>Chapter 4. Your first form</h2></div>
+      </div>
+   </div>
+
+   <p>We will start by creating a very simple form. Our goals are : </p>
+   <div class="itemizedlist">
+      <ul type="disc">
+         <li>change the buttons (add, remove) position. Move at bottom of lists. </li>
+         <li>center headers at top of lists </li>
+         <li>set list item visible to 5. Default is 10. </li>
+         <li>enlarge both list width to 300 pixels. Default width is only 100 pixels. </li>
+         <li>change background colors element. </li>
+      </ul>
+   </div>
+
+   <p></p>
+
+   <p>Copy the following code to a file, give it a .php extension, and display it in your browser: </p>
+<pre class="programlisting">
 &lt;?php
 /**
  * Custom advMultiSelect HTML_QuickForm element
@@ -23,10 +68,10 @@
 require_once 'HTML/QuickForm.php';
 require_once 'HTML/QuickForm/advmultiselect.php';
 
-$form = new HTML_QuickForm('amsCustom1'); <a name="ex.cust1.new.form"></a><img src="img/callouts/1.gif" alt="1" border="0">
+$form = new HTML_QuickForm('amsCustom1'); <a name="ex.cust1.new.form"></a><img alt="1" border="0" src="img/callouts/1.gif">
 $form-&gt;removeAttribute('name');        // XHTML compliance
 
-$fruit_array <a name="ex.cust1.fruit.array"></a><img src="img/callouts/2.gif" alt="2" border="0"> = array(
+$fruit_array <a name="ex.cust1.fruit.array"></a><img alt="2" border="0" src="img/callouts/2.gif"> = array(
     'apple'     =&gt;  'Apple',
     'orange'    =&gt;  'Orange',
     'pear'      =&gt;  'Pear',
@@ -39,40 +84,40 @@ $fruit_array <a name="ex.cust1.fruit.array"></a><img src="img/callouts/2.gif" al
 );
 
 // rendering with QF renderer engine and template system
-$form-&gt;addElement('header', null, 'Advanced Multiple Select: custom layout '); <a name="ex.cust1.form.element.1"></a><img src="img/callouts/3.gif" alt="3" border="0">
+$form-&gt;addElement('header', null, 'Advanced Multiple Select: custom layout '); <a name="ex.cust1.form.element.1"></a><img alt="3" border="0" src="img/callouts/3.gif">
 
-$ams =&amp; $form-&gt;addElement('advmultiselect', 'fruit', null, $fruit_array <a name="ex.cust1.fruit.array"></a><img src="img/callouts/2.gif" alt="2" border="0">,
+$ams =&amp; $form-&gt;addElement('advmultiselect', 'fruit', null, $fruit_array <a name="ex.cust1.fruit.array"></a><img alt="2" border="0" src="img/callouts/2.gif">,
                            array('size' =&gt; 5,
                                  'class' =&gt; 'pool', 'style' =&gt; 'width:300px;'
-                                ) <a name="ex.cust1.fruit.attr"></a><img src="img/callouts/4.gif" alt="4" border="0">
-); <a name="ex.cust1.form.element.2"></a><img src="img/callouts/5.gif" alt="5" border="0">
-$ams-&gt;setLabel(array('Fruit:', 'Available', 'Selected')); <a name="ex.cust1.fruit.labels"></a><img src="img/callouts/6.gif" alt="6" border="0">
-$ams-&gt;setButtonAttributes('add' <a name="ex.cust1.fruit.add"></a><img src="img/callouts/7.gif" alt="7" border="0">,    array('value' =&gt; 'Add &gt;&gt;',
+                                ) <a name="ex.cust1.fruit.attr"></a><img alt="4" border="0" src="img/callouts/4.gif">
+); <a name="ex.cust1.form.element.2"></a><img alt="5" border="0" src="img/callouts/5.gif">
+$ams-&gt;setLabel(array('Fruit:', 'Available', 'Selected')); <a name="ex.cust1.fruit.labels"></a><img alt="6" border="0" src="img/callouts/6.gif">
+$ams-&gt;setButtonAttributes('add' <a name="ex.cust1.fruit.add"></a><img alt="7" border="0" src="img/callouts/7.gif">,    array('value' =&gt; 'Add &gt;&gt;',
                                              'class' =&gt; 'inputCommand'
 ));
-$ams-&gt;setButtonAttributes('remove' <a name="ex.cust1.fruit.remove"></a><img src="img/callouts/8.gif" alt="8" border="0">, array('value' =&gt; '&lt;&lt; Remove',
+$ams-&gt;setButtonAttributes('remove' <a name="ex.cust1.fruit.remove"></a><img alt="8" border="0" src="img/callouts/8.gif">, array('value' =&gt; '&lt;&lt; Remove',
                                              'class' =&gt; 'inputCommand'
 ));
 $template = '
 &lt;table{class}&gt;
-&lt;!-- BEGIN label_2 --&gt;&lt;tr&gt;&lt;th align="center"&gt;{label_2}&lt;/th&gt;&lt;!-- END label_2 --&gt; <a name="ex.cust1.fruit.label2"></a><img src="img/callouts/9.gif" alt="9" border="0">
-&lt;!-- BEGIN label_3 --&gt;&lt;th align="center"&gt;{label_3}&lt;/th&gt;&lt;/tr&gt;&lt;!-- END label_3 --&gt; <a name="ex.cust1.fruit.label3"></a><img src="img/callouts/10.gif" alt="10" border="0">
+&lt;!-- BEGIN label_2 --&gt;&lt;tr&gt;&lt;th align="center"&gt;{label_2}&lt;/th&gt;&lt;!-- END label_2 --&gt; <a name="ex.cust1.fruit.label2"></a><img alt="9" border="0" src="img/callouts/9.gif">
+&lt;!-- BEGIN label_3 --&gt;&lt;th align="center"&gt;{label_3}&lt;/th&gt;&lt;/tr&gt;&lt;!-- END label_3 --&gt; <a name="ex.cust1.fruit.label3"></a><img alt="10" border="0" src="img/callouts/10.gif">
 &lt;tr&gt;
   &lt;td&gt;{unselected}&lt;/td&gt;
   &lt;td&gt;{selected}&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-  &lt;td align="center"&gt;{add}&lt;/td&gt; <a name="ex.cust1.fruit.add"></a><img src="img/callouts/7.gif" alt="7" border="0">
-  &lt;td align="center"&gt;{remove}&lt;/td&gt; <a name="ex.cust1.fruit.remove"></a><img src="img/callouts/8.gif" alt="8" border="0">
+  &lt;td align="center"&gt;{add}&lt;/td&gt; <a name="ex.cust1.fruit.add"></a><img alt="7" border="0" src="img/callouts/7.gif">
+  &lt;td align="center"&gt;{remove}&lt;/td&gt; <a name="ex.cust1.fruit.remove"></a><img alt="8" border="0" src="img/callouts/8.gif">
 &lt;/tr&gt;
 &lt;/table&gt;';
 $ams-&gt;setElementTemplate($template);
 
 if (isset($_POST['fruit'])) {
-    $form-&gt;setDefaults(array('fruit' =&gt; $_POST['fruit'])); <a name="ex.cust1.fruit.defaults"></a><img src="img/callouts/11.gif" alt="11" border="0">
+    $form-&gt;setDefaults(array('fruit' =&gt; $_POST['fruit'])); <a name="ex.cust1.fruit.defaults"></a><img alt="11" border="0" src="img/callouts/11.gif">
 }
 
-$form-&gt;addElement('submit', 'send', 'Send'); <a name="ex.cust1.form.element.3"></a><img src="img/callouts/12.gif" alt="12" border="0">
+$form-&gt;addElement('submit', 'send', 'Send'); <a name="ex.cust1.form.element.3"></a><img alt="12" border="0" src="img/callouts/12.gif">
 
 ?&gt;
 &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -110,103 +155,209 @@ table.pool select {
 }
 // --&gt;
 &lt;/style&gt;
-&lt;?php echo $ams-&gt;getElementJs(false); ?&gt; <a name="ex.cust1.fruit.getjs"></a><img src="img/callouts/13.gif" alt="13" border="0">
+&lt;?php echo $ams-&gt;getElementJs(false); ?&gt; <a name="ex.cust1.fruit.getjs"></a><img alt="13" border="0" src="img/callouts/13.gif">
 &lt;/head&gt;
 &lt;body&gt;
 &lt;?php
-if ($form-&gt;validate()) {  <a name="ex.cust1.form.validate"></a><img src="img/callouts/14.gif" alt="14" border="0">
-    $clean = $form-&gt;getSubmitValues(); <a name="ex.cust1.form.process"></a><img src="img/callouts/15.gif" alt="15" border="0">
+if ($form-&gt;validate()) {  <a name="ex.cust1.form.validate"></a><img alt="14" border="0" src="img/callouts/14.gif">
+    $clean = $form-&gt;getSubmitValues(); <a name="ex.cust1.form.process"></a><img alt="15" border="0" src="img/callouts/15.gif">
 
     echo '&lt;pre&gt;';
     print_r($clean);
     echo '&lt;/pre&gt;';
 }
-$form-&gt;display();  <a name="ex.cust1.form.display"></a><img src="img/callouts/16.gif" alt="16" border="0">
+$form-&gt;display();  <a name="ex.cust1.form.display"></a><img alt="16" border="0" src="img/callouts/16.gif">
 ?&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-    </pre><p>
-      Loading this file in your browser will simply show something like
-      <a href="ch08s02.html#examples.custom.1.caption">this screenshot</a>.
-    </p><p>
-     Lets review this example step by step :
-    </p><p>
-    </p><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a href="#ex.cust1.new.form"><img src="img/callouts/1.gif" alt="1" border="0"></a> </td><td valign="top" align="left"><p>
-        At the beginning we creates a HTML_QuickForm object that will contain the objects
-        representing elements and all the other necessary information.
-        We only pass the form's name to the constructor, which means that
-        default values will be used for other parameters.
-      </p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#ex.cust1.form.element.1"><img src="img/callouts/3.gif" alt="3" border="0"></a> <a href="#ex.cust1.form.element.2"><img src="img/callouts/5.gif" alt="5" border="0"></a> <a href="#ex.cust1.form.element.3"><img src="img/callouts/12.gif" alt="12" border="0"></a> </td><td valign="top" align="left"><p>
-        Our form will consist of three elements:
-      </p><p>
-       The first one is not the &#8220;<span class="quote">real</span>&#8221; element, it is just a heading
-       to improve presentation.
-       The second one is our advmultiselect element. Note that parameters for
-       <code class="methodname">HTML_QuickForm::addElement()</code> method have different meanings
-       for different elements. That is so because they are actually passed to
-       these elements' constructors.
-      </p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#ex.cust1.fruit.array"><img src="img/callouts/2.gif" alt="2" border="0"></a> </td><td valign="top" align="left"><p>
-       The <code class="varname">$fruit_array</code> variable sets the default values (code, label)
-       for the <span class="emphasis"><em>fruit</em></span> advmultiselect element.
-      </p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#ex.cust1.fruit.attr"><img src="img/callouts/4.gif" alt="4" border="0"></a> </td><td valign="top" align="left"><p>
-       It's time to define the fruit element attributes:
-       </p><div class="variablelist"><dl><dt><span class="term">
-          size
-         </span></dt><dd>
-           Give count of visible item in each list. Default is 10.
-         </dd><dt><span class="term">
-          style
-         </span></dt><dd>
-           The select boxes width in pixel. Default is 100.
-         </dd><dt><span class="term">
-          class
-         </span></dt><dd>
-           A CSS class identifier to override the look and feel. There is no default.
-         </dd></dl></div><p>
-      </p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#ex.cust1.fruit.labels"><img src="img/callouts/6.gif" alt="6" border="0"></a> <a href="#ex.cust1.fruit.label2"><img src="img/callouts/9.gif" alt="9" border="0"></a> <a href="#ex.cust1.fruit.label3"><img src="img/callouts/10.gif" alt="10" border="0"></a> </td><td valign="top" align="left"><p>
-       To put headers on each list (wherever you want: at top, or bottom),
-       you need first to set these values. Then second, defines the placeholder
-       in the template (as any other multi-label element).
-      </p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tr><td rowspan="2" align="center" valign="top" width="48px"><img alt="[Important]" src="img/admons/important.png"></td><th align="left">Important</th></tr><tr><td align="left" valign="top">
-       Placeholders <span class="bold"><strong>{label_2}, {label_3}</strong></span> are used,
-       in the same way, for all
-       <a href="http://pear.php.net/manual/en/package.html.html-quickform.intro-renderers.php" target="_top">
-       HTML_QuickForm renderers</a>, and defines:
-       unselected list (<code class="literal">label_2</code>), and
-       selected list (<code class="literal">label_3</code>).
-      </td></tr></table></div></td></tr><tr><td width="5%" valign="top" align="left"><a href="#ex.cust1.fruit.add"><img src="img/callouts/7.gif" alt="7" border="0"></a> <a href="#ex.cust1.fruit.remove"><img src="img/callouts/8.gif" alt="8" border="0"></a> </td><td valign="top" align="left"><p>
-       Last step to complete definition of a advmultiselect element is to set the
-       <span class="emphasis"><em>add</em></span> and <span class="emphasis"><em>remove</em></span> buttons.
-      </p><p>
-       Here we gave names <code class="literal">Add &gt;&gt;</code> and <code class="literal"> &lt;&lt; Remove</code>,
-       with a skin handled by the <code class="literal">inputCommand</code> CSS class.
-      </p><div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Warning"><tr><td rowspan="2" align="center" valign="top" width="48px"><img alt="[Warning]" src="img/admons/warning.png"></td><th align="left">Warning</th></tr><tr><td align="left" valign="top">
-       Placeholders <span class="bold"><strong>{add}, {remove}</strong></span> must exists
-       into the template. Without them you won't see the move buttons.
-      </td></tr></table></div></td></tr><tr><td width="5%" valign="top" align="left"><a href="#ex.cust1.fruit.defaults"><img src="img/callouts/11.gif" alt="11" border="0"></a> </td><td valign="top" align="left"><p>
-       User's input overrides default values of the <span class="emphasis"><em>fruit</em></span> advmultiselect element.
-      </p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#ex.cust1.fruit.getjs"><img src="img/callouts/13.gif" alt="13" border="0"></a> </td><td valign="top" align="left"><p>
-       Before to validate and process the form, the building form step need one more thing.
-       Don't forget, that to manage swaps between both list, we need some javascript code.
-       It's now time to include into our HTML stream/template.
-      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="48px"><img alt="[Note]" src="img/admons/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
-       By given the <code class="constant">false</code> value as argument to the
-       <code class="methodname">getElementJs()</code> method, we have choosen to build javascript code with
-       its script tags. Default behavior is to get only raw code without surrounding script tags.
-       May be usefull with template integration and existing js code.
-      </td></tr></table></div></td></tr><tr><td width="5%" valign="top" align="left"><a href="#ex.cust1.form.validate"><img src="img/callouts/14.gif" alt="14" border="0"></a> </td><td valign="top" align="left">
-       We have now the form built and need to decide whether to process it or display.
-      </td></tr><tr><td width="5%" valign="top" align="left"><a href="#ex.cust1.form.process"><img src="img/callouts/15.gif" alt="15" border="0"></a> </td><td valign="top" align="left"><p>
-       This is a simple display example. In your scripts you'll usually want
-       to store the values somewhere or do whatever else. The
-       <a href="http://pear.php.net/manual/en/package.html.html-quickform.html-quickform.process.php" target="_top">
-       HTML_QuickForm::process()
-       </a> method may be of interest here.
-      </p></td></tr><tr><td width="5%" valign="top" align="left"><a href="#ex.cust1.form.display"><img src="img/callouts/16.gif" alt="16" border="0"></a> </td><td valign="top" align="left">
-       The last line is pretty easy.
-       If the form is not valid, which means that it either was not yet submitted
-       or that there were errors, it will be displayed.
-      </td></tr></table></div><p>
-   </p></div><table class="qfamsFooter"><tr><td align="left">HTML_QuickForm_advmultiselect : The Definitive Guide</td><td align="right">v
-        1.0.0 :
-        September 1, 2005</td></tr></table><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="pt02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Basic concepts </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 5. Advanced features</td></tr></table></div></body></html>
+    </pre>
+
+   <p>Loading this file in your browser will simply show something like 
+   <a href="ch08s02.html#examples.custom.1.caption">this screenshot</a>. </p>
+
+   <p>Lets review this example step by step : </p>
+
+   <p></p>
+   <div class="calloutlist">
+      <table border="0" summary="Callout list">
+         <tr>
+            <td align="left" valign="top" width="5%"><a href="#ex.cust1.new.form"><img alt="1" border="0" src="img/callouts/1.gif"></a> 
+            </td>
+            <td align="left" valign="top">
+
+               <p>At the beginning we creates a HTML_QuickForm object that will contain the objects representing elements and all the other necessary information. We only pass the form's name to the constructor, which means that default values will be used for other parameters. </p>
+            </td>
+         </tr>
+         <tr>
+            <td align="left" valign="top" width="5%"><a href="#ex.cust1.form.element.1"><img alt="3" border="0" src="img/callouts/3.gif"></a> 
+               <a href="#ex.cust1.form.element.2"><img alt="5" border="0" src="img/callouts/5.gif"></a> 
+               <a href="#ex.cust1.form.element.3"><img alt="12" border="0" src="img/callouts/12.gif"></a> 
+            </td>
+            <td align="left" valign="top">
+
+               <p>Our form will consist of three elements: </p>
+
+               <p>The first one is not the &#8220;<span class="quote">real</span>&#8221; element, it is just a heading to improve presentation. The second one is our advmultiselect element. Note that parameters for 
+               <code class="methodname">HTML_QuickForm::addElement()</code> method have different meanings for different elements. That is so because they are actually passed to these elements' constructors. </p>
+            </td>
+         </tr>
+         <tr>
+            <td align="left" valign="top" width="5%"><a href="#ex.cust1.fruit.array"><img alt="2" border="0" src="img/callouts/2.gif"></a> 
+            </td>
+            <td align="left" valign="top">
+
+               <p>The <code class="varname">$fruit_array</code> variable sets the default values (code, label) for the 
+               <span class="emphasis"><em>fruit</em></span> advmultiselect element. </p>
+            </td>
+         </tr>
+         <tr>
+            <td align="left" valign="top" width="5%"><a href="#ex.cust1.fruit.attr"><img alt="4" border="0" src="img/callouts/4.gif"></a> 
+            </td>
+            <td align="left" valign="top">
+
+               <p>It's time to define the fruit element attributes: </p>
+               <div class="variablelist">
+                  <dl><dt><span class="term"> size </span></dt>
+                     <dd>Give count of visible item in each list. Default is 10. </dd>
+                     <dt><span class="term"> style </span></dt>
+                     <dd>The select boxes width in pixel. Default is 100. </dd>
+                     <dt><span class="term"> class </span></dt>
+                     <dd>A CSS class identifier to override the look and feel. There is no default. </dd>
+                  </dl>
+               </div>
+
+               <p></p>
+            </td>
+         </tr>
+         <tr>
+            <td align="left" valign="top" width="5%"><a href="#ex.cust1.fruit.labels"><img alt="6" border="0" src="img/callouts/6.gif"></a> 
+               <a href="#ex.cust1.fruit.label2"><img alt="9" border="0" src="img/callouts/9.gif"></a> 
+               <a href="#ex.cust1.fruit.label3"><img alt="10" border="0" src="img/callouts/10.gif"></a> 
+            </td>
+            <td align="left" valign="top">
+
+               <p>To put headers on each list (wherever you want: at top, or bottom), you need first to set these values. Then second, defines the placeholder in the template (as any other multi-label element). </p>
+               <div class="important" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <table border="0" summary="Important">
+                     <tr>
+                        <td align="center" rowspan="2" valign="top" width="48px"><img alt="[Important]" src="img/admons/important.png"></td>
+                        <th align="left">Important</th>
+                     </tr>
+                     <tr>
+                        <td align="left" valign="top"> Placeholders 
+                           <span class="bold"><strong>{label_2}, {label_3}</strong></span> are used, in the same way, for all 
+                           <a class="external" href="http://pear.php.net/manual/en/package.html.html-quickform.intro-renderers.php" title="http://pear.php.net/manual/en/package.html.html-quickform.intro-renderers.php"> HTML_QuickForm renderers</a>, and defines: unselected list (<code class="literal">label_2</code>), and selected list (<code class="literal">label_3</code>). 
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            </td>
+         </tr>
+         <tr>
+            <td align="left" valign="top" width="5%"><a href="#ex.cust1.fruit.add"><img alt="7" border="0" src="img/callouts/7.gif"></a> 
+               <a href="#ex.cust1.fruit.remove"><img alt="8" border="0" src="img/callouts/8.gif"></a> 
+            </td>
+            <td align="left" valign="top">
+
+               <p>Last step to complete definition of a advmultiselect element is to set the 
+               <span class="emphasis"><em>add</em></span> and 
+               <span class="emphasis"><em>remove</em></span> buttons. </p>
+
+               <p>Here we gave names <code class="literal">Add &gt;&gt;</code> and 
+               <code class="literal"> &lt;&lt; Remove</code>, with a skin handled by the 
+               <code class="literal">inputCommand</code> CSS class. </p>
+               <div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <table border="0" summary="Warning">
+                     <tr>
+                        <td align="center" rowspan="2" valign="top" width="48px"><img alt="[Warning]" src="img/admons/warning.png"></td>
+                        <th align="left">Warning</th>
+                     </tr>
+                     <tr>
+                        <td align="left" valign="top"> Placeholders 
+                           <span class="bold"><strong>{add}, {remove}</strong></span> must exists into the template. Without them you won't see the move buttons. 
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            </td>
+         </tr>
+         <tr>
+            <td align="left" valign="top" width="5%"><a href="#ex.cust1.fruit.defaults"><img alt="11" border="0" src="img/callouts/11.gif"></a> 
+            </td>
+            <td align="left" valign="top">
+
+               <p>User's input overrides default values of the 
+               <span class="emphasis"><em>fruit</em></span> advmultiselect element. </p>
+            </td>
+         </tr>
+         <tr>
+            <td align="left" valign="top" width="5%"><a href="#ex.cust1.fruit.getjs"><img alt="13" border="0" src="img/callouts/13.gif"></a> 
+            </td>
+            <td align="left" valign="top">
+
+               <p>Before to validate and process the form, the building form step need one more thing. Don't forget, that to manage swaps between both list, we need some javascript code. It's now time to include into our HTML stream/template. </p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <table border="0" summary="Note">
+                     <tr>
+                        <td align="center" rowspan="2" valign="top" width="48px"><img alt="[Note]" src="img/admons/note.png"></td>
+                        <th align="left">Note</th>
+                     </tr>
+                     <tr>
+                        <td align="left" valign="top"> By given the 
+                           <code class="constant">false</code> value as argument to the 
+                           <code class="methodname">getElementJs()</code> method, we have choosen to build javascript code with its script tags. Default behavior is to get only raw code without surrounding script tags. May be usefull with template integration and existing js code. 
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            </td>
+         </tr>
+         <tr>
+            <td align="left" valign="top" width="5%"><a href="#ex.cust1.form.validate"><img alt="14" border="0" src="img/callouts/14.gif"></a> 
+            </td>
+            <td align="left" valign="top"> We have now the form built and need to decide whether to process it or display. 
+            </td>
+         </tr>
+         <tr>
+            <td align="left" valign="top" width="5%"><a href="#ex.cust1.form.process"><img alt="15" border="0" src="img/callouts/15.gif"></a> 
+            </td>
+            <td align="left" valign="top">
+
+               <p>This is a simple display example. In your scripts you'll usually want to store the values somewhere or do whatever else. The 
+               <a class="external" href="http://pear.php.net/manual/en/package.html.html-quickform.html-quickform.process.php" title="http://pear.php.net/manual/en/package.html.html-quickform.html-quickform.process.php"> HTML_QuickForm::process() 
+               </a> method may be of interest here. </p>
+            </td>
+         </tr>
+         <tr>
+            <td align="left" valign="top" width="5%"><a href="#ex.cust1.form.display"><img alt="16" border="0" src="img/callouts/16.gif"></a> 
+            </td>
+            <td align="left" valign="top"> The last line is pretty easy. If the form is not valid, which means that it either was not yet submitted or that there were errors, it will be displayed. 
+            </td>
+         </tr>
+      </table>
+   </div>
+
+   <p></p>
+</div>
+<table class="qfamsFooter">
+   <tr>
+      <td align="left">HTML_QuickForm_advmultiselect : The Definitive Guide</td>
+      <td align="right">v 1.1.0 : December 1, 2005</td>
+   </tr>
+</table>
+<div class="navfooter"><hr>
+   <table summary="Navigation footer" width="100%">
+      <tr>
+         <td align="left" width="40%"><a accesskey="p" href="ch03s02.html">Prev</a> </td>
+         <td align="center" width="20%"><a accesskey="u" href="pt02.html">Up</a></td>
+         <td align="right" width="40%"> <a accesskey="n" href="ch05.html">Next</a></td>
+      </tr>
+      <tr>
+         <td align="left" valign="top" width="40%">Basic concepts </td>
+         <td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td>
+         <td align="right" valign="top" width="40%"> Chapter 5. Advanced features</td>
+      </tr>
+   </table>
+</div>
+</body>
+</html> 
