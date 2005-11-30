@@ -1,20 +1,159 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
-<package version="1.0">
-  <name>HTML_QuickForm_advmultiselect</name>
-  <summary>Element for HTML_QuickForm that emulate a multi-select.</summary>
-  <description>The HTML_QuickForm_advmultiselect package adds an element to the
+<package version="1.0" packagerversion="1.4.5">
+ <name>HTML_QuickForm_advmultiselect</name>
+ <summary>Element for HTML_QuickForm that emulate a multi-select.</summary>
+ <description>The HTML_QuickForm_advmultiselect package adds an element to the
 HTML_QuickForm package that is two select boxes next to each other
-emulating a multi-select.</description>
-  <maintainers>
-    <maintainer>
-      <user>farell</user>
-      <name>Laurent Laville</name>
-      <email>pear@laurent-laville.org</email>
-      <role>lead</role>
-    </maintainer>
+emulating a multi-select.
+ </description>
+ <maintainers>
+  <maintainer>
+   <user>farell</user>
+   <name>Laurent Laville</name>
+   <email>pear@laurent-laville.org</email>
+   <role>lead</role>
+  </maintainer>
   </maintainers>
-  <release>
+ <release>
+  <version>1.1.0</version>
+  <date>2005-12-01</date>
+  <license>PHP License 3.0</license>
+  <state>stable</state>
+  <notes>* news
+- ability to select/unselect all items (options) in one stroke.
+- you may also toggle a selection.
+
+See examples/qfams_custom_7.php script that demonstrates these new features.
+
+* Quality Assurance
+- User Guide (TDG), english html multi pages include was also updated
+See chapter 5.Advanced features / buttons
+and also chapter 8.Examples / Avanced selection usage
+  </notes>
+  <deps>
+   <dep type="php" rel="ge" version="4.2.0" optional="no"/>
+   <dep type="pkg" rel="has" optional="no">PEAR</dep>
+   <dep type="pkg" rel="ge" version="1.2.1" optional="no">HTML_Common</dep>
+   <dep type="pkg" rel="gt" version="3.2.4" optional="no">HTML_QuickForm</dep>
+  </deps>
+  <provides type="class" name="HTML_QuickForm_advmultiselect" extends="HTML_QuickForm_select" />
+  <provides type="function" name="HTML_QuickForm_advmultiselect::setButtonAttributes" />
+  <provides type="function" name="HTML_QuickForm_advmultiselect::setElementTemplate" />
+  <provides type="function" name="HTML_QuickForm_advmultiselect::setJsElement" />
+  <provides type="function" name="HTML_QuickForm_advmultiselect::getElementCss" />
+  <provides type="function" name="HTML_QuickForm_advmultiselect::toHtml" />
+  <provides type="function" name="HTML_QuickForm_advmultiselect::getElementJs" />
+  <filelist>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/blank.gif"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/book.css"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch01.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch01s02.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch01s03.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch02.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch03.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch03s02.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch04.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch05.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch05s02.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch05s03.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch05s04.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch06.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch07.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch07s02.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch08.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch08s02.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch08s03.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch08s04.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch08s05.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/ch08s06.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/index.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/pngbehavior.htc"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/pr01.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/pr01s02.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/pt01.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/pt02.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/pt03.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/pt04.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/re01.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/re02.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/re03.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/re04.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/re05.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/re06.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/re07.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/basic1.png"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/custom1.png"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/custom2.png"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/custom3.png"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/custom4.png"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/custom5.png"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/custom7.png"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/example.png"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/multiple1.png"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/pearsmall.gif"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/template1.png"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/admons/caution.png"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/admons/important.png"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/admons/note.png"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/admons/tip.png"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/admons/warning.png"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/callouts/1.gif"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/callouts/2.gif"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/callouts/3.gif"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/callouts/4.gif"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/callouts/5.gif"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/callouts/6.gif"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/callouts/7.gif"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/callouts/8.gif"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/callouts/9.gif"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/callouts/10.gif"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/callouts/11.gif"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/callouts/12.gif"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/callouts/13.gif"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/callouts/14.gif"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/callouts/15.gif"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/bluestar-12.gif"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/down.png"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/goldstar-12.gif"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/itdynamic.html"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_basic_1.php"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_basic_2.php"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_custom_1.php"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_custom_2.php"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_custom_3.php"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_custom_4.php"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_custom_5.php"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_custom_7.php"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_multiple_1.php"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_template_1.php"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/up.png"/>
+   <file role="php" baseinstalldir="HTML/QuickForm" name="advmultiselect.php">
+    <replace type="package-info" from="@package_version@" to="version"/>
+   </file>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="ChangeLog"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="NEWS"/>
+  </filelist>
+ </release>
+ <changelog>
+   <release>
+    <version>1.1.0</version>
+    <date>2005-12-01</date>
+    <license>PHP License 3.0</license>
+    <state>stable</state>
+    <notes>* news
+- ability to select/unselect all items (options) in one stroke.
+- you may also toggle a selection.
+
+See examples/qfams_custom_7.php script that demonstrates these new features.
+
+* Quality Assurance
+- User Guide (TDG), english html multi pages include was also updated
+See chapter 5.Advanced features / buttons
+and also chapter 8.Examples / Avanced selection usage
+    </notes>
+   </release>
+   <release>
     <version>1.0.0</version>
     <date>2005-09-01</date>
     <license>PHP License 3.0</license>
@@ -34,144 +173,15 @@ emulating a multi-select.</description>
   available to download at URI http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect/docs
 
 Live demos, screenshots, source codes and much more are available on my
-project homepage at http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect</notes>
-    <deps>
-      <dep type="php" rel="ge" version="4.2.0" optional="no"/>
-      <dep type="pkg" rel="has" optional="no">PEAR</dep>
-      <dep type="pkg" rel="ge" version="1.2.1" optional="no">HTML_Common</dep>
-      <dep type="pkg" rel="gt" version="3.2.4" optional="no">HTML_QuickForm</dep>
-    </deps>
-    <filelist>
-      <dir baseinstalldir="HTML/QuickForm" name="/">
-       <dir name="docs">
-        <dir name="TDG">
-         <file role="doc" name="blank.gif"/>
-         <file role="doc" name="book.css"/>
-         <file role="doc" name="ch01.html"/>
-         <file role="doc" name="ch01s02.html"/>
-         <file role="doc" name="ch01s03.html"/>
-         <file role="doc" name="ch02.html"/>
-         <file role="doc" name="ch03.html"/>
-         <file role="doc" name="ch03s02.html"/>
-         <file role="doc" name="ch04.html"/>
-         <file role="doc" name="ch05.html"/>
-         <file role="doc" name="ch05s02.html"/>
-         <file role="doc" name="ch05s03.html"/>
-         <file role="doc" name="ch05s04.html"/>
-         <file role="doc" name="ch06.html"/>
-         <file role="doc" name="ch07.html"/>
-         <file role="doc" name="ch07s02.html"/>
-         <file role="doc" name="ch08.html"/>
-         <file role="doc" name="ch08s02.html"/>
-         <file role="doc" name="ch08s03.html"/>
-         <file role="doc" name="ch08s04.html"/>
-         <file role="doc" name="ch08s05.html"/>
-         <file role="doc" name="index.html"/>
-         <file role="doc" name="pngbehavior.htc"/>
-         <file role="doc" name="pr01.html"/>
-         <file role="doc" name="pr01s02.html"/>
-         <file role="doc" name="pt01.html"/>
-         <file role="doc" name="pt02.html"/>
-         <file role="doc" name="pt03.html"/>
-         <file role="doc" name="pt04.html"/>
-         <file role="doc" name="re01.html"/>
-         <file role="doc" name="re02.html"/>
-         <file role="doc" name="re03.html"/>
-         <file role="doc" name="re04.html"/>
-         <file role="doc" name="re05.html"/>
-         <file role="doc" name="re06.html"/>
-         <file role="doc" name="re07.html"/>
-         <dir name="img">
-          <file role="doc" name="basic1.png"/>
-          <file role="doc" name="custom1.png"/>
-          <file role="doc" name="custom2.png"/>
-          <file role="doc" name="custom3.png"/>
-          <file role="doc" name="custom4.png"/>
-          <file role="doc" name="custom5.png"/>
-          <file role="doc" name="example.png"/>
-          <file role="doc" name="multiple1.png"/>
-          <file role="doc" name="pearsmall.gif"/>
-          <file role="doc" name="template1.png"/>
-          <dir name="admons">
-           <file role="doc" name="caution.png"/>
-           <file role="doc" name="important.png"/>
-           <file role="doc" name="note.png"/>
-           <file role="doc" name="tip.png"/>
-           <file role="doc" name="warning.png"/>
-          </dir> <!-- docs/TDG/img/admons -->
-          <dir name="callouts">
-           <file role="doc" name="1.gif"/>
-           <file role="doc" name="2.gif"/>
-           <file role="doc" name="3.gif"/>
-           <file role="doc" name="4.gif"/>
-           <file role="doc" name="5.gif"/>
-           <file role="doc" name="6.gif"/>
-           <file role="doc" name="7.gif"/>
-           <file role="doc" name="8.gif"/>
-           <file role="doc" name="9.gif"/>
-           <file role="doc" name="10.gif"/>
-           <file role="doc" name="11.gif"/>
-           <file role="doc" name="12.gif"/>
-           <file role="doc" name="13.gif"/>
-           <file role="doc" name="14.gif"/>
-           <file role="doc" name="15.gif"/>
-          </dir> <!-- docs/TDG/img/callouts -->
-         </dir> <!-- docs/TDG/img -->
-        </dir> <!-- docs/TDG -->
-       </dir> <!-- docs -->
-       <dir name="examples">
-        <file role="doc" name="bluestar-12.gif"/>
-        <file role="doc" name="down.png"/>
-        <file role="doc" name="goldstar-12.gif"/>
-        <file role="doc" name="itdynamic.html"/>
-        <file role="doc" name="qfams_basic_1.php"/>
-        <file role="doc" name="qfams_basic_2.php"/>
-        <file role="doc" name="qfams_custom_1.php"/>
-        <file role="doc" name="qfams_custom_2.php"/>
-        <file role="doc" name="qfams_custom_3.php"/>
-        <file role="doc" name="qfams_custom_4.php"/>
-        <file role="doc" name="qfams_custom_5.php"/>
-        <file role="doc" name="qfams_multiple_1.php"/>
-        <file role="doc" name="qfams_template_1.php"/>
-        <file role="doc" name="up.png"/>
-       </dir> <!-- examples -->
-       <file role="php" name="advmultiselect.php">
-         <replace type="package-info" from="@package_version@" to="version"/>
-       </file>
-       <file role="doc" name="ChangeLog"/>
-       <file role="doc" name="NEWS"/>
-      </dir> <!-- / -->
-    </filelist>
-  </release>
-  <changelog>
-    <release>
-      <version>1.0.0</version>
-      <date>2005-09-01</date>
-      <license>PHP License 3.0</license>
-      <state>stable</state>
-      <notes>* bugs
-- fix bug #5216 Warning: Invalid argument supplied for foreach()
-
-* news
-- add a new example to demonstrate the db options loading feature with PEAR::DB
-  and a MySQL database (see examples/qfams_basic_2.php).
-
-* Quality Assurance
-- added some @example and @link phpDoc tags to provide screenshots and example
-  source code access on API documentation (generated by phpDocumentor).
-- include a complete english guide for both beginners and expert users.
-  This is the many html files version. Others format and language content are
-  available to download at URI http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect/docs
-
-Live demos, screenshots, source codes and much more are available on my
-project homepage at http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect</notes>
-    </release>
-    <release>
-      <version>0.5.1</version>
-      <date>2005-08-05</date>
-      <license>PHP License 3.0</license>
-      <state>beta</state>
-      <notes>* bugs
+project homepage at http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect
+    </notes>
+   </release>
+   <release>
+    <version>0.5.1</version>
+    <date>2005-08-05</date>
+    <license>PHP License 3.0</license>
+    <state>beta</state>
+    <notes>* bugs
 - fix bug #4993 javascript error: r.options[i] has no properties
   only since version 0.5.0
 
@@ -184,29 +194,32 @@ PDF and HTML online docs are available at
 http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect/docs
 
 Live demos, screenshots, source codes and much more are available on my
-project homepage at http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect</notes>
-    </release>
-    <release>
-      <version>0.5.0</version>
-      <date>2005-07-25</date>
-      <license>PHP License 3.0</license>
-      <state>beta</state>
-      <notes>* news
+project homepage at http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect
+    </notes>
+   </release>
+   <release>
+    <version>0.5.0</version>
+    <date>2005-07-25</date>
+    <license>PHP License 3.0</license>
+    <state>beta</state>
+    <notes>* news
 - add auto arrange feature (developer issue) asked by Jamie Alessio
 - ability to manage (sort) list with two buttons (Up and Down)
 
 Live demos, screenshots, source codes and much more are available on my
-project homepage at http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect</notes>
-    </release>
-    <release>
-      <version>0.4.0</version>
-      <date>2005-06-25</date>
-      <license>PHP License 3.0</license>
-      <state>beta</state>
-      <notes>This is the initial release of the HTML_QuickForm_advmultiselect package.
+project homepage at http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect
+    </notes>
+   </release>
+   <release>
+    <version>0.4.0</version>
+    <date>2005-06-25</date>
+    <license>PHP License 3.0</license>
+    <state>beta</state>
+    <notes>This is the initial release of the HTML_QuickForm_advmultiselect package.
 
 Live demos, screenshots, source codes and much more are available on my
-project homepage at http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect</notes>
-    </release>
-  </changelog>
+project homepage at http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect
+    </notes>
+   </release>
+ </changelog>
 </package>
