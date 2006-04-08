@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
-<package version="1.0" packagerversion="1.4.5">
+<package version="1.0" packagerversion="1.4.9">
  <name>HTML_QuickForm_advmultiselect</name>
  <summary>Element for HTML_QuickForm that emulate a multi-select.</summary>
  <description>The HTML_QuickForm_advmultiselect package adds an element to the
@@ -16,20 +16,21 @@ emulating a multi-select.
   </maintainer>
   </maintainers>
  <release>
-  <version>1.1.0</version>
-  <date>2005-12-01</date>
-  <license>PHP License 3.0</license>
+  <version>1.2.0</version>
+  <date>2006-04-08</date>
+  <license>PHP License 3.01</license>
   <state>stable</state>
   <notes>* news
-- ability to select/unselect all items (options) in one stroke.
-- you may also toggle a selection.
+- add both package.xml v1.0 and v2.0
+- license upgrade from PHP License 3.0 to 3.01
+- copyright notice changed
+- add toggle button ability to a dual multi-select boxes.
 
-See examples/qfams_custom_7.php script that demonstrates these new features.
+  See examples/qfams_custom_6.php script that demonstrates this feature.
 
 * Quality Assurance
 - User Guide (TDG), english html multi pages include was also updated
 See chapter 5.Advanced features / buttons
-and also chapter 8.Examples / Avanced selection usage
   </notes>
   <deps>
    <dep type="php" rel="ge" version="4.2.0" optional="no"/>
@@ -88,6 +89,7 @@ and also chapter 8.Examples / Avanced selection usage
    <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/custom3.png"/>
    <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/custom4.png"/>
    <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/custom5.png"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/custom6.png"/>
    <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/custom7.png"/>
    <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/example.png"/>
    <file role="doc" baseinstalldir="HTML/QuickForm" name="docs/TDG/img/multiple1.png"/>
@@ -124,18 +126,37 @@ and also chapter 8.Examples / Avanced selection usage
    <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_custom_3.php"/>
    <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_custom_4.php"/>
    <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_custom_5.php"/>
+   <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_custom_6.php"/>
    <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_custom_7.php"/>
    <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_multiple_1.php"/>
    <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/qfams_template_1.php"/>
    <file role="doc" baseinstalldir="HTML/QuickForm" name="examples/up.png"/>
    <file role="php" baseinstalldir="HTML/QuickForm" name="advmultiselect.php">
-    <replace type="package-info" from="@package_version@" to="version"/>
+    <replace from="@package_version@" to="version" type="package-info"/>
    </file>
    <file role="doc" baseinstalldir="HTML/QuickForm" name="ChangeLog"/>
    <file role="doc" baseinstalldir="HTML/QuickForm" name="NEWS"/>
   </filelist>
  </release>
  <changelog>
+   <release>
+    <version>1.2.0</version>
+    <date>2006-04-08</date>
+    <license>PHP License 3.01</license>
+    <state>stable</state>
+    <notes>* news
+- add both package.xml v1.0 and v2.0
+- license upgrade from PHP License 3.0 to 3.01
+- copyright notice changed
+- add toggle button ability to a dual multi-select boxes.
+
+  See examples/qfams_custom_6.php script that demonstrates this feature.
+
+* Quality Assurance
+- User Guide (TDG), english html multi pages include was also updated
+See chapter 5.Advanced features / buttons
+    </notes>
+   </release>
    <release>
     <version>1.1.0</version>
     <date>2005-12-01</date>
