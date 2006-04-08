@@ -4,6 +4,8 @@ Changes to advmultiselect.php
 
   | 2006-04-08 Laurent Laville <pear@laurent-laville.org>
   |
+  |     * license upgrade from PHP License 3.0 to 3.01
+  |     * copyright notice changed
   |     * add toggle button ability to a dual multi-select boxes.
 
 Changes to examples/qfams_custom_6.php

@@ -4,6 +4,8 @@
 
     This is an add-on features version:
     - add toggle button ability to a dual multi-select boxes.
+    - license upgrade from PHP License 3.0 to 3.01
+    - copyright notice changed
 
 2005-12-01 Laurent Laville <pear@laurent-laville.org>
 
