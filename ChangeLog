@@ -1,3 +1,10 @@
+2006-04-08 Laurent Laville <pear@laurent-laville.org>
+
+    * VERSION: Version 1.2.0 released.
+
+    This is an add-on features version:
+    - add toggle button ability to a dual multi-select boxes.
+
 2005-12-01 Laurent Laville <pear@laurent-laville.org>
 
     * VERSION: Version 1.1.0 released.

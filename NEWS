@@ -1,3 +1,19 @@
+Changes since version 1.1.0 (2005-12-01)
+
+Changes to advmultiselect.php
+
+  | 2006-04-08 Laurent Laville <pear@laurent-laville.org>
+  |
+  |     * add toggle button ability to a dual multi-select boxes.
+
+Changes to examples/qfams_custom_6.php
+
+  | 2006-04-08 Laurent Laville <pear@laurent-laville.org>
+  |
+  |     * clone example of custom7 that demonstrates ability to use a toggle button
+  |       for a dual multi-select boxes.
+
+
 Changes since version 1.0.0 (2005-09-01)
 
 Changes to advmultiselect.php
