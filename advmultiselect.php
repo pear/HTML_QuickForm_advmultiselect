@@ -721,7 +721,11 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
             $attrStrNone = $this->_getAttrString($this->_noneButtonAttributes);
             $strHtmlNone = "<input$attrStrNone />". PHP_EOL;
 
-            $strHtmlToggle = '';
+            // build the toggle button with all its attributes
+            $attributes = array('onclick' => "{$this->_jsPrefix}{$this->_jsPostfix}(this.form.elements['__" . $selectName . "'], this.form.elements['_" . $selectName . "'], this.form.elements['" . $selectName . "'], 'toggle'); return false;");
+            $this->_toggleButtonAttributes = array_merge($this->_toggleButtonAttributes, $attributes);
+            $attrStrToggle = $this->_getAttrString($this->_toggleButtonAttributes);
+            $strHtmlToggle = "<input$attrStrToggle />". PHP_EOL;
 
             // build the move up button with all its attributes
             $attributes = array('onclick' => "{$this->_jsPrefix}moveUp(this.form.elements['_" . $selectName . "'], this.form.elements['" . $selectName . "']); return false;");
@@ -832,7 +836,7 @@ function {$jsfuncName}(checkWhat, checkMode) {
                 $js .= "
 /* begin javascript for HTML_QuickForm_advmultiselect */
 function {$jsfuncName}(selectLeft, selectRight, selectHidden, action) {
-    if (action == 'add' || action == 'all') {
+    if (action == 'add' || action == 'all' || action == 'toggle') {
         menuFrom = selectLeft;
         menuTo = selectRight;
     } else {
@@ -844,17 +848,29 @@ function {$jsfuncName}(selectLeft, selectRight, selectHidden, action) {
         return;
     }
 
+    maxTo = menuTo.length;
+
     // Add items to the 'TO' list.
     for (i=0; i < menuFrom.length; i++) {
-        if (action == 'all' || action == 'none' || menuFrom.options[i].selected == true ) {
+        if (action == 'all' || action == 'none' || action == 'toggle' || menuFrom.options[i].selected == true ) {
             menuTo.options[menuTo.length]= new Option(menuFrom.options[i].text, menuFrom.options[i].value);
         }
     }
 
     // Remove items from the 'FROM' list.
     for (i=(menuFrom.length - 1); i>=0; i--){
-        if (action == 'all' || action == 'none' || menuFrom.options[i].selected == true) {
+        if (action == 'all' || action == 'none' || action == 'toggle' || menuFrom.options[i].selected == true) {
             menuFrom.options[i] = null;
+        }
+    }
+
+    // Add items to the 'FROM' list for toggle function
+    if (action == 'toggle') {
+        for (i=0; i < maxTo; i++) {
+            menuFrom.options[menuFrom.length]= new Option(menuTo.options[i].text, menuTo.options[i].value);
+        }
+        for (i=(maxTo - 1); i>=0; i--) {
+            menuTo.options[i] = null;
         }
     }
 ";
