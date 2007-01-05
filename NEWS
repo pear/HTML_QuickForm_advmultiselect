@@ -1,3 +1,10 @@
+Changes since version 1.2.0 (2006-04-08)
+
+  | 2007-01-05 Laurent Laville <pear@laurent-laville.org>
+  |
+  |     * add live counter for selection
+  |     * initial commit of external file for javacript standard behaviors
+
 Changes since version 1.1.0 (2005-12-01)
 
 Changes to advmultiselect.php

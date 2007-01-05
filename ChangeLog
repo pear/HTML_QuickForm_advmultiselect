@@ -1,3 +1,15 @@
+2007-01-06 Laurent Laville <pear@laurent-laville.org>
+
+    * VERSION: Version 1.3.0 released.
+
+    - fixed closing html-styles tags that raised a warning in all examples
+    - copyright notice bumped to 2007
+    - license fixed to PHP 3.01
+    - use namespace for CSS and JS
+    - setJsElement is marked as deprecated, since rewrite of JS (external file) with namespace
+    - more placeholders into template to support new feature : Live Counter
+    - getElementJs return now content of external JS to avoid BC break
+
 2006-04-08 Laurent Laville <pear@laurent-laville.org>
 
     * VERSION: Version 1.2.0 released.
