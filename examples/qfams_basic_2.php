@@ -74,7 +74,7 @@ pre.sql {
   color: black;
   padding: 1em;
 }
-// -->
+ -->
 </style>
 <?php echo $ams->getElementJs(false); ?>
 </head>

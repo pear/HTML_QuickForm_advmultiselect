@@ -135,7 +135,7 @@ if (!isset($_POST['multiselect'])) {
     echo $ams->getElementCss();
 }
 ?>
-// -->
+ -->
 </style>
 <?php echo $ams->getElementJs(false); ?>
 </head>

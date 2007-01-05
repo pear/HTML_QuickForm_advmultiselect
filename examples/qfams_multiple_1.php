@@ -112,16 +112,16 @@ table.pool select {
     width: 7em;
     margin-bottom: 2px;
 }
-// -->
+ -->
 </style>
 <script type="text/javascript">
-<!--
+//<![CDATA[
 <?php
 echo $ams1->getElementJs();
 
 echo $ams2->getElementJs();
 ?>
-// -->
+//]]>
 </script>
 </head>
 <body>

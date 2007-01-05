@@ -168,7 +168,7 @@ label.over {
 }
 ?>
 
-// -->
+ -->
 </style>
 <?php
 if (isset($_POST['multiselect'])) {

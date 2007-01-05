@@ -132,7 +132,7 @@ table.pool select {
 .inputCommand {
   width: 60px;
 }
-// -->
+ -->
 </style>
 <?php echo $ams->getElementJs(false); ?>
 </head>

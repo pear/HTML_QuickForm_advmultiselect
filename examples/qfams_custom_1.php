@@ -105,7 +105,7 @@ table.pool select {
     width: 7em;
     margin-bottom: 2px;
 }
-// -->
+ -->
 </style>
 <?php echo $ams->getElementJs(false); ?>
 </head>

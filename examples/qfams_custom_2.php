@@ -96,7 +96,7 @@ table.pool th {
 table.pool select {
   background-color: lightyellow;
 }
-// -->
+ -->
 </style>
 <?php echo $ams->getElementJs(false); ?>
 </head>
