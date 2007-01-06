@@ -48,10 +48,13 @@ $p2->setNotes('* warning
 - PHP 4.2.0 is still enough to use all other API except getElementJs()
   that requires now PHP 4.3.0 to retrieve inline javascript source code.
   BTW usage of getElementJs() begin optional and not recommanded.
+- To avoid BC break, and keep previous implementation still running,
+ {javascript} placeholder is again included inside default template.
+  Do not use it anymore. See FAQ howto section of user guide.
 
 * news
 - placeholders to display live counters (unselected, selected, all items)
-  see examples/qfams_multiple_2.php and User Guide for details
+  see Multiple example 2 (examples/qfams_multiple_2.php) and User Guide for details
 
 * changes
 - fixed closing html-styles tags that raised a warning in all examples
@@ -61,6 +64,9 @@ $p2->setNotes('* warning
 - setJsElement() is marked as deprecated, since rewrite of JS (external file) with namespace
 - more placeholders into template to support new feature : Live Counter
 - getElementJs return now content of external JS to avoid BC break
+
+* bugs
+- Doc Bug #9221 : Did not realize at first needed additional require
 
 * QA
 - User Guide 1.3.0 included in this release cover all versions 1.x.x
