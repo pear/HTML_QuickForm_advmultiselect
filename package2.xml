@@ -1,26 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.4.9" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
-http://pear.php.net/dtd/tasks-1.0.xsd
-http://pear.php.net/dtd/package-2.0
-http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.5.0RC2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
  <name>HTML_QuickForm_advmultiselect</name>
  <channel>pear.php.net</channel>
  <summary>Element for HTML_QuickForm that emulate a multi-select.</summary>
  <description>The HTML_QuickForm_advmultiselect package adds an element to the
 HTML_QuickForm package that is two select boxes next to each other
-emulating a multi-select.
- 
- </description>
+emulating a multi-select.</description>
  <lead>
   <name>Laurent Laville</name>
   <user>farell</user>
   <email>pear@laurent-laville.org</email>
   <active>yes</active>
  </lead>
- <date>2006-04-08</date>
- <time>15:47:31</time>
+ <date>2007-01-06</date>
+ <time>18:12:15</time>
  <version>
-  <release>1.2.0</release>
+  <release>1.3.0</release>
   <api>1.0.0</api>
  </version>
  <stability>
@@ -28,111 +23,149 @@ emulating a multi-select.
   <api>stable</api>
  </stability>
  <license uri="http://www.php.net/license/3_01.txt">PHP License 3.01</license>
- <notes>* news
-- add both package.xml v1.0 and v2.0
-- license upgrade from PHP License 3.0 to 3.01
-- copyright notice changed
-- add toggle button ability to a dual multi-select boxes.
+ <notes>* warning
+- PHP 4.2.0 is still enough to use all other API except getElementJs()
+  that requires now PHP 4.3.0 to retrieve inline javascript source code.
+  BTW usage of getElementJs() begin optional and not recommanded.
+- To avoid BC break, and keep previous implementation still running,
+ {javascript} placeholder is again included inside default template.
+  Do not use it anymore. See FAQ howto section of user guide.
 
-  See examples/qfams_custom_6.php script that demonstrates this feature.
+* news
+- placeholders to display live counters (unselected, selected, all items)
+  see Multiple example 2 (examples/qfams_multiple_2.php) and User Guide for details
 
-* Quality Assurance
-- User Guide (TDG), english html multi pages include was also updated
-See chapter 5.Advanced features / buttons
+* changes
+- fixed closing html-styles tags that raised a warning in all examples
+- copyright notice bumped to 2007
+- license fixed to PHP 3.01
+- use namespace for CSS and JS
+- setJsElement() is marked as deprecated, since rewrite of JS (external file) with namespace
+- more placeholders into template to support new feature : Live Counter
+- getElementJs return now content of external JS to avoid BC break
+
+* bugs
+- Doc Bug #9221 : Did not realize at first needed additional require
+
+* QA
+- User Guide 1.3.0 included in this release cover all versions 1.x.x
+  see http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect for more format to download.
  </notes>
  <contents>
-  <dir baseinstalldir="HTML/QuickForm" name="/">
-   <file baseinstalldir="HTML/QuickForm" md5sum="56398e76be6355ad5999b262208a17c9" name="docs/TDG/blank.gif" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="d1ee663f1f1ffdd7b948b138f9079990" name="docs/TDG/book.css" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="21df9cebde6da5e13fec2348a1cafd22" name="docs/TDG/ch01.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="0ff4a5c825be68c02e725ce90d55142d" name="docs/TDG/ch01s02.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="e776aeab40a14e4d1ca7c7b20ee60829" name="docs/TDG/ch01s03.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="7b2b33d9b3829a7e792180bac4f5eea5" name="docs/TDG/ch02.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="8ac1fe2b81af38875a8f78755f6260ae" name="docs/TDG/ch03.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="75d62862e5ef578949b55c2326c24cf9" name="docs/TDG/ch03s02.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="38822b38ca39abec56e7e7cca4d49881" name="docs/TDG/ch04.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="94b8a17247a89e5fff0365aa4fb5383e" name="docs/TDG/ch05.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="d3700d0fb52128e8301fb9a6903dc3a4" name="docs/TDG/ch05s02.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="9a8045fe7e0e7f19e295dbd5358f054d" name="docs/TDG/ch05s03.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="b2cafc3c6626b325582b9fa7cff3be05" name="docs/TDG/ch05s04.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="419c4056cac89ad4584ba78937eb5191" name="docs/TDG/ch06.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="e03ae43526c250d8df8673224d4b35c4" name="docs/TDG/ch07.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="0805d654e7ac7aa204423d6eeae1c3a7" name="docs/TDG/ch07s02.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="600e99fa33576c9634dec1145c8c7235" name="docs/TDG/ch08.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="ddccc26fda157ee92258dde73d171e24" name="docs/TDG/ch08s02.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="45576b0daf4307e19d5a47fddd2e2a53" name="docs/TDG/ch08s03.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="b2f8c6f48a38bdd81f31128b44487b71" name="docs/TDG/ch08s04.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="0b9137437346071edfa375e8da1abcea" name="docs/TDG/ch08s05.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="39dc5038b2fb119fc34c50c6bef1005e" name="docs/TDG/ch08s06.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="d968d30bab1c2f8ba22cc78b995efb62" name="docs/TDG/index.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="64f3065c735f9d0b094450f5b4f5b9b3" name="docs/TDG/pngbehavior.htc" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="adf4ca7905b065f21f46d329b591eedf" name="docs/TDG/pr01.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="6428d67d9962c8f57f35d2f088c5ca7e" name="docs/TDG/pr01s02.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="b90d2fb4eebb28d66a5091a907c9d875" name="docs/TDG/pt01.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="83da92cb87e5795f454bdaaca22e9408" name="docs/TDG/pt02.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="7f794f09219738a0e4ce12bea6ae9307" name="docs/TDG/pt03.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="ca5f555b2a4aa9a43d8f12ad812b64ef" name="docs/TDG/pt04.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="d369f9f9af0a03bc50d4d05ef216b519" name="docs/TDG/re01.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="eda1741b2532480e0f7178c6e427662f" name="docs/TDG/re02.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="0436d1fa27e1214fb29edd631d3f79d6" name="docs/TDG/re03.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="ce71b63d4f197db38c236be3862db093" name="docs/TDG/re04.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="f69836afcf5462439daf58aa108de9a9" name="docs/TDG/re05.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="79b9713083af843f03d254ce7dba7b84" name="docs/TDG/re06.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="4cf93b0ef3a4b92f6e15c6680557145a" name="docs/TDG/re07.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="2c85f6289839db43f5f57f5397d2edc9" name="docs/TDG/img/basic1.png" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="42403d14cff6d53c1ac0a1983ceeeded" name="docs/TDG/img/custom1.png" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="c0b88901bfd2eb25753de5816adaa606" name="docs/TDG/img/custom2.png" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="9fbfebcc2df826427cd88d5213c539e8" name="docs/TDG/img/custom3.png" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="9cb1dac70ff6d1c176b2bd253d21ddbd" name="docs/TDG/img/custom4.png" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="b98c851d83a4cbeb37046a566deb9458" name="docs/TDG/img/custom5.png" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="c0c8bf126c4a19d0995b42c0af457d41" name="docs/TDG/img/custom6.png" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="1abda7035f703114654817f2b1c2701d" name="docs/TDG/img/custom7.png" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="1003149b5096c511dadba6bf938aa53a" name="docs/TDG/img/example.png" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="4c916f9b2317af7ff597e5f95b070f7c" name="docs/TDG/img/multiple1.png" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="1f0ca8116ffeafac272a3f1a8325e408" name="docs/TDG/img/pearsmall.gif" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="24a881866a6fc4b3b19847e3b90085fc" name="docs/TDG/img/template1.png" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="342e95befbb0f584494171392412fcbf" name="docs/TDG/img/admons/caution.png" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="35141eb4af645587add91414843b7c92" name="docs/TDG/img/admons/important.png" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="1c348618a4bc617acc4ae72a5ef323dd" name="docs/TDG/img/admons/note.png" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="e34b78eb63e49c94ba7f4c9463f5c128" name="docs/TDG/img/admons/tip.png" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="bc599bf850e13c3176ec8770b4792895" name="docs/TDG/img/admons/warning.png" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="8a2280e5844e339dccb2861ac0a300e5" name="docs/TDG/img/callouts/1.gif" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="21b0a3aad7f3de2d9656f5109d54737b" name="docs/TDG/img/callouts/2.gif" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="ae4320b8c5d3e061913c532c93a8db98" name="docs/TDG/img/callouts/3.gif" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="e0e7bae204935075b6667831702fb095" name="docs/TDG/img/callouts/4.gif" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="986246641609bc573bae141a3293aa35" name="docs/TDG/img/callouts/5.gif" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="f823e74b0a595ea432718a0b63f4283f" name="docs/TDG/img/callouts/6.gif" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="02323fdfff43c4bfbdb1fd278325723f" name="docs/TDG/img/callouts/7.gif" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="033bb7b9c8bf3ecf74b5a766c4aa27b4" name="docs/TDG/img/callouts/8.gif" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="cd7ca7ad52e96194faae90f8f79d8a84" name="docs/TDG/img/callouts/9.gif" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="fe5584700338a2e9bc9449a88786f293" name="docs/TDG/img/callouts/10.gif" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="95101743846b400996bbee2510f0f640" name="docs/TDG/img/callouts/11.gif" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="51ac3f165a6d40656e7fcc738762318b" name="docs/TDG/img/callouts/12.gif" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="351f34f911680a1656bf85d83e09f2c1" name="docs/TDG/img/callouts/13.gif" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="dd64faee8649434e6c5694344bc9f858" name="docs/TDG/img/callouts/14.gif" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="0cd192ade52d7e6cc07cc7d897d9d5d3" name="docs/TDG/img/callouts/15.gif" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="17f9c22bd5623609af519a821fe48955" name="examples/bluestar-12.gif" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="113cae5ea72917da02b63e3aa3e78aeb" name="examples/down.png" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="4a542801bc401766e1da4a8cbf6f1b20" name="examples/goldstar-12.gif" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="5b1d2e7d3783b4eebea4fb5cf4faef66" name="examples/itdynamic.html" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="f1eedbace6d851f2d8152883a33e99e1" name="examples/qfams_basic_1.php" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="6d961e6fb76fe567061d0d65be49e250" name="examples/qfams_basic_2.php" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="b2ba0a82b07801e628c00790bb5b06ec" name="examples/qfams_custom_1.php" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="f7d04b3534b7fa7a072ffae8072004c7" name="examples/qfams_custom_2.php" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="f6bdad1bf9c0721be921d3d6427d7e97" name="examples/qfams_custom_3.php" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="ef3e7cfb8983bf9bb7855305a0602001" name="examples/qfams_custom_4.php" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="4fe38ebd9dd84af6b297addf34e8fc35" name="examples/qfams_custom_5.php" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="36f3c53c97ccd232fbc154fc20db2450" name="examples/qfams_custom_6.php" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="6f66afb7aaa9dfdb02becdb2e3aa2d3f" name="examples/qfams_custom_7.php" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="f4838f4da26fb54f37259769220174f9" name="examples/qfams_multiple_1.php" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="c09c0196e892c0d1fe154dec32757848" name="examples/qfams_template_1.php" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="8c73c6605797bf55ce6ab9df21e71a4a" name="examples/up.png" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="d803ac2f6ed0a0fa3e46eaf85f90a1da" name="advmultiselect.php" role="php">
+  <dir baseinstalldir="HTML" name="/">
+   <dir name="docs">
+    <dir name="TDG">
+     <dir name="img">
+      <dir name="admons">
+       <file baseinstalldir="HTML/QuickForm" name="caution.png" role="doc" />
+       <file baseinstalldir="HTML/QuickForm" name="important.png" role="doc" />
+       <file baseinstalldir="HTML/QuickForm" name="note.png" role="doc" />
+       <file baseinstalldir="HTML/QuickForm" name="tip.png" role="doc" />
+       <file baseinstalldir="HTML/QuickForm" name="warning.png" role="doc" />
+      </dir> <!-- /docs/TDG/img/admons -->
+      <dir name="callouts">
+       <file baseinstalldir="HTML/QuickForm" name="1.gif" role="doc" />
+       <file baseinstalldir="HTML/QuickForm" name="2.gif" role="doc" />
+       <file baseinstalldir="HTML/QuickForm" name="3.gif" role="doc" />
+       <file baseinstalldir="HTML/QuickForm" name="4.gif" role="doc" />
+       <file baseinstalldir="HTML/QuickForm" name="5.gif" role="doc" />
+       <file baseinstalldir="HTML/QuickForm" name="6.gif" role="doc" />
+       <file baseinstalldir="HTML/QuickForm" name="7.gif" role="doc" />
+       <file baseinstalldir="HTML/QuickForm" name="8.gif" role="doc" />
+       <file baseinstalldir="HTML/QuickForm" name="9.gif" role="doc" />
+       <file baseinstalldir="HTML/QuickForm" name="10.gif" role="doc" />
+       <file baseinstalldir="HTML/QuickForm" name="11.gif" role="doc" />
+       <file baseinstalldir="HTML/QuickForm" name="12.gif" role="doc" />
+       <file baseinstalldir="HTML/QuickForm" name="13.gif" role="doc" />
+       <file baseinstalldir="HTML/QuickForm" name="14.gif" role="doc" />
+       <file baseinstalldir="HTML/QuickForm" name="15.gif" role="doc" />
+      </dir> <!-- /docs/TDG/img/callouts -->
+      <file baseinstalldir="HTML/QuickForm" name="basic1.png" role="doc" />
+      <file baseinstalldir="HTML/QuickForm" name="custom1.png" role="doc" />
+      <file baseinstalldir="HTML/QuickForm" name="custom2.png" role="doc" />
+      <file baseinstalldir="HTML/QuickForm" name="custom3.png" role="doc" />
+      <file baseinstalldir="HTML/QuickForm" name="custom4.png" role="doc" />
+      <file baseinstalldir="HTML/QuickForm" name="custom5.png" role="doc" />
+      <file baseinstalldir="HTML/QuickForm" name="custom6.png" role="doc" />
+      <file baseinstalldir="HTML/QuickForm" name="custom7.png" role="doc" />
+      <file baseinstalldir="HTML/QuickForm" name="example.png" role="doc" />
+      <file baseinstalldir="HTML/QuickForm" name="multiple1.png" role="doc" />
+      <file baseinstalldir="HTML/QuickForm" name="multiple2.png" role="doc" />
+      <file baseinstalldir="HTML/QuickForm" name="pearsmall.gif" role="doc" />
+      <file baseinstalldir="HTML/QuickForm" name="template1.png" role="doc" />
+     </dir> <!-- /docs/TDG/img -->
+     <file baseinstalldir="HTML/QuickForm" name="blank.gif" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="book.css" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch01.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch01s02.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch01s03.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch02.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch03.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch03s02.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch03s03.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch03s04.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch03s05.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch04.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch04s02.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch05.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch06.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch06s02.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch06s03.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch06s04.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch06s05.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch07.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch08.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch08s02.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch09.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch09s02.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch09s03.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch09s04.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch09s05.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch09s06.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="ch09s07.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="index.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="pngbehavior.htc" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="pr01.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="pr01s02.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="pt01.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="pt02.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="pt03.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="pt04.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="re01.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="re02.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="re03.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="re04.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="re05.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="re06.html" role="doc" />
+     <file baseinstalldir="HTML/QuickForm" name="re07.html" role="doc" />
+    </dir> <!-- /docs/TDG -->
+   </dir> <!-- /docs -->
+   <dir name="examples">
+    <file baseinstalldir="HTML/QuickForm" name="bluestar-12.gif" role="doc" />
+    <file baseinstalldir="HTML/QuickForm" name="down.png" role="doc" />
+    <file baseinstalldir="HTML/QuickForm" name="goldstar-12.gif" role="doc" />
+    <file baseinstalldir="HTML/QuickForm" name="itdynamic.html" role="doc" />
+    <file baseinstalldir="HTML/QuickForm" name="qfams_basic_1.php" role="doc" />
+    <file baseinstalldir="HTML/QuickForm" name="qfams_basic_2.php" role="doc" />
+    <file baseinstalldir="HTML/QuickForm" name="qfams_custom_1.php" role="doc" />
+    <file baseinstalldir="HTML/QuickForm" name="qfams_custom_2.php" role="doc" />
+    <file baseinstalldir="HTML/QuickForm" name="qfams_custom_3.php" role="doc" />
+    <file baseinstalldir="HTML/QuickForm" name="qfams_custom_4.php" role="doc" />
+    <file baseinstalldir="HTML/QuickForm" name="qfams_custom_5.php" role="doc" />
+    <file baseinstalldir="HTML/QuickForm" name="qfams_custom_6.php" role="doc" />
+    <file baseinstalldir="HTML/QuickForm" name="qfams_custom_7.php" role="doc" />
+    <file baseinstalldir="HTML/QuickForm" name="qfams_multiple_1.php" role="doc" />
+    <file baseinstalldir="HTML/QuickForm" name="qfams_multiple_2.php" role="doc" />
+    <file baseinstalldir="HTML/QuickForm" name="qfams_template_1.php" role="doc" />
+    <file baseinstalldir="HTML/QuickForm" name="up.png" role="doc" />
+   </dir> <!-- /examples -->
+   <file baseinstalldir="HTML/QuickForm" name="advmultiselect.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
-   <file baseinstalldir="HTML/QuickForm" md5sum="509f366fb5fd89c210b8b3c33762af35" name="ChangeLog" role="doc" />
-   <file baseinstalldir="HTML/QuickForm" md5sum="ea13a15fadbc84750e02101cf5a543e1" name="NEWS" role="doc" />
-  </dir>
+   <file baseinstalldir="HTML/QuickForm" name="ChangeLog" role="doc" />
+   <file baseinstalldir="HTML/QuickForm" name="NEWS" role="doc" />
+   <file baseinstalldir="HTML/QuickForm" name="qfamsHandler.js" role="data" />
+  </dir> <!-- / -->
  </contents>
  <dependencies>
   <required>
@@ -163,6 +196,46 @@ See chapter 5.Advanced features / buttons
  <changelog>
   <release>
    <version>
+    <release>1.3.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2007-01-06</date>
+   <license uri="http://www.php.net/license/3_01.txt">PHP License 3.01</license>
+   <notes>* warning
+- PHP 4.2.0 is still enough to use all other API except getElementJs()
+  that requires now PHP 4.3.0 to retrieve inline javascript source code.
+  BTW usage of getElementJs() begin optional and not recommanded.
+- To avoid BC break, and keep previous implementation still running,
+ {javascript} placeholder is again included inside default template.
+  Do not use it anymore. See FAQ howto section of user guide.
+
+* news
+- placeholders to display live counters (unselected, selected, all items)
+  see Multiple example 2 (examples/qfams_multiple_2.php) and User Guide for details
+
+* changes
+- fixed closing html-styles tags that raised a warning in all examples
+- copyright notice bumped to 2007
+- license fixed to PHP 3.01
+- use namespace for CSS and JS
+- setJsElement() is marked as deprecated, since rewrite of JS (external file) with namespace
+- more placeholders into template to support new feature : Live Counter
+- getElementJs return now content of external JS to avoid BC break
+
+* bugs
+- Doc Bug #9221 : Did not realize at first needed additional require
+
+* QA
+- User Guide 1.3.0 included in this release cover all versions 1.x.x
+  see http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect for more format to download.
+   </notes>
+  </release>
+  <release>
+   <version>
     <release>1.2.0</release>
     <api>1.0.0</api>
    </version>
@@ -182,13 +255,12 @@ See chapter 5.Advanced features / buttons
 
 * Quality Assurance
 - User Guide (TDG), english html multi pages include was also updated
-See chapter 5.Advanced features / buttons
-   </notes>
+See chapter 5.Advanced features / buttons</notes>
   </release>
   <release>
    <version>
     <release>1.1.0</release>
-    <api>1.1.0</api>
+    <api>1.0.0</api>
    </version>
    <stability>
     <release>stable</release>
