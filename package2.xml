@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.5.0RC2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.5.0RC3" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
  <name>HTML_QuickForm_advmultiselect</name>
  <channel>pear.php.net</channel>
  <summary>Element for HTML_QuickForm that emulate a multi-select.</summary>
@@ -12,10 +12,10 @@ emulating a multi-select.</description>
   <email>pear@laurent-laville.org</email>
   <active>yes</active>
  </lead>
- <date>2007-01-06</date>
- <time>18:12:15</time>
+ <date>2007-01-08</date>
+ <time>15:45:36</time>
  <version>
-  <release>1.3.0</release>
+  <release>1.3.1</release>
   <api>1.0.0</api>
  </version>
  <stability>
@@ -23,33 +23,8 @@ emulating a multi-select.</description>
   <api>stable</api>
  </stability>
  <license uri="http://www.php.net/license/3_01.txt">PHP License 3.01</license>
- <notes>* warning
-- PHP 4.2.0 is still enough to use all other API except getElementJs()
-  that requires now PHP 4.3.0 to retrieve inline javascript source code.
-  BTW usage of getElementJs() begin optional and not recommanded.
-- To avoid BC break, and keep previous implementation still running,
- {javascript} placeholder is again included inside default template.
-  Do not use it anymore. See FAQ howto section of user guide.
-
-* news
-- placeholders to display live counters (unselected, selected, all items)
-  see Multiple example 2 (examples/qfams_multiple_2.php) and User Guide for details
-
-* changes
-- fixed closing html-styles tags that raised a warning in all examples
-- copyright notice bumped to 2007
-- license fixed to PHP 3.01
-- use namespace for CSS and JS
-- setJsElement() is marked as deprecated, since rewrite of JS (external file) with namespace
-- more placeholders into template to support new feature : Live Counter
-- getElementJs return now content of external JS to avoid BC break
-
-* bugs
-- Doc Bug #9221 : Did not realize at first needed additional require
-
-* QA
-- User Guide 1.3.0 included in this release cover all versions 1.x.x
-  see http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect for more format to download.
+ <notes>* bugs
+- fixed javascript file path resource pear installer replacement into getElementJs()
  </notes>
  <contents>
   <dir baseinstalldir="HTML" name="/">
@@ -161,6 +136,8 @@ emulating a multi-select.</description>
    </dir> <!-- /examples -->
    <file baseinstalldir="HTML/QuickForm" name="advmultiselect.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
+    <tasks:replace from="@package_name@" to="name" type="package-info" />
+    <tasks:replace from="@data_dir@" to="data_dir" type="pear-config" />
    </file>
    <file baseinstalldir="HTML/QuickForm" name="ChangeLog" role="doc" />
    <file baseinstalldir="HTML/QuickForm" name="NEWS" role="doc" />
@@ -194,6 +171,21 @@ emulating a multi-select.</description>
  </dependencies>
  <phprelease />
  <changelog>
+  <release>
+   <version>
+    <release>1.3.1</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2007-01-08</date>
+   <license uri="http://www.php.net/license/3_01.txt">PHP License 3.01</license>
+   <notes>* bugs
+- fixed javascript file path resource pear installer replacement into getElementJs()
+   </notes>
+  </release>
   <release>
    <version>
     <release>1.3.0</release>
@@ -231,8 +223,7 @@ emulating a multi-select.</description>
 
 * QA
 - User Guide 1.3.0 included in this release cover all versions 1.x.x
-  see http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect for more format to download.
-   </notes>
+  see http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect for more format to download.</notes>
   </release>
   <release>
    <version>
