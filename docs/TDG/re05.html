@@ -26,6 +26,7 @@
  :link { color: #0000FF }
  :visited { color: #840084 }
  :active { color: #0000FF }
+ div.c2 {font-family: monospace;}
  table.c1 {padding-bottom: 1em}
 /*]]>*/
 </style>
@@ -208,90 +209,509 @@
         <h2>
           Example
         </h2>
-        <pre class="php">
-      
-&lt;?php
-require_once 'HTML/QuickForm.php';
-require_once 'HTML/QuickForm/advmultiselect.php';
-
-$form = new HTML_QuickForm('ams');
-$form-&gt;removeAttribute('name');        // XHTML compliance
-
-$fruit_array = array(
-    'apple'     =&gt;  'Apple',
-    'orange'    =&gt;  'Orange',
-    'pear'      =&gt;  'Pear',
-    'banana'    =&gt;  'Banana',
-    'cherry'    =&gt;  'Cherry',
-    'kiwi'      =&gt;  'Kiwi',
-    'lemon'     =&gt;  'Lemon',
-    'lime'      =&gt;  'Lime',
-    'tangerine' =&gt;  'Tangerine'
-);
-
-// rendering with QF renderer engine and template system
-$form-&gt;addElement('header', null, 'Advanced Multiple Select: custom layout ');
-
-$ams =&amp; $form-&gt;addElement('advmultiselect', 'fruit', null, $fruit_array);
-$ams-&gt;setLabel(array('Fruit:', 'Available', 'Selected'));
-
-// template for a single checkboxes multi-select element shape
-$template = '
-&lt;table{class}&gt;
-&lt;!-- BEGIN label_3 --&gt;&lt;tr&gt;&lt;th&gt;{label_3}&lt;/th&gt;&lt;/tr&gt;&lt;!-- END label_3 --&gt;
-&lt;tr&gt;
-  &lt;td&gt;{selected}&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-';
-$ams-&gt;setElementTemplate($template);
-
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    // fruit default values already selected without any end-user actions
-    $form-&gt;setDefaults(array('fruit' =&gt; array('kiwi','lime')));
-
-} elseif (isset($_POST['fruit'])) {
-    // fruit end-user selection
-    $form-&gt;setDefaults(array('fruit' =&gt; $_POST['fruit']));
-}
-
-$buttons[] =&amp; $form-&gt;createElement('submit', null, 'Submit');
-$buttons[] =&amp; $form-&gt;createElement('reset', null, 'Reset');
-$form-&gt;addGroup($buttons);
-?&gt;
-&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3c.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
-&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"&gt;
-&lt;head&gt;
-&lt;meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /&gt;
-&lt;title&gt;HTML_QuickForm::advMultiSelect custom example 4b&lt;/title&gt;
-&lt;style type="text/css"&gt;
-&lt;!--
-body {
-  background-color: #FFF;
-  font-family: Verdana, Arial, helvetica;
-  font-size: 10pt;
-}
-&lt;?php echo $ams-&gt;getElementCss(); ?&gt;
-// --&gt;
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;?php
-if ($form-&gt;validate()) {
-    $clean = $form-&gt;getSubmitValues();
-
-    echo '&lt;pre&gt;';
-    print_r($clean);
-    echo '&lt;/pre&gt;';
-}
-$form-&gt;display();
-?&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-      
-     
-</pre>
+        <div class="php c2">
+          <ol>
+            <li class="li1">
+              <div class="de1">
+                <span class="kw2">&lt;?php</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="kw1">require_once</span> <span class=
+                "st0">'HTML/QuickForm.php'</span>;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="kw1">require_once</span> <span class=
+                "st0">'HTML/QuickForm/advmultiselect.php'</span>;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="re0">$form</span> = <span class="kw2">new</span>
+                HTML_QuickForm<span class="br0">(</span><span class=
+                "st0">'ams'</span><span class="br0">)</span>;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="re0">$form</span>-&gt;<span class=
+                "me1">removeAttribute</span><span class=
+                "br0">(</span><span class="st0">'name'</span><span class=
+                "br0">)</span>;&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//
+                XHTML compliance</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="re0">$fruit_array</span> = <span class=
+                "kw3">array</span><span class="br0">(</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; &nbsp; <span class="st0">'apple'</span>&nbsp; &nbsp;
+                &nbsp;=&gt;&nbsp; <span class="st0">'Apple'</span>,
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; &nbsp; <span class="st0">'orange'</span>&nbsp; &nbsp;
+                =&gt;&nbsp; <span class="st0">'Orange'</span>,
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; &nbsp; <span class="st0">'pear'</span>&nbsp; &nbsp;
+                &nbsp; =&gt;&nbsp; <span class="st0">'Pear'</span>,
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; &nbsp; <span class="st0">'banana'</span>&nbsp; &nbsp;
+                =&gt;&nbsp; <span class="st0">'Banana'</span>,
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; &nbsp; <span class="st0">'cherry'</span>&nbsp; &nbsp;
+                =&gt;&nbsp; <span class="st0">'Cherry'</span>,
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; &nbsp; <span class="st0">'kiwi'</span>&nbsp; &nbsp;
+                &nbsp; =&gt;&nbsp; <span class="st0">'Kiwi'</span>,
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; &nbsp; <span class="st0">'lemon'</span>&nbsp; &nbsp;
+                &nbsp;=&gt;&nbsp; <span class="st0">'Lemon'</span>,
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; &nbsp; <span class="st0">'lime'</span>&nbsp; &nbsp;
+                &nbsp; =&gt;&nbsp; <span class="st0">'Lime'</span>,
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; &nbsp; <span class="st0">'tangerine'</span> =&gt;&nbsp;
+                <span class="st0">'Tangerine'</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="br0">)</span>;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="co1">// rendering with QF renderer engine and
+                template system</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="re0">$form</span>-&gt;<span class=
+                "me1">addElement</span><span class="br0">(</span><span class=
+                "st0">'header'</span>, <span class="kw2">null</span>,
+                <span class="st0">'Advanced Multiple Select: custom layout
+                '</span><span class="br0">)</span>;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="re0">$ams</span> =&amp; <span class=
+                "re0">$form</span>-&gt;<span class=
+                "me1">addElement</span><span class="br0">(</span><span class=
+                "st0">'advmultiselect'</span>, <span class=
+                "st0">'fruit'</span>, <span class="kw2">null</span>,
+                <span class="re0">$fruit_array</span><span class=
+                "br0">)</span>;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="re0">$ams</span>-&gt;<span class=
+                "me1">setLabel</span><span class="br0">(</span><span class=
+                "kw3">array</span><span class="br0">(</span><span class=
+                "st0">'Fruit:'</span>, <span class="st0">'Available'</span>,
+                <span class="st0">'Selected'</span><span class=
+                "br0">)</span><span class="br0">)</span>;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="co1">// template for a single checkboxes
+                multi-select element shape</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="re0">$template</span> = <span class="st0">'</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="st0">&lt;table{class}&gt;</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="st0">&lt;!-- BEGIN label_3
+                --&gt;&lt;tr&gt;&lt;th&gt;{label_3}&lt;/th&gt;&lt;/tr&gt;&lt;!--
+                END label_3 --&gt;</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="st0">&lt;tr&gt;</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="st0">&nbsp; &lt;td&gt;{selected}&lt;/td&gt;</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="st0">&lt;/tr&gt;</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="st0">&lt;/table&gt;</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="st0">'</span>;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="re0">$ams</span>-&gt;<span class=
+                "me1">setElementTemplate</span><span class=
+                "br0">(</span><span class="re0">$template</span><span class=
+                "br0">)</span>;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="kw1">if</span> <span class=
+                "br0">(</span><span class="re0">$_SERVER</span><span class=
+                "br0">[</span><span class=
+                "st0">'REQUEST_METHOD'</span><span class="br0">]</span> ==
+                <span class="st0">'GET'</span><span class="br0">)</span>
+                <span class="br0">{</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; &nbsp; <span class="co1">// fruit default values already
+                selected without any end-user actions</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; &nbsp; <span class="re0">$form</span>-&gt;<span class=
+                "me1">setDefaults</span><span class="br0">(</span><span class=
+                "kw3">array</span><span class="br0">(</span><span class=
+                "st0">'fruit'</span> =&gt; <span class=
+                "kw3">array</span><span class="br0">(</span><span class=
+                "st0">'kiwi'</span>,<span class="st0">'lime'</span><span class=
+                "br0">)</span><span class="br0">)</span><span class=
+                "br0">)</span>;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="br0">}</span> <span class="kw1">elseif</span>
+                <span class="br0">(</span><span class=
+                "kw3">isset</span><span class="br0">(</span><span class=
+                "re0">$_POST</span><span class="br0">[</span><span class=
+                "st0">'fruit'</span><span class="br0">]</span><span class=
+                "br0">)</span><span class="br0">)</span> <span class=
+                "br0">{</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; &nbsp; <span class="co1">// fruit end-user
+                selection</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; &nbsp; <span class="re0">$form</span>-&gt;<span class=
+                "me1">setDefaults</span><span class="br0">(</span><span class=
+                "kw3">array</span><span class="br0">(</span><span class=
+                "st0">'fruit'</span> =&gt; <span class=
+                "re0">$_POST</span><span class="br0">[</span><span class=
+                "st0">'fruit'</span><span class="br0">]</span><span class=
+                "br0">)</span><span class="br0">)</span>;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="br0">}</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="re0">$buttons</span><span class=
+                "br0">[</span><span class="br0">]</span> =&amp; <span class=
+                "re0">$form</span>-&gt;<span class=
+                "me1">createElement</span><span class=
+                "br0">(</span><span class="st0">'submit'</span>, <span class=
+                "kw2">null</span>, <span class=
+                "st0">'Submit'</span><span class="br0">)</span>;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="re0">$buttons</span><span class=
+                "br0">[</span><span class="br0">]</span> =&amp; <span class=
+                "re0">$form</span>-&gt;<span class=
+                "me1">createElement</span><span class=
+                "br0">(</span><span class="st0">'reset'</span>, <span class=
+                "kw2">null</span>, <span class="st0">'Reset'</span><span class=
+                "br0">)</span>;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="re0">$form</span>-&gt;<span class=
+                "me1">addGroup</span><span class="br0">(</span><span class=
+                "re0">$buttons</span><span class="br0">)</span>;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="kw2">?&gt;</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &lt;!DOCTYPE html <span class="kw2">PUBLIC</span> <span class=
+                "st0">"-//W3C//DTD XHTML 1.0 Strict//EN"</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; &nbsp; <span class=
+                "st0">"http://www.w3c.org/TR/xhtml1/DTD/xhtml1-strict.dtd"</span>&gt;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &lt;html xmlns=<span class=
+                "st0">"http://www.w3.org/1999/xhtml"</span>
+                xml:lang=<span class="st0">"en"</span>&gt;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &lt;head&gt;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &lt;meta http-equiv=<span class="st0">"Content-Type"</span>
+                content=<span class="st0">"text/html;
+                charset=iso-8859-1"</span> /&gt;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &lt;title&gt;HTML_QuickForm::<span class=
+                "me2">advMultiSelect</span> custom example 4b&lt;/title&gt;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &lt;style type=<span class="st0">"text/css"</span>&gt;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &lt;!--
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                body <span class="br0">{</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; background-color: <span class="co2">#FFF;</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; font-family: Verdana, Arial, helvetica;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; font-size: 10pt;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="br0">}</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="kw2">&lt;?php</span> <span class="kw3">echo</span>
+                <span class="re0">$ams</span>-&gt;<span class=
+                "me1">getElementCss</span><span class=
+                "br0">(</span><span class="br0">)</span>; <span class=
+                "kw2">?&gt;</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="co1">// --&gt;</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &lt;/style&gt;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &lt;/head&gt;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &lt;body&gt;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="kw2">&lt;?php</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="kw1">if</span> <span class=
+                "br0">(</span><span class="re0">$form</span>-&gt;<span class=
+                "me1">validate</span><span class="br0">(</span><span class=
+                "br0">)</span><span class="br0">)</span> <span class=
+                "br0">{</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; &nbsp; <span class="re0">$clean</span> = <span class=
+                "re0">$form</span>-&gt;<span class=
+                "me1">getSubmitValues</span><span class=
+                "br0">(</span><span class="br0">)</span>;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; &nbsp; <span class="kw3">echo</span> <span class=
+                "st0">'&lt;pre&gt;'</span>;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; &nbsp; <span class="kw3">print_r</span><span class=
+                "br0">(</span><span class="re0">$clean</span><span class=
+                "br0">)</span>;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &nbsp; &nbsp; <span class="kw3">echo</span> <span class=
+                "st0">'&lt;/pre&gt;'</span>;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="br0">}</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="re0">$form</span>-&gt;<span class=
+                "me1">display</span><span class="br0">(</span><span class=
+                "br0">)</span>;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                <span class="kw2">?&gt;</span>
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &lt;/body&gt;
+              </div>
+            </li>
+            <li class="li1">
+              <div class="de1">
+                &lt;/html&gt;
+              </div>
+            </li>
+          </ol>
+        </div>
       </div>
     </div>
     <table class="qfamsFooter">
@@ -300,7 +720,7 @@ $form-&gt;display();
           HTML_QuickForm_advmultiselect : The Definitive Guide
         </td>
         <td align="right">
-          v 1.3.0 : January 6, 2007
+          v 1.4.0 : 9 Juin 2007
         </td>
       </tr>
     </table>
