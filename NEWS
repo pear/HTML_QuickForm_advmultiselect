@@ -1,3 +1,10 @@
+Changes since version 1.3.1 (2007-01-08)
+
+  | 2007-06-09 Laurent Laville <pear@laurent-laville.org>
+  |
+  |     * No code changes since previous release
+  |     * License switch from PHP 3.01 to new BSD
+
 Changes since version 1.3.0 (2007-01-06)
 
   | 2007-01-08 Laurent Laville <pear@laurent-laville.org>
