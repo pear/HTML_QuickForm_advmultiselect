@@ -4,17 +4,11 @@
  *
  * Generate a new fresh version of package xml 2.0 built with PEAR_PackageFileManager 1.6.0+
  *
- * LICENSE: This source file is subject to version 3.01 of the PHP license
- * that is available through the world-wide-web at the following URI:
- * http://www.php.net/license/3_01.txt.  If you did not receive a copy of
- * the PHP License and are unable to obtain it through the web, please
- * send a note to license@php.net so we can mail you a copy immediately.
- *
  * @category   HTML
  * @package    HTML_QuickForm_advmultiselect
  * @author     Laurent Laville <pear@laurent-laville.org>
  * @copyright  2007 Laurent Laville
- * @license    http://www.php.net/license/3_01.txt  PHP License 3.01
+ * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
  * @version    CVS: $Id$
  * @link       http://pear.php.net/package/HHTML_QuickForm_advmultiselect
  * @since      File available since Release 1.3.0
@@ -40,38 +34,20 @@ $p2 = &PEAR_PackageFileManager2::importOptions($packagefile, $options);
 $p2->setPackageType('php');
 $p2->addRelease();
 $p2->generateContents();
-$p2->setReleaseVersion('1.3.0');
+$p2->setReleaseVersion('1.4.0');
 $p2->setAPIVersion('1.0.0');
 $p2->setReleaseStability('stable');
 $p2->setAPIStability('stable');
-$p2->setNotes('* warning
-- PHP 4.2.0 is still enough to use all other API except getElementJs()
-  that requires now PHP 4.3.0 to retrieve inline javascript source code.
-  BTW usage of getElementJs() begin optional and not recommanded.
-- To avoid BC break, and keep previous implementation still running,
- {javascript} placeholder is again included inside default template.
-  Do not use it anymore. See FAQ howto section of user guide.
-
-* news
-- placeholders to display live counters (unselected, selected, all items)
-  see Multiple example 2 (examples/qfams_multiple_2.php) and User Guide for details
-
-* changes
-- fixed closing html-styles tags that raised a warning in all examples
-- copyright notice bumped to 2007
-- license fixed to PHP 3.01
-- use namespace for CSS and JS
-- setJsElement() is marked as deprecated, since rewrite of JS (external file) with namespace
-- more placeholders into template to support new feature : Live Counter
-- getElementJs return now content of external JS to avoid BC break
-
-* bugs
-- Doc Bug #9221 : Did not realize at first needed additional require
+$p2->setNotes('* changes
+- No code changes since previous release
+- License switch from PHP 3.01 to new BSD
 
 * QA
-- User Guide 1.3.0 included in this release cover all versions 1.x.x
+- User Guide 1.4.0 included in this release cover all versions 1.x.x
   see http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect for more format to download.
 ');
+
+$p2->setLicense('BSD', 'http://www.opensource.org/licenses/bsd-license.php');
 
 if (isset($_GET['make']) || (isset($_SERVER['argv']) && @$_SERVER['argv'][1] == 'make')) {
     $p2->writePackageFile();
