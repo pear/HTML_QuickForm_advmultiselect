@@ -43,23 +43,6 @@ emulating a multi-select.</description>
        <file baseinstalldir="HTML/QuickForm" name="tip.png" role="doc" />
        <file baseinstalldir="HTML/QuickForm" name="warning.png" role="doc" />
       </dir> <!-- /docs/TDG/img/admons -->
-      <dir name="callouts">
-       <file baseinstalldir="HTML/QuickForm" name="1.gif" role="doc" />
-       <file baseinstalldir="HTML/QuickForm" name="2.gif" role="doc" />
-       <file baseinstalldir="HTML/QuickForm" name="3.gif" role="doc" />
-       <file baseinstalldir="HTML/QuickForm" name="4.gif" role="doc" />
-       <file baseinstalldir="HTML/QuickForm" name="5.gif" role="doc" />
-       <file baseinstalldir="HTML/QuickForm" name="6.gif" role="doc" />
-       <file baseinstalldir="HTML/QuickForm" name="7.gif" role="doc" />
-       <file baseinstalldir="HTML/QuickForm" name="8.gif" role="doc" />
-       <file baseinstalldir="HTML/QuickForm" name="9.gif" role="doc" />
-       <file baseinstalldir="HTML/QuickForm" name="10.gif" role="doc" />
-       <file baseinstalldir="HTML/QuickForm" name="11.gif" role="doc" />
-       <file baseinstalldir="HTML/QuickForm" name="12.gif" role="doc" />
-       <file baseinstalldir="HTML/QuickForm" name="13.gif" role="doc" />
-       <file baseinstalldir="HTML/QuickForm" name="14.gif" role="doc" />
-       <file baseinstalldir="HTML/QuickForm" name="15.gif" role="doc" />
-      </dir> <!-- /docs/TDG/img/callouts -->
       <file baseinstalldir="HTML/QuickForm" name="basic1.png" role="doc" />
       <file baseinstalldir="HTML/QuickForm" name="custom1.png" role="doc" />
       <file baseinstalldir="HTML/QuickForm" name="custom2.png" role="doc" />
