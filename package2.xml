@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.5.0RC3" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.5.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
  <name>HTML_QuickForm_advmultiselect</name>
  <channel>pear.php.net</channel>
  <summary>Element for HTML_QuickForm that emulate a multi-select.</summary>
@@ -12,19 +12,24 @@ emulating a multi-select.</description>
   <email>pear@laurent-laville.org</email>
   <active>yes</active>
  </lead>
- <date>2007-01-08</date>
- <time>15:45:36</time>
+ <date>2007-06-09</date>
+ <time>15:20:58</time>
  <version>
-  <release>1.3.1</release>
+  <release>1.4.0</release>
   <api>1.0.0</api>
  </version>
  <stability>
   <release>stable</release>
   <api>stable</api>
  </stability>
- <license uri="http://www.php.net/license/3_01.txt">PHP License 3.01</license>
- <notes>* bugs
-- fixed javascript file path resource pear installer replacement into getElementJs()
+ <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+ <notes>* changes
+- No code changes since previous release
+- License switch from PHP 3.01 to new BSD
+
+* QA
+- User Guide 1.4.0 included in this release cover all versions 1.x.x
+  see http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect for more format to download.
  </notes>
  <contents>
   <dir baseinstalldir="HTML" name="/">
@@ -173,6 +178,26 @@ emulating a multi-select.</description>
  <changelog>
   <release>
    <version>
+    <release>1.4.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2007-06-09</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>* changes
+- No code changes since previous release
+- License switch from PHP 3.01 to new BSD
+
+* QA
+- User Guide 1.4.0 included in this release cover all versions 1.x.x
+  see http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect for more format to download.
+   </notes>
+  </release>
+  <release>
+   <version>
     <release>1.3.1</release>
     <api>1.0.0</api>
    </version>
@@ -183,8 +208,7 @@ emulating a multi-select.</description>
    <date>2007-01-08</date>
    <license uri="http://www.php.net/license/3_01.txt">PHP License 3.01</license>
    <notes>* bugs
-- fixed javascript file path resource pear installer replacement into getElementJs()
-   </notes>
+- fixed javascript file path resource pear installer replacement into getElementJs()</notes>
   </release>
   <release>
    <version>
