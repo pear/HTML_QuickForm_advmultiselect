@@ -21,7 +21,7 @@ h1 {
 table.maintable {
     width:            100%;
     border-width:     0;
-    border-style:     thin dashed;
+    border-style:     thin;
     border-color:     #D0D0D0;
     background-color: #EEE;
     cellspacing:      2;
@@ -68,21 +68,21 @@ span.qfLabel {
 
 <table width="100%" border="0">
 <tr>
-  <td colspan="3" bgcolor="#FF9900"><h1>HeadBanner</h1></td>
+  <td colspan="3" style="background-color:#FF9900"><h1>HeadBanner</h1></td>
 </tr>
 <tr>
-  <td bgcolor="red" valign="top" width="15%" align="left">
-    <font color="white">pseudo-menu 1</font>&nbsp;
+  <td style="background-color:red; vertical-align:top; width:15%; text-align:left">
+    <span style="font-color:white">pseudo-menu 1</span>&nbsp;
   </td>
-  <td bgcolor="red" valign="top" width="15%" align="left">
-    <font color="white">pseudo-menu 2</font>&nbsp;
+  <td style="background-color:red; vertical-align:top; width:15%; text-align:left">
+    <span style="font-color:white">pseudo-menu 2</span>&nbsp;
   </td>
-  <td bgcolor="#FF9900">
+  <td style="background-color:#FF9900">
     &nbsp;
   </td>
 </tr>
 <tr>
-  <td colspan="3" bgcolor="#EEEEEE" valign="top">
+  <td colspan="3" style="background-color:#EEEEEE; vertical-align:top;">
 
     <form {qf_attributes}>
     <table class="maintable">
@@ -100,7 +100,7 @@ span.qfLabel {
 
       <!-- BEGIN qf_element -->
       <tr>
-        <td align="right" width="30%"><!-- BEGIN qf_element_required --><span style="color: #FF0000;">*</span>&nbsp;<!-- END qf_element_required --><span class="qfLabel">{qf_label}&nbsp;</span></td>
+        <td style="text-align:right; width:30%"><!-- BEGIN qf_element_required --><span style="color: #FF0000;">*</span>&nbsp;<!-- END qf_element_required --><span class="qfLabel">{qf_label}&nbsp;</span></td>
         <td>{qf_element}<!-- BEGIN qf_element_error --><br /><span style="color: #FF0000;">{qf_error}</span><!-- END qf_element_error --></td>
       </tr>
       <!-- END qf_element -->
@@ -112,8 +112,8 @@ span.qfLabel {
 </td>
 </tr>
 <tr>
-  <td colspan="3" bgcolor="white" align="right">
-    <b><font color="black">powered by PEAR</font></b>&nbsp;
+  <td colspan="3" style="background-color:white; text-align:right">
+    <span style="font-color:black; font-weight:bold">powered by PEAR</span>&nbsp;
   </td>
 </tr>
 </table>
