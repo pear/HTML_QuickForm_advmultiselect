@@ -94,7 +94,7 @@ $buttons[] =& $form->createElement('submit', null, 'Submit');
 $buttons[] =& $form->createElement('reset',  null, 'Reset');
 $buttons[] =& $form->createElement('checkbox', 'multiselect', null,
                                    'use dual select boxes layout');
-$form->addGroup($buttons);
+$form->addGroup($buttons, null, '&nbsp;');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3c.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
