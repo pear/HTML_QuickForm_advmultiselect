@@ -129,7 +129,7 @@ $buttons[] =& $form->createElement('checkbox', 'multiselect1', null,
                                    'cars list dual select');
 $buttons[] =& $form->createElement('checkbox', 'multiselect2', null,
                                    'fruit list dual select');
-$form->addGroup($buttons);
+$form->addGroup($buttons, null, '&nbsp;');
 
 if (count($defaults) > 0) {
     $form->setDefaults($defaults);
@@ -186,7 +186,7 @@ if (!isset($_POST['multiselect2'])) {
 ?>
  -->
 </style>
-<script type="text/javascript" src="qfamsHandler.js"></script>
+<?php echo $ams1->getElementJs(false); ?>
 <script type="text/javascript">
 //<![CDATA[
 window.qfamsName = new Array();
