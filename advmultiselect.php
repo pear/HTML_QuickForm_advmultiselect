@@ -558,6 +558,8 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
             $strHtmlSelected  = $tab . '<div id="qfams_'.$id.'">'  . PHP_EOL;
             $unselected_count = count($this->_options);
 
+            $checkbox_id_suffix = 0;
+
             foreach ($this->_options as $option) {
                 $_labelAttributes
                     = array('style', 'class', 'onmouseover', 'onmouseout');
@@ -578,11 +580,12 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
                     // The item is *unselected* so we want to put it
                     $checked = '';
                 }
+                $checkbox_id_suffix++;
                 $strHtmlSelected .= $tab
                                  .  '<label'
                                  .  $this->_getAttrString($labelAttributes) .'>'
                                  .  '<input type="checkbox"'
-                                 .  ' id="'.$selectId.'"'
+                                 .  ' id="'.$selectId . $checkbox_id_suffix.'"'
                                  .  ' name="'.$selectName.'"'
                                  .  $checked
                                  .  $this->_getAttrString($option['attr'])
