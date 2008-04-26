@@ -6,7 +6,7 @@
  * @author     Laurent Laville <pear@laurent-laville.org>
  * @copyright  2007-2008 Laurent Laville
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: qfamsHandler.js,v 1.4 2008-04-26 13:24:09 farell Exp $
+ * @version    CVS: $Id: qfamsHandler.js,v 1.5 2008-04-26 17:35:58 farell Exp $
  * @since      File available since Release 1.3.0
  */
 
@@ -24,7 +24,7 @@ function qfamsInit()
 {
     if (window.qfamsName) {
         for (var e = 0; e < window.qfamsName.length; e++) {
-            var div    = document.getElementById('qfams_' + window.qfamsName[e]);
+            var div = document.getElementById('qfams_' + window.qfamsName[e]);
             if (div !== null) {
                 var inputs = div.getElementsByTagName('input');
                 for (var i = 0; i < inputs.length; i++) {
@@ -167,6 +167,12 @@ function qfamsMoveSelection(qfamsName, selectLeft, selectRight, selectHidden, ac
         return;
     }
 
+    // check if target list is empty and remove fake empty option (tip to be XHTML compliant)
+    if (target.length > 0 && target.options[0].value == "") {
+        target.removeAttribute("disabled");
+        target.options[0] = null;
+    }
+
     var maxTo = target.length;
 
     // Add items to the 'TO' list.
@@ -195,12 +201,12 @@ function qfamsMoveSelection(qfamsName, selectLeft, selectRight, selectHidden, ac
 
     // updates unselected item count
     var c = document.getElementById(qfamsName + '_unselected');
-    var s = document.getElementById('__' + qfamsName);
+    var s = document.getElementById(qfamsName + '-f');
     qfamsUpdateCounter(c, s.length);
 
     // updates selected item count
     var c = document.getElementById(qfamsName + '_selected');
-    var s = document.getElementById('_' + qfamsName);
+    var s = document.getElementById(qfamsName + '-t');
     qfamsUpdateCounter(c, s.length);
 
     // Sort list if required
