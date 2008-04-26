@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.6.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.7.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
  <name>HTML_QuickForm_advmultiselect</name>
  <channel>pear.php.net</channel>
  <summary>Element for HTML_QuickForm that emulate a multi-select.</summary>
@@ -12,10 +12,10 @@ emulating a multi-select.</description>
   <email>pear@laurent-laville.org</email>
   <active>yes</active>
  </lead>
- <date>2007-06-09</date>
- <time>16:28:01</time>
+ <date>2008-04-26</date>
+ <time>19:53:30</time>
  <version>
-  <release>1.4.0</release>
+  <release>1.4.1</release>
   <api>1.0.0</api>
  </version>
  <stability>
@@ -23,13 +23,21 @@ emulating a multi-select.</description>
   <api>stable</api>
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
- <notes>* changes
-- No code changes since previous release
-- License switch from PHP 3.01 to new BSD
+ <notes>* news
+- Introduce a TIP to make double-select-box XHTML 1.0 Strict compliant
+  even with an empty list.
+
+* bugs
+- fix #13680 : XHTML - Need to create a distinct id for all checkboxes
+
+* changes
+- With default element template there is a label, that does not exist with submit button
+  All examples uses a custom submit-element template to make them XHTML compliant.
 
 * QA
 - User Guide 1.4.0 included in this release cover all versions 1.x.x
-  see http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect for more format to download.
+  see http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect
+  for more format to download.
  </notes>
  <contents>
   <dir baseinstalldir="HTML" name="/">
@@ -161,6 +169,34 @@ emulating a multi-select.</description>
  <changelog>
   <release>
    <version>
+    <release>1.4.1</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2008-04-26</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>* news
+- Introduce a TIP to make double-select-box XHTML 1.0 Strict compliant
+  even with an empty list.
+
+* bugs
+- fix #13680 : XHTML - Need to create a distinct id for all checkboxes
+
+* changes
+- With default element template there is a label, that does not exist with submit button
+  All examples uses a custom submit-element template to make them XHTML compliant.
+
+* QA
+- User Guide 1.4.0 included in this release cover all versions 1.x.x
+  see http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect
+  for more format to download.
+   </notes>
+  </release>
+  <release>
+   <version>
     <release>1.4.0</release>
     <api>1.0.0</api>
    </version>
@@ -176,8 +212,7 @@ emulating a multi-select.</description>
 
 * QA
 - User Guide 1.4.0 included in this release cover all versions 1.x.x
-  see http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect for more format to download.
-   </notes>
+  see http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect for more format to download.</notes>
   </release>
   <release>
    <version>

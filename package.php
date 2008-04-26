@@ -10,7 +10,7 @@
  * @category  HTML
  * @package   HTML_QuickForm_advmultiselect
  * @author    Laurent Laville <pear@laurent-laville.org>
- * @copyright 2007 Laurent Laville
+ * @copyright 2007-2008 Laurent Laville
  * @license   http://www.opensource.org/licenses/bsd-license.php  BSD
  * @version   CVS: $Id$
  * @link      http://pear.php.net/package/HHTML_QuickForm_advmultiselect
@@ -37,13 +37,20 @@ $p2 = &PEAR_PackageFileManager2::importOptions($packagefile, $options);
 $p2->setPackageType('php');
 $p2->addRelease();
 $p2->generateContents();
-$p2->setReleaseVersion('1.4.0');
+$p2->setReleaseVersion('1.4.1');
 $p2->setAPIVersion('1.0.0');
 $p2->setReleaseStability('stable');
 $p2->setAPIStability('stable');
-$p2->setNotes('* changes
-- No code changes since previous release
-- License switch from PHP 3.01 to new BSD
+$p2->setNotes('* news
+- Introduce a TIP to make double-select-box XHTML 1.0 Strict compliant
+  even with an empty list.
+
+* bugs
+- fix #13680 : XHTML - Need to create a distinct id for all checkboxes
+
+* changes
+- With default element template there is a label, that does not exist with submit button
+  All examples uses a custom submit-element template to make them XHTML compliant.
 
 * QA
 - User Guide 1.4.0 included in this release cover all versions 1.x.x
@@ -51,7 +58,7 @@ $p2->setNotes('* changes
   for more format to download.
 ');
 
-$p2->setLicense('BSD', 'http://www.opensource.org/licenses/bsd-license.php');
+//$p2->setLicense('BSD', 'http://www.opensource.org/licenses/bsd-license.php');
 
 if (isset($_GET['make'])
     || (isset($_SERVER['argv']) && @$_SERVER['argv'][1] == 'make')) {
