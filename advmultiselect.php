@@ -44,33 +44,6 @@
 require_once 'HTML/QuickForm/select.php';
 
 /**
- * Replace PHP_EOL constant
- *
- *  category    PHP
- *  package     PHP_Compat
- * @link        http://php.net/reserved.constants.core
- * @author      Aidan Lister <aidan@php.net>
- * @since       PHP 5.0.2
- */
-if (!defined('PHP_EOL')) {
-    switch (strtoupper(substr(PHP_OS, 0, 3))) {
-    // Windows
-    case 'WIN':
-        define('PHP_EOL', "\r\n");
-        break;
-
-    // Mac
-    case 'DAR':
-        define('PHP_EOL', "\r");
-        break;
-
-    // Unix
-    default:
-        define('PHP_EOL', "\n");
-    }
-}
-
-/**
  * Element for HTML_QuickForm that emulate a multi-select.
  *
  * The HTML_QuickForm_advmultiselect package adds an element to the
@@ -609,7 +582,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
                                  .  '<label'
                                  .  $this->_getAttrString($labelAttributes) .'>'
                                  .  '<input type="checkbox"'
-                                 .  ' id="'.$this->getName().'"'
+                                 .  ' id="'.$selectId.'"'
                                  .  ' name="'.$selectName.'"'
                                  .  $checked
                                  .  $this->_getAttrString($option['attr'])
@@ -626,7 +599,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
             // build the select all button with all its attributes
             $jsName     = $this->_jsPrefix . $this->_jsPostfix;
             $attributes = array('onclick' => $jsName .
-                                             "('". $this->getName() ."', 1);");
+                                             "('". $selectId ."', 1);");
             $this->_allButtonAttributes
                         = array_merge($this->_allButtonAttributes, $attributes);
             $attrStrAll = $this->_getAttrString($this->_allButtonAttributes);
@@ -634,7 +607,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
 
             // build the select none button with all its attributes
             $attributes = array('onclick' => $jsName .
-                                             "('". $this->getName() ."', 0);");
+                                             "('". $selectId ."', 0);");
             $this->_noneButtonAttributes
                          = array_merge($this->_noneButtonAttributes, $attributes);
             $attrStrNone = $this->_getAttrString($this->_noneButtonAttributes);
@@ -642,7 +615,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
 
             // build the toggle selection button with all its attributes
             $attributes = array('onclick' => $jsName .
-                                             "('". $this->getName() ."', 2);");
+                                             "('". $selectId ."', 2);");
             $this->_toggleButtonAttributes
                            = array_merge($this->_toggleButtonAttributes,
                                  $attributes);
@@ -867,8 +840,8 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
         }
         $strHtmlUnselectedCount = $unselected_count;
 
-        $strHtmlSelectedCountId   = $this->getName() .'_selected';
-        $strHtmlUnselectedCountId = $this->getName() .'_unselected';
+        $strHtmlSelectedCountId   = $selectId .'_selected';
+        $strHtmlUnselectedCountId = $selectId .'_unselected';
 
         // render all part of the multi select component with the template
         $strHtml = $this->_elementTemplate;
