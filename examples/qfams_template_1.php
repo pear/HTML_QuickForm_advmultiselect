@@ -85,13 +85,14 @@ $tpl->setVariable('ams_javascript', $ams->getElementJs(false));
 $renderer = new HTML_QuickForm_Renderer_ITDynamic($tpl);
 
 $form->accept($renderer);
-$tpl->show();
 
 if ($valid) {
     $clean = $form->getSubmitValues();
 
-    printf("<p>Welcome <b>%s</b> you've selected these fruits:</p>",
-           $clean['name']);
-    echo implode(', ', $clean['fruit']);
+    $msg = sprintf("<p>Welcome <b>%s</b> you've selected these fruits:<br />%s</p>",
+           $clean['name'], implode(', ', $clean['fruit']));
+
+    $tpl->setVariable('message_form_validate', $msg);
 }
+$tpl->show();
 ?>
