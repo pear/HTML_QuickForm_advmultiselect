@@ -109,7 +109,7 @@ $buttons[] =& $form->createElement('submit', null, 'Submit');
 $buttons[] =& $form->createElement('reset', null, 'Reset');
 $buttons[] =& $form->createElement('checkbox', 'multiselect', null,
                                    'use dual select boxes layout');
-$form->addGroup($buttons);
+$form->addGroup($buttons, null, '&nbsp;');
 
 $form->addRule('name', 'Your name is required', 'required');
 $form->addGroupRule('fruit', 'At least one fruit is required', 'required', null, 1);
@@ -187,7 +187,7 @@ if ($form->validate()) {
 
     printf("<p>Welcome <b>%s</b> you've selected these fruits:</p>",
            $clean['name']);
-    echo implode(', ', $clean['fruit']);
+    echo '<p>' . implode(', ', $clean['fruit']) . '</p>';
 }
 $form->display();
 ?>
