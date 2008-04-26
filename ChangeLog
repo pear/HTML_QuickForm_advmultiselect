@@ -1,9 +1,16 @@
+2008-04-26 Laurent Laville <pear@laurent-laville.org>
+
+    * VERSION: Version 1.4.1 released.
+
+    - copyright bumped to 2008
+    - fix bug #13680: XHTML - Need to create a distinct id for all checkboxes
+    - all examples and QFAMS produces now XTML 1.0 Strict compliant output
+
 2007-06-09 Laurent Laville <pear@laurent-laville.org>
 
     * VERSION: Version 1.4.0 released.
 
     - license change from PHP 3.01 to the new BSD
-
 
 2007-01-08 Laurent Laville <pear@laurent-laville.org>
 
