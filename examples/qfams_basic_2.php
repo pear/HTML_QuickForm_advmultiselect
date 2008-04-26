@@ -39,6 +39,23 @@ $affected_user =& $db->getCol($querySel);
 $form = new HTML_QuickForm('amsBasic2');
 $form->removeAttribute('name');  // XHTML compliance
 
+// same as default element template but wihtout the label (in first td cell)
+$withoutLabel = <<<_HTML
+<tr valign="top">
+    <td align="right">
+        &nbsp;
+    </td>
+    <td align="left">
+        <!-- BEGIN error --><span style="color: #ff0000;">{error}</span><br /><!-- END error -->{element}
+    </td>
+</tr>
+_HTML;
+
+// more XHTML compliant
+// replace default element template with label, because submit button have no label
+$renderer =& $form->defaultRenderer();
+$renderer->setElementTemplate($withoutLabel, 'send');
+
 $form->addElement('header', null, 'Advanced Multiple Select: default layout ');
 
 $ams =& $form->addElement('advmultiselect', 'user',

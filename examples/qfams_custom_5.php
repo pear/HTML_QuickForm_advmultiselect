@@ -20,6 +20,23 @@ require_once 'HTML/QuickForm/advmultiselect.php';
 $form = new HTML_QuickForm('amsCustom5');
 $form->removeAttribute('name');        // XHTML compliance
 
+// same as default element template but wihtout the label (in first td cell)
+$withoutLabel = <<<_HTML
+<tr valign="top">
+    <td align="right">
+        &nbsp;
+    </td>
+    <td align="left">
+        <!-- BEGIN error --><span style="color: #ff0000;">{error}</span><br /><!-- END error -->{element}
+    </td>
+</tr>
+_HTML;
+
+// more XHTML compliant
+// replace default element template with label, because submit button have no label
+$renderer =& $form->defaultRenderer();
+$renderer->setElementTemplate($withoutLabel, 'validate');
+
 $fruit_array = array(
     'apple'     =>  'Apple',
     'orange'    =>  'Orange',
@@ -54,7 +71,7 @@ $arrange[] =& $form->createElement('radio', null, null, 'No auto arrange',    'N
 $form->addGroup($arrange, 'autoArrange', 'Sort list:');
 $form->setDefaults(array('autoArrange' => 'N'));
 
-$validate =& $form->addElement('submit', null, 'Validate');
+$form->addElement('submit', 'validate', 'Validate');
 
 $form->addElement('header', null, 'Advanced Multiple Select: custom layout ');
 
@@ -96,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 $buttons[] =& $form->createElement('submit', null, 'Submit');
 $buttons[] =& $form->createElement('reset',  null, 'Reset');
-$form->addGroup($buttons);
+$form->addGroup($buttons, null, '&nbsp;');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3c.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
