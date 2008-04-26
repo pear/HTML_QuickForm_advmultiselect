@@ -6,7 +6,7 @@
  * @author     Laurent Laville <pear@laurent-laville.org>
  * @copyright  2007-2008 Laurent Laville
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: qfamsHandler.js,v 1.3 2008-04-26 12:16:09 farell Exp $
+ * @version    CVS: $Id: qfamsHandler.js,v 1.4 2008-04-26 13:24:09 farell Exp $
  * @since      File available since Release 1.3.0
  */
 
@@ -25,9 +25,11 @@ function qfamsInit()
     if (window.qfamsName) {
         for (var e = 0; e < window.qfamsName.length; e++) {
             var div    = document.getElementById('qfams_' + window.qfamsName[e]);
-            var inputs = div.getElementsByTagName('input');
-            for (var i = 0; i < inputs.length; i++) {
-                inputs[i].onclick = qfamsUpdateLiveCounter;
+            if (div !== null) {
+                var inputs = div.getElementsByTagName('input');
+                for (var i = 0; i < inputs.length; i++) {
+                    inputs[i].onclick = qfamsUpdateLiveCounter;
+                }
             }
         }
     }
