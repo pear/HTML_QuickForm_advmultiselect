@@ -466,32 +466,6 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
     }
 
     /**
-     * Sets JavaScript function name parts. Maybe usefull to avoid conflict names
-     *
-     * In <b>multiple example 1</b>, the javascript function prefix
-     * is set to not null.
-     *
-     * @param string $pref (optional) Prefix name
-     * @param string $post (optional) Postfix name
-     *
-     * @access     public
-     * @return     void
-     * @see        getElementJs()
-     * @since      0.4.0
-     * @deprecated since version 1.3.0
-     *
-     * @example    examples/qfams_multiple_1.php
-     *             Multiple example 1: source code
-     * @link       http://www.laurent-laville.org/img/qfams/screenshot/multiple1.png
-     *             Multiple example 1: screenshot
-     */
-    function setJsElement($pref = null, $post = 'moveSelections')
-    {
-        $this->_jsPrefix  = 'qfams';
-        $this->_jsPostfix = 'MoveSelection';
-    }
-
-    /**
      * Gets default element stylesheet for a single multi-select shape render
      *
      * In <b>custom example 4</b>, the template defined allows
