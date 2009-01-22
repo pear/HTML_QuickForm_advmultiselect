@@ -4,9 +4,9 @@
  * @category   HTML
  * @package    HTML_QuickForm_advmultiselect
  * @author     Laurent Laville <pear@laurent-laville.org>
- * @copyright  2007-2008 Laurent Laville
+ * @copyright  2007-2009 Laurent Laville
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: qfamsHandler.js,v 1.5 2008-04-26 17:35:58 farell Exp $
+ * @version    CVS: $Id: qfamsHandler.js,v 1.6 2009-01-22 13:39:30 farell Exp $
  * @since      File available since Release 1.3.0
  */
 
