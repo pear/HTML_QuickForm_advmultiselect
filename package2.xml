@@ -143,7 +143,7 @@ emulating a multi-select.</description>
  <dependencies>
   <required>
    <php>
-    <min>4.2.0</min>
+    <min>4.3.10</min>
    </php>
    <pearinstaller>
     <min>1.4.3</min>
@@ -163,6 +163,9 @@ emulating a multi-select.</description>
     <min>3.2.4</min>
     <exclude>3.2.4</exclude>
    </package>
+   <extension>
+    <name>pcre</name>
+   </extension>
   </required>
  </dependencies>
  <phprelease />
