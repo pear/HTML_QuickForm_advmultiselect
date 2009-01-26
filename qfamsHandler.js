@@ -6,7 +6,7 @@
  * @author     Laurent Laville <pear@laurent-laville.org>
  * @copyright  2007-2009 Laurent Laville
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: qfamsHandler.js,v 1.7 2009-01-26 17:33:29 farell Exp $
+ * @version    CVS: $Id: qfamsHandler.js,v 1.8 2009-01-26 21:51:12 farell Exp $
  * @since      File available since Release 1.3.0
  */
 
@@ -344,6 +344,56 @@ QFAMS.moveDown = function (l, h) {
     if (indice < l.options.length - 1) {
         QFAMS.moveSwap(l, indice, indice + 1);
         QFAMS.updateHidden(h, l);
+    }
+};
+
+/**
+ * With QFAMS.moveTop
+ * end-user may arrange and element up to the top of selection list
+ *
+ * @param      dom element   l              selection list (contains only elements selected)
+ * @param      dom element   h              hidden list (contains all elements)
+ *
+ * @method     moveUp
+ * @static
+ * @return     void
+ * @public
+ * @since      1.5.0
+ */
+QFAMS.moveTop = function (l, h) {
+    var indice = l.selectedIndex;
+    if (indice < 0) {
+        return;
+    }
+    while (indice > 0) {
+        QFAMS.moveSwap(l, indice, indice - 1);
+        QFAMS.updateHidden(h, l);
+        indice--;
+    }
+};
+
+/**
+ * With QFAMS.moveBottom
+ * end-user may arrange and element down to the bottom of selection list
+ *
+ * @param      dom element   l              selection list (contains only elements selected)
+ * @param      dom element   h              hidden list (contains all elements)
+ *
+ * @method     moveUp
+ * @static
+ * @return     void
+ * @public
+ * @since      1.5.0
+ */
+QFAMS.moveBottom = function (l, h) {
+    var indice = l.selectedIndex;
+    if (indice < 0) {
+        return;
+    }
+    while (indice < l.options.length - 1) {
+        QFAMS.moveSwap(l, indice, indice + 1);
+        QFAMS.updateHidden(h, l);
+        indice++;
     }
 };
 

@@ -152,6 +152,24 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
     var $_downButtonAttributes;
 
     /**
+     * Associative array of the move top button attributes
+     *
+     * @var        array
+     * @access     private
+     * @since      1.5.0
+     */
+    var $_topButtonAttributes;
+
+    /**
+     * Associative array of the move bottom button attributes
+     *
+     * @var        array
+     * @access     private
+     * @since      1.5.0
+     */
+    var $_bottomButtonAttributes;
+
+    /**
      * Defines if both list (unselected, selected) will have their elements be
      * arranged from lowest to highest (or reverse)
      * depending on comparaison function.
@@ -300,6 +318,10 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
         $this->setButtonAttributes('moveup');
         // set default move up button attributes
         $this->setButtonAttributes('movedown');
+        // set default move top button attributes
+        $this->setButtonAttributes('movetop');
+        // set default move bottom button attributes
+        $this->setButtonAttributes('movebottom');
         // defines javascript functions names
         $this->_jsPrefix  = 'QFAMS.';
         $this->_jsPostfix = 'moveSelection';
@@ -335,6 +357,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      *
      * @param string $button     Button identifier, either 'add', 'remove',
      *                                                     'all', 'none', 'toggle',
+     *                                                     'movetop', 'movebottom'
      *                                                     'moveup' or 'movedown'
      * @param mixed  $attributes (optional) Either a typical HTML attribute string
      *                                      or an associative array
@@ -342,7 +365,8 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      * @return     void
      * @throws     PEAR_Error   $button argument
      *                          is not a string, or not in range
-     *                          (add, remove, all, none, toggle, moveup, movedown)
+     *                          (add, remove, all, none, toggle,
+     *                           movetop, movebottom, moveup, movedown)
      * @access     public
      * @since      0.4.0
      *
@@ -443,6 +467,28 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
                             'type'  => 'button');
             } else {
                 $this->_updateAttrArray($this->_downButtonAttributes,
+                                        $this->_parseAttributes($attributes));
+            }
+            break;
+        case 'movetop':
+            if (is_null($attributes)) {
+                $this->_topButtonAttributes
+                    = array('name'  => 'top',
+                            'value' => ' Top ',
+                            'type'  => 'button');
+            } else {
+                $this->_updateAttrArray($this->_topButtonAttributes,
+                                        $this->_parseAttributes($attributes));
+            }
+            break;
+        case 'movebottom':
+            if (is_null($attributes)) {
+                $this->_bottomButtonAttributes
+                    = array('name'  => 'bottom',
+                            'value' => ' Bottom ',
+                            'type'  => 'button');
+            } else {
+                $this->_updateAttrArray($this->_bottomButtonAttributes,
                                         $this->_parseAttributes($attributes));
             }
             break;
@@ -602,8 +648,10 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
             $attrStrToggle = $this->_getAttrString($this->_toggleButtonAttributes);
             $strHtmlToggle = "<input$attrStrToggle />". PHP_EOL;
 
-            $strHtmlMoveUp   = '';
-            $strHtmlMoveDown = '';
+            $strHtmlMoveUp      = '';
+            $strHtmlMoveDown    = '';
+            $strHtmlMoveTop     = '';
+            $strHtmlMoveBottom  = '';
 
             // default selection counters
             $strHtmlSelectedCount = $selected_count . '/' . $unselected_count;
@@ -833,6 +881,28 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
             $attrStrDown     = $this->_getAttrString($this->_downButtonAttributes);
             $strHtmlMoveDown = "<input$attrStrDown />". PHP_EOL;
 
+            // build the move top button with all its attributes
+            $attributes
+                = array('onclick' => "{$this->_jsPrefix}moveTop" .
+                            "(this.form.elements['" . $selectNameTo . "'], " .
+                            "this.form.elements['" . $selectName . "']); " .
+                            "return false;");
+            $this->_topButtonAttributes
+                = array_merge($this->_topButtonAttributes, $attributes);
+            $attrStrTop     = $this->_getAttrString($this->_topButtonAttributes);
+            $strHtmlMoveTop = "<input$attrStrTop />". PHP_EOL;
+
+            // build the move bottom button with all its attributes
+            $attributes
+                = array('onclick' => "{$this->_jsPrefix}moveBottom" .
+                            "(this.form.elements['" . $selectNameTo . "'], " .
+                            "this.form.elements['" . $selectName . "']); " .
+                            "return false;");
+            $this->_bottomButtonAttributes
+                = array_merge($this->_bottomButtonAttributes, $attributes);
+            $attrStrBottom     = $this->_getAttrString($this->_bottomButtonAttributes);
+            $strHtmlMoveBottom = "<input$attrStrBottom />". PHP_EOL;
+
             // default selection counters
             $strHtmlSelectedCount = $selected_count;
         }
@@ -872,7 +942,8 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
             '{unselected}', '{selected}',
             '{add}', '{remove}',
             '{all}', '{none}', '{toggle}',
-            '{moveup}', '{movedown}'
+            '{moveup}', '{movedown}',
+            '{movetop}', '{movebottom}'
         );
         $htmlElements = array(
             $this->getElementCss(false), $this->getElementJs(false),
@@ -882,7 +953,8 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
             $strHtmlUnselected, $strHtmlSelected . $strHtmlHidden,
             $strHtmlAdd, $strHtmlRemove,
             $strHtmlAll, $strHtmlNone, $strHtmlToggle,
-            $strHtmlMoveUp, $strHtmlMoveDown
+            $strHtmlMoveUp, $strHtmlMoveDown,
+            $strHtmlMoveTop, $strHtmlMoveBottom
         );
 
         $strHtml = str_replace($placeHolders, $htmlElements, $strHtml);
