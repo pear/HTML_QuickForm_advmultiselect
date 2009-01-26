@@ -78,7 +78,7 @@ $ams2 =& $form->addElement('advmultiselect', 'fruit', null, $fruit_array,
                                  'class' => 'pool', 'style' => 'width:200px;'
                                 )
 );
-$ams2->setJsElement('fruit_');
+
 $ams2->setLabel(array('Fruit:', 'Available', 'Selected'));
 $ams2->setButtonAttributes('add',    array('value' => 'Add', 'name' => 'add1',
                                            'class' => 'inputCommand'
