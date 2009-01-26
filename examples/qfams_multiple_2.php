@@ -187,14 +187,6 @@ if (!isset($_POST['multiselect2'])) {
  -->
 </style>
 <?php echo $ams1->getElementJs(false); ?>
-<script type="text/javascript">
-//<![CDATA[
-window.qfamsName = new Array();
-window.qfamsName[0] = 'cars';
-window.qfamsName[1] = 'fruit';
-window.addEventListener('load', qfamsInit, false);
-//]]>
-</script>
 </head>
 <body>
 <?php
@@ -207,5 +199,13 @@ if ($form->validate()) {
 }
 $form->display();
 ?>
+<script type="text/javascript">
+//<![CDATA[
+function init() {
+    QFAMS.init(['cars','fruit']);
+}
+window.addEventListener('load', init, false);
+//]]>
+</script>
 </body>
 </html>
