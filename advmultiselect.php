@@ -301,7 +301,8 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
         // set default move up button attributes
         $this->setButtonAttributes('movedown');
         // defines javascript functions names
-        $this->setJsElement();
+        $this->_jsPrefix  = 'QFAMS.';
+        $this->_jsPostfix = 'moveSelection';
 
         // set select boxes sort order (none by default)
         if (!isset($sort)) {
@@ -527,7 +528,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
         // placeholder {unselected} existence determines if we will render
         if (strpos($this->_elementTemplate, '{unselected}') === false) {
             // ... a single multi-select with checkboxes
-            $this->_jsPostfix = 'EditSelection';
+            $this->_jsPostfix = 'editSelection';
 
             $id = $this->getAttribute('name');
 
@@ -608,7 +609,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
             $strHtmlSelectedCount = $selected_count . '/' . $unselected_count;
         } else {
             // ... or a dual multi-select
-            $this->_jsPostfix = 'MoveSelection';
+            $this->_jsPostfix = 'moveSelection';
             $jsName           = $this->_jsPrefix . $this->_jsPostfix;
 
             // set name of Select From Box
@@ -812,7 +813,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
 
             // build the move up button with all its attributes
             $attributes
-                = array('onclick' => "{$this->_jsPrefix}MoveUp" .
+                = array('onclick' => "{$this->_jsPrefix}moveUp" .
                             "(this.form.elements['" . $selectNameTo . "'], " .
                             "this.form.elements['" . $selectName . "']); " .
                             "return false;");
@@ -823,7 +824,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
 
             // build the move down button with all its attributes
             $attributes
-                = array('onclick' => "{$this->_jsPrefix}MoveDown" .
+                = array('onclick' => "{$this->_jsPrefix}moveDown" .
                             "(this.form.elements['" . $selectNameTo . "'], " .
                             "this.form.elements['" . $selectName . "']); " .
                             "return false;");
