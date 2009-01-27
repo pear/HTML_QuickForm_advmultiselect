@@ -23,7 +23,7 @@ require_once 'HTML/QuickForm/advmultiselect.php';
 $form = new HTML_QuickForm('amsCustom1');
 $form->removeAttribute('name');        // XHTML compliance
 
-// same as default element template but wihtout the label (in first td cell)
+// same as default element template but without the label (in first td cell)
 $withoutLabel = <<<_HTML
 <tr valign="top">
     <td align="right">
