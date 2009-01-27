@@ -966,17 +966,22 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      * Returns the javascript code generated to handle this element
      *
      * @param boolean $raw (optional) html output with script tags or just raw data
+     * @param boolean $min (optional) uses javascript compressed version
      *
      * @access     public
      * @return     string
-     * @see        setJsElement()
      * @since      0.4.0
      */
-    function getElementJs($raw = true)
+    function getElementJs($raw = true, $min = false)
     {
         $js = '@data_dir@' . DIRECTORY_SEPARATOR
-            . '@package_name@' . DIRECTORY_SEPARATOR
-            . 'qfamsHandler.js';
+            . '@package_name@' . DIRECTORY_SEPARATOR;
+
+        if ($min) {
+            $js .= 'qfamsHandler-min.js';
+        } else {
+            $js .= 'qfamsHandler.js';
+        }
 
         if (file_exists($js)) {
             $js = file_get_contents($js);
