@@ -140,7 +140,7 @@ if (!isset($_POST['multiselect'])) {
 ?>
  -->
 </style>
-<?php echo $ams->getElementJs(false); ?>
+<?php echo $ams->getElementJs(false, true); ?>
 </head>
 <body>
 <?php
