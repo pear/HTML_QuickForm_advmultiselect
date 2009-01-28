@@ -736,6 +736,9 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
                         $arrHtmlSelected[$key] = $option;
                         /** Add it to the 'hidden' multi-select
                             and set it as 'selected' */
+                        if (isset($option['attr']['disabled'])) {
+                            unset($option['attr']['disabled']);
+                        }
                         $option['attr']['selected'] = 'selected';
                         $arrHtmlHidden[$key]        = $option;
                     } else {

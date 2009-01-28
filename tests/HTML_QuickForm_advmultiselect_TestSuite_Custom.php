@@ -188,5 +188,23 @@ class HTML_QuickForm_advmultiselect_TestSuite_Custom extends PHPUnit_Framework_T
             HTML_Common::_parseAttributes($matches[1][1])
         );
     }
+
+    /**
+     * Tests dual advmultiselect element with fancy attributes (disabled, ...)
+     *
+     * @return void
+     */
+    public function testAms2DisabledOptionsProduceValues()
+    {
+        $fruit_opt = array('apple'  =>  'Apple',
+                           'orange' =>  'Orange',
+                           'pear'   =>  array('Pear', array('disabled' => 'disabled'))
+                           );
+
+        $ams = new HTML_QuickForm_advmultiselect('fruit', null, $fruit_opt);
+        $ams->setSelected('pear');
+
+        $this->assertEquals(array('pear'), $ams->getSelected());
+    }
 }
 ?>
