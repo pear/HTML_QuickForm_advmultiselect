@@ -105,10 +105,6 @@ $ams->setElementTemplate($template);
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // fruit default values already selected without any end-user actions
     $form->setDefaults(array('fruit' => array('kiwi','lime')));
-
-} elseif (isset($_POST['fruit'])) {
-    // fruit end-user selection
-    $form->setDefaults(array('fruit' => $_POST['fruit']));
 }
 
 $buttons[] =& $form->createElement('submit', null, 'Submit');

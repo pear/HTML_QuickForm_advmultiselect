@@ -54,10 +54,6 @@ $form->addElement('header', null, 'Advanced Multiple Select: default layout ');
 
 $form->addElement('advmultiselect', 'cars', 'Cars:', $car_array);
 
-if (isset($_POST['cars'])) {
-    $form->setDefaults(array('cars' => $_POST['cars']));
-}
-
 $form->addElement('submit', 'send', 'Send');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"

@@ -64,10 +64,6 @@ $template = '
 ';
 $ams->setElementTemplate($template);
 
-if (isset($_POST['fruit'])) {
-    $form->setDefaults(array('fruit' => $_POST['fruit']));
-}
-
 $form->addElement('submit', 'send', 'Send', array('class' => 'inputCommand'));
 
 $form->addRule('name', 'Your name is required', 'required');

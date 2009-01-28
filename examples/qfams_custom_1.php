@@ -82,10 +82,6 @@ $template = '
 </table>';
 $ams->setElementTemplate($template);
 
-if (isset($_POST['fruit'])) {
-    $form->setDefaults(array('fruit' => $_POST['fruit']));
-}
-
 $form->addElement('submit', 'send', 'Send');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"

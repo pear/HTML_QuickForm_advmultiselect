@@ -66,10 +66,6 @@ $form->addElement('header', null, 'Advanced Multiple Select: default layout ');
 
 $ams1 =& $form->addElement('advmultiselect', 'cars', 'Cars:', $car_array);
 
-if (isset($_POST['cars'])) {
-    $form->setDefaults(array('cars' => $_POST['cars']));
-}
-
 // rendering with css selectors and API selLabel(), setButtonAttributes()
 $form->addElement('header', null, 'Advanced Multiple Select: custom layout ');
 
@@ -86,10 +82,6 @@ $ams2->setButtonAttributes('add',    array('value' => 'Add', 'name' => 'add1',
 $ams2->setButtonAttributes('remove', array('value' => 'Remove', 'name' => 'remove1',
                                            'class' => 'inputCommand'
 ));
-
-if (isset($_POST['fruit'])) {
-    $form->setDefaults(array('fruit' => $_POST['fruit']));
-}
 
 $form->addElement('submit', 'send', 'Send');
 ?>

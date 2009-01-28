@@ -94,10 +94,6 @@ if (isset($_POST['multiselect1'])) {
     $ams1->setElementTemplate($template1);
 }
 
-if (isset($_POST['cars'])) {
-    $defaults = array('cars' => $_POST['cars']);
-}
-
 // second QF ams element
 $form->addElement('header', null, 'Advanced Multiple Select: Live Counter - pool2 style ');
 
@@ -119,10 +115,6 @@ if (isset($_POST['multiselect2'])) {
     $ams2->setElementTemplate($template1);
 }
 
-if (isset($_POST['fruit'])) {
-    $defaults = array_merge($defaults, array('fruit' => $_POST['fruit']));
-}
-
 $buttons[] =& $form->createElement('submit', null, 'Submit');
 $buttons[] =& $form->createElement('reset',  null, 'Reset');
 $buttons[] =& $form->createElement('checkbox', 'multiselect1', null,
@@ -130,10 +122,6 @@ $buttons[] =& $form->createElement('checkbox', 'multiselect1', null,
 $buttons[] =& $form->createElement('checkbox', 'multiselect2', null,
                                    'fruit list dual select');
 $form->addGroup($buttons, null, '&nbsp;');
-
-if (count($defaults) > 0) {
-    $form->setDefaults($defaults);
-}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3c.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
