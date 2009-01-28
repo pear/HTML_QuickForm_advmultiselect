@@ -279,8 +279,21 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
                                            $options = null, $attributes = null,
                                            $sort = null)
     {
+        $opts    = $options;
+        $options = null;  // prevent to use the default select element load options
         $this->HTML_QuickForm_select($elementName, $elementLabel,
             $options, $attributes);
+
+        // allow to load options at once and take care of fancy attributes
+        if (is_array($opts)) {
+            foreach ($opts as $key => $val) {
+                if (is_array($val)) {
+                    $this->addOption($val[0], $key, $val[1]);
+                } else {
+                    $this->addOption($val, $key);
+                }
+            }
+        }
 
         // add multiple selection attribute by default if missing
         $this->updateAttributes(array('multiple' => 'multiple'));
