@@ -1,7 +1,7 @@
 <?php
 /**
  * Mixed advMultiSelect HTML_QuickForm elements.
- * Two widgets on the same page/form with each its own javascript function
+ * Two widgets on the same page/form with one javascript code instance
  *
  * @version    $Id$
  * @author     Laurent Laville <pear@laurent-laville.org>
@@ -65,6 +65,7 @@ $car_array = array(
 $form->addElement('header', null, 'Advanced Multiple Select: default layout ');
 
 $ams1 =& $form->addElement('advmultiselect', 'cars', 'Cars:', $car_array);
+$ams1->setElementTemplate(null, false);
 
 // rendering with css selectors and API selLabel(), setButtonAttributes()
 $form->addElement('header', null, 'Advanced Multiple Select: custom layout ');
@@ -82,6 +83,7 @@ $ams2->setButtonAttributes('add',    array('value' => 'Add', 'name' => 'add1',
 $ams2->setButtonAttributes('remove', array('value' => 'Remove', 'name' => 'remove1',
                                            'class' => 'inputCommand'
 ));
+$ams2->setElementTemplate(null, false);
 
 $form->addElement('submit', 'send', 'Send');
 ?>
@@ -122,15 +124,9 @@ table.pool select {
 }
  -->
 </style>
-<script type="text/javascript">
-//<![CDATA[
 <?php
-echo $ams1->getElementJs();
-
-echo $ams2->getElementJs();
+echo $ams1->getElementJs(false, true);
 ?>
-//]]>
-</script>
 </head>
 <body>
 <?php
