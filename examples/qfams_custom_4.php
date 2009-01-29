@@ -54,17 +54,9 @@ $form->addElement('header', null, 'Advanced Multiple Select: custom layout ');
 
 $form->addElement('text', 'name', 'Name:', array('size' => 40, 'maxlength' => 80));
 
-$ams =& $form->addElement('advmultiselect', 'fruit', null, null,
+$ams =& $form->addElement('advmultiselect', 'fruit', null, $fruit_array,
                            array('class' => 'pool')
 );
-foreach ($fruit_array as $key => $data) {
-    if (!is_array($data)) {
-        $data = array($data, $fruit_styles);
-    }
-    $attr = isset($data[1]) ? $data[1] : null;
-    $ams->addOption($data[0], $key, $attr);
-}
-
 $ams->setLabel(array('Fruit:', 'Available', 'Selected'));
 
 // template for a dual multi-select element shape
