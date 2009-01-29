@@ -563,7 +563,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
 
         if ($raw !== true) {
             $css = '<style type="text/css">' . PHP_EOL
-                 . '<!--' . $css . '// -->'  . PHP_EOL
+                 . '<!--' . $css . ' -->'    . PHP_EOL
                  . '</style>';
         }
         return $css;
