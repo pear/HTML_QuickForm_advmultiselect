@@ -63,6 +63,7 @@ $ams =& $form->addElement('advmultiselect', 'user',
     null,                                             // datas
     array('style' => 'width:200px;')                  // custom layout
 );
+$ams->setElementTemplate(null, false);
 
 // load QFAMS values (unselected and selected)
 $ams->load($db, $queryAll, 'useridentity', 'userid', $affected_user);
