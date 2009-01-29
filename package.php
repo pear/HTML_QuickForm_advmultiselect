@@ -10,7 +10,7 @@
  * @category  HTML
  * @package   HTML_QuickForm_advmultiselect
  * @author    Laurent Laville <pear@laurent-laville.org>
- * @copyright 2007-2008 Laurent Laville
+ * @copyright 2007-2009 Laurent Laville
  * @license   http://www.opensource.org/licenses/bsd-license.php  BSD
  * @version   CVS: $Id$
  * @link      http://pear.php.net/package/HHTML_QuickForm_advmultiselect
@@ -37,25 +37,30 @@ $p2 = &PEAR_PackageFileManager2::importOptions($packagefile, $options);
 $p2->setPackageType('php');
 $p2->addRelease();
 $p2->generateContents();
-$p2->setReleaseVersion('1.4.1');
-$p2->setAPIVersion('1.0.0');
+$p2->setReleaseVersion('1.5.0');
+$p2->setAPIVersion('1.5.0');
 $p2->setReleaseStability('stable');
 $p2->setAPIStability('stable');
 $p2->setNotes('* news
-- Introduce a TIP to make double-select-box XHTML 1.0 Strict compliant
-  even with an empty list.
-
-* bugs
-- fix #13680 : XHTML - Need to create a distinct id for all checkboxes
-
-* changes
-- With default element template there is a label, that does not exist with submit button
-  All examples uses a custom submit-element template to make them XHTML compliant.
+- copyright bump to 2009
+- fix dependencies
+- remove dreprecated function (setJsElement) since version 1.3.0
+- rewrites JS in object literal notation (uses namespace)
+- add two new buttons to move up to top or down to bottom a selected item
+- add a minimized/compressed version of Javascript code; uses getElementJs()
+- may now load options (class constructor) with fancy attributes
+  without additional code
+- qfams_custom_3.php show that it is now possible
+  to define one or more item (preselected) that cannot be remove by end-user
+- setElementTemplate() function signature changed (but keep BC) :
+  allow to use only one instance of javascript code
+- remove embedded version of TDG (The Definitive Guide)
+  now it was included in the new PEAR
 
 * QA
-- User Guide 1.4.0 included in this release cover all versions 1.x.x
-  see http://pear.laurent-laville.org/HTML_QuickForm_advmultiselect
-  for more format to download.
+- Old User Guide 1.4.0 that was previously included in past releases, was removed.
+  The most up-to-date documentation is now part of the new PEAR Manual.
+- Add unit test suites (for PHPUnit 3.2+) with code coverage around 80%
 ');
 
 //$p2->setLicense('BSD', 'http://www.opensource.org/licenses/bsd-license.php');
