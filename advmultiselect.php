@@ -217,18 +217,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      * @access     private
      * @since      0.4.0
      */
-    var $_elementTemplate = '
-{javascript}
-<table{class}>
-<!-- BEGIN label_2 --><tr><th>{label_2}</th><!-- END label_2 -->
-<!-- BEGIN label_3 --><th>&nbsp;</th><th>{label_3}</th></tr><!-- END label_3 -->
-<tr>
-  <td valign="top">{unselected}</td>
-  <td align="center">{add}{remove}</td>
-  <td valign="top">{selected}</td>
-</tr>
-</table>
-';
+    var $_elementTemplate;
 
     /**
      * Default Element stylesheet string
@@ -350,6 +339,9 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
         } else {
             $this->_sort = 'none';
         }
+
+        // set the default advmultiselect element template (with javascript embedded)
+        $this->setElementTemplate();
     }
 
     /**
@@ -514,15 +506,35 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
     /**
      * Sets element template
      *
-     * @param string $html The HTML surrounding select boxes and buttons
+     * @param string $html (optional) The HTML surrounding select boxes and buttons
+     * @param string $js   (optional) if we need to include qfams javascript handler
      *
      * @access     public
      * @return     void
      * @since      0.4.0
      */
-    function setElementTemplate($html)
+    function setElementTemplate($html = null, $js = true)
     {
-        $this->_elementTemplate = $html;
+        if (isset($html) && is_string($html)) {
+            $this->_elementTemplate = $html;
+        } else {
+            $this->_elementTemplate = '
+{javascript}
+<table{class}>
+<!-- BEGIN label_2 --><tr><th>{label_2}</th><!-- END label_2 -->
+<!-- BEGIN label_3 --><th>&nbsp;</th><th>{label_3}</th></tr><!-- END label_3 -->
+<tr>
+  <td valign="top">{unselected}</td>
+  <td align="center">{add}{remove}</td>
+  <td valign="top">{selected}</td>
+</tr>
+</table>
+';
+        }
+        if ($js == false) {
+            $this->_elementTemplate = str_replace('{javascript}', '',
+                                                  $this->_elementTemplate);
+        }
     }
 
     /**
