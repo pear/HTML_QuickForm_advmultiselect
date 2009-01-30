@@ -52,8 +52,8 @@ $fruit_array = array(
 // rendering with QF renderer engine and template system
 $form->addElement('header', null, 'Advanced Multiple Select: custom layout ');
 
-$ams =& $form->addElement('advmultiselect', 'fruit', null, $fruit_array,
-                           array('class' => 'pool')
+$ams =& $form->createElement('advmultiselect', 'fruit', null, null,
+                             array('class' => 'pool')
 );
 
 $ams->setLabel(array('Fruit:', 'Available', 'Selected'));
@@ -78,8 +78,9 @@ $template = '
 </table>';
 $ams->setElementTemplate($template);
 
-$form->setDefaults(array('fruit' => array('pear')));
+$ams->load($fruit_array, 'apple,pear');
 
+$form->addElement($ams);
 $form->addElement('submit', 'send', 'Send');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
