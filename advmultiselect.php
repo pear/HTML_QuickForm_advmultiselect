@@ -274,15 +274,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
             $options, $attributes);
 
         // allow to load options at once and take care of fancy attributes
-        if (is_array($opts)) {
-            foreach ($opts as $key => $val) {
-                if (is_array($val)) {
-                    $this->addOption($val[0], $key, $val[1]);
-                } else {
-                    $this->addOption($val, $key);
-                }
-            }
-        }
+        $this->load($opts);
 
         // add multiple selection attribute by default if missing
         $this->updateAttributes(array('multiple' => 'multiple'));
@@ -1026,6 +1018,69 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
                 . PHP_EOL;
         }
         return $js;
+    }
+
+    /**
+     * Loads options from different types of data sources
+     *
+     * This method overloaded parent method of select element, to allow
+     * loading options with fancy attributes.
+     *
+     * @param mixed &$options Options source currently supports assoc array or DB_result
+     * @param mixed $param1   (optional) See function detail
+     * @param mixed $param2   (optional) See function detail
+     * @param mixed $param3   (optional) See function detail
+     * @param mixed $param4   (optional) See function detail
+     *
+     * @access     public
+     * @since      1.5.0
+     * @return     PEAR_Error|NULL on error and TRUE on success
+     * @throws     PEAR_Error
+     */
+    function load(&$options,
+                  $param1 = null, $param2 = null, $param3 = null, $param4 = null)
+    {
+        if (is_array($options)) {
+            $ret = $this->loadArray($options, $param1);
+        } else {
+            $ret = parent::load($options, $param1, $param2, $param3, $param4);
+        }
+        return $ret;
+    }
+
+    /**
+     * Loads the options from an associative array
+     *
+     * This method overloaded parent method of select element, to allow to load
+     * array of options with fancy attributes.
+     *
+     * @param array $arr    Associative array of options
+     * @param mixed $values (optional) Array or comma delimited string of selected values
+     *
+     * @since      1.5.0
+     * @access     public
+     * @return     PEAR_Error on error and TRUE on success
+     * @throws     PEAR_Error
+     */
+    function loadArray($arr, $values = null)
+    {
+        if (!is_array($arr)) {
+            return PEAR::raiseError('Argument 1 of HTML_Select::loadArray' .
+                                    ' is not a valid array');
+        }
+        if (isset($values)) {
+            $this->setSelected($values);
+        }
+        if (is_array($arr)) {
+            foreach ($arr as $key => $val) {
+                if (is_array($val)) {
+                    $this->addOption($val[0], $key, $val[1]);
+                } else {
+                    $this->addOption($val, $key);
+                }
+            }
+        }
+        return true;
     }
 }
 
