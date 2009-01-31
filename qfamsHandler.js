@@ -6,7 +6,7 @@
  * @author     Laurent Laville <pear@laurent-laville.org>
  * @copyright  2007-2009 Laurent Laville
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: qfamsHandler.js,v 1.9 2009-01-30 14:30:01 farell Exp $
+ * @version    CVS: $Id: qfamsHandler.js,v 1.10 2009-01-31 12:39:21 farell Exp $
  * @since      File available since Release 1.3.0
  */
 
@@ -193,10 +193,14 @@ QFAMS.moveSelection = function (qfamsName, selectLeft, selectRight, selectHidden
     // Add items to the 'FROM' list for toggle function
     if (action === 'toggle') {
         for (i = 0; i < maxTo; i++) {
-            source.options[source.length] = new Option(target.options[i].text, target.options[i].value);
+            if (target.options[i].disabled === false) {
+                source.options[source.length] = new Option(target.options[i].text, target.options[i].value);
+            }
         }
         for (i = (maxTo - 1); i >= 0; i--) {
-            target.options[i] = null;
+            if (target.options[i].disabled === false) {
+                target.options[i] = null;
+            }
         }
     }
 
