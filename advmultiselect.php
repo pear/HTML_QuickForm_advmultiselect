@@ -262,7 +262,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      *
      * @access     public
      * @return     void
-     * @since      0.4.0
+     * @since      version 0.4.0 (2005-06-25)
      */
     function HTML_QuickForm_advmultiselect($elementName = null, $elementLabel = null,
                                            $options = null, $attributes = null,
@@ -365,7 +365,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      *                          (add, remove, all, none, toggle,
      *                           movetop, movebottom, moveup, movedown)
      * @access     public
-     * @since      0.4.0
+     * @since      version 0.4.0 (2005-06-25)
      *
      * @example    examples/qfams_custom_5.php
      *             Custom example 5: source code
@@ -503,7 +503,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      *
      * @access     public
      * @return     void
-     * @since      0.4.0
+     * @since      version 0.4.0 (2005-06-25)
      */
     function setElementTemplate($html = null, $js = true)
     {
@@ -541,7 +541,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      *
      * @access     public
      * @return     string
-     * @since      0.4.0
+     * @since      version 0.4.0 (2005-06-25)
      *
      * @example    qfams_custom_4.php
      *             Custom example 4: source code
@@ -566,7 +566,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      *
      * @access     public
      * @return     string
-     * @since      0.4.0
+     * @since      version 0.4.0 (2005-06-25)
      */
     function toHtml()
     {
@@ -990,7 +990,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      *
      * @access     public
      * @return     string
-     * @since      0.4.0
+     * @since      version 0.4.0 (2005-06-25)
      */
     function getElementJs($raw = true, $min = false)
     {
@@ -1033,9 +1033,10 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      * @param mixed $param4   (optional) See function detail
      *
      * @access     public
-     * @since      1.5.0
+     * @since      version 1.5.0 (2009-02-15)
      * @return     PEAR_Error|NULL on error and TRUE on success
      * @throws     PEAR_Error
+     * @see        loadArray()
      */
     function load(&$options,
                   $param1 = null, $param2 = null, $param3 = null, $param4 = null)
@@ -1057,10 +1058,11 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      * @param array $arr    Associative array of options
      * @param mixed $values (optional) Array or comma delimited string of selected values
      *
-     * @since      1.5.0
+     * @since      version 1.5.0 (2009-02-15)
      * @access     public
      * @return     PEAR_Error on error and TRUE on success
      * @throws     PEAR_Error
+     * @see        load()
      */
     function loadArray($arr, $values = null)
     {
