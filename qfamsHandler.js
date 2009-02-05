@@ -6,7 +6,7 @@
  * @author     Laurent Laville <pear@laurent-laville.org>
  * @copyright  2007-2009 Laurent Laville
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: qfamsHandler.js,v 1.11 2009-01-31 13:01:21 farell Exp $
+ * @version    CVS: $Id: qfamsHandler.js,v 1.12 2009-02-05 16:43:22 farell Exp $
  * @since      File available since Release 1.3.0
  */
 
@@ -146,12 +146,14 @@ QFAMS.editSelection = function (qfamsName, selectMode) {
  * @since      1.5.0
  */
 QFAMS.moveSelection = function (qfamsName, selectLeft, selectRight, selectHidden, action, arrange) {
+    var isIE = /*@cc_on!@*/false; //IE detector
     var source = null;
     var target = null;
     var option;
     var c      = null;
     var s      = null;
     var i;
+    var maxFrom, maxTo;
 
     if (action === 'add' || action === 'all' || action === 'toggle') {
         source = selectLeft;
@@ -164,55 +166,63 @@ QFAMS.moveSelection = function (qfamsName, selectLeft, selectRight, selectHidden
     if (source.selectedIndex === -1 && (action === 'add' || action === 'remove')) {
         return;
     }
+    maxFrom = source.options.length;
+    maxTo   = target.options.length;
 
     // check if target list is empty and remove fake empty option (tip to be XHTML compliant)
-    if (target.length > 0 && target.options[0].value === "") {
+    if (maxTo > 0 && target.options[0].value === "") {
         target.removeAttribute("disabled");
         target.options[0] = null;
     }
 
-    var maxTo = target.length;
-
     // Add items to the 'TO' list.
-    for (i = 0; i < source.length; i++) {
+    for (i = (maxFrom - 1); i >= 0; i--) {
         if (action === 'all' || action === 'none' || action === 'toggle' || source.options[i].selected === true) {
             if (source.options[i].disabled === false) {
-                option = new Option(source.options[i].text, source.options[i].value);
-                // apply styles from source to target
-                s = QFAMS.getStyles(source.options[i]);
-                for (c = 0; c < s.length; c++) {
-                    option.style.setProperty(s[c][0], s[c][1], s[c][2]);
+                if (isIE) {
+                    option = source.options[i].removeNode(true);
+                    option.selected = false;
+                    target.appendChild(option);
+                } else {
+                    option = source.options[i].cloneNode(true);
+                    option.selected = false;
+                    target.options[target.options.length] = option;
                 }
-                target.options[target.length] = option;
             }
         }
     }
 
     // Remove items from the 'FROM' list.
-    for (i = (source.length - 1); i >= 0; i--) {
-        if (action === 'all' || action === 'none' || action === 'toggle' || source.options[i].selected === true) {
-            if (source.options[i].disabled === false) {
-                source.options[i] = null;
+    if (!isIE) {
+        for (i = (maxFrom - 1); i >= 0; i--) {
+            if (action === 'all' || action === 'none' || action === 'toggle' || source.options[i].selected === true) {
+                if (source.options[i].disabled === false) {
+                    source.options[i] = null;
+                }
             }
         }
     }
 
     // Add items to the 'FROM' list for toggle function
     if (action === 'toggle') {
-        for (i = 0; i < maxTo; i++) {
-            if (target.options[i].disabled === false) {
-                option = new Option(target.options[i].text, target.options[i].value);
-                // apply styles from target to source
-                s = QFAMS.getStyles(target.options[i]);
-                for (c = 0; c < s.length; c++) {
-                    option.style.setProperty(s[c][0], s[c][1], s[c][2]);
-                }
-                source.options[source.length] = option;
-            }
-        }
         for (i = (maxTo - 1); i >= 0; i--) {
             if (target.options[i].disabled === false) {
-                target.options[i] = null;
+                if (isIE) {
+                    option = target.options[i].removeNode(true);
+                    option.selected = false;
+                    source.appendChild(option);
+                } else {
+                    option = target.options[i].cloneNode(true);
+                    option.selected = false;
+                    source.options[source.options.length] = option;
+                }
+            }
+        }
+        if (!isIE) {
+            for (i = (maxTo - 1); i >= 0; i--) {
+                if (target.options[i].disabled === false) {
+                    target.options[i] = null;
+                }
             }
         }
     }
@@ -375,7 +385,7 @@ QFAMS.moveDown = function (l, h) {
  * @param      dom element   l              selection list (contains only elements selected)
  * @param      dom element   h              hidden list (contains all elements)
  *
- * @method     moveUp
+ * @method     moveTop
  * @static
  * @return     void
  * @public
@@ -400,7 +410,7 @@ QFAMS.moveTop = function (l, h) {
  * @param      dom element   l              selection list (contains only elements selected)
  * @param      dom element   h              hidden list (contains all elements)
  *
- * @method     moveUp
+ * @method     moveBottom
  * @static
  * @return     void
  * @public
@@ -433,97 +443,16 @@ QFAMS.moveBottom = function (l, h) {
  * @since      1.5.0
  */
 QFAMS.moveSwap = function (l, i, j) {
-    var n, p, s, option;
-    var sProperties = [], tProperties = [];
-    var propertyName, propertyValue, propertyPrior;
-    var valeur = l.options[i].value;
-    var texte  = l.options[i].text;
-    var nosel  = l.options[i].disabled;
+    var node;
 
-    // backup all styles from source
-    sProperties = QFAMS.getStyles(l.options[i]);
-
-    // backup all styles from target
-    tProperties = QFAMS.getStyles(l.options[j]);
-
-    if (sProperties.length > 0) {
-        for (p = 0; p < sProperties.length; p++) {
-            // apply property from source to target
-            propertyName  = sProperties[p][0];
-            propertyValue = sProperties[p][1];
-            propertyPrior = sProperties[p][2];
-
-            option = l.options[j];
-            option.style.setProperty(propertyName, propertyValue, propertyPrior);
-
-            s = false;
-            for (n = 0; n < tProperties.length; n++) {
-                if (tProperties[n][0] === propertyName) {
-                    s = true;
-                    break;
-                }
-            }
-            if (s === false) {
-                // property is only defined in source, remove from it
-                option = l.options[i];
-                option.style.removeProperty(propertyName);
-            } else {
-                // swap property value between source and target
-                propertyName  = tProperties[n][0];
-                propertyValue = tProperties[n][1];
-                propertyPrior = tProperties[n][2];
-                option = l.options[i];
-                option.style.setProperty(propertyName, propertyValue, propertyPrior);
-                tProperties[n] = ['', '', ''];
-            }
-        }
-    }
-    // no property on source, apply properties from target to source
-    for (p = 0; p < tProperties.length; p++) {
-        propertyName  = tProperties[p][0];
-        propertyValue = tProperties[p][1];
-        propertyPrior = tProperties[p][2];
-        option = l.options[i];
-        option.style.setProperty(propertyName, propertyValue, propertyPrior);
-
-        option = l.options[j];
-        option.style.removeProperty(propertyName);
+    node = l.replaceChild(l.options[i], l.options[j]);
+    if (i > j) {
+        l.insertBefore(node, l.options[j].nextSibling);
+    } else {
+        l.insertBefore(node, l.options[i]);
     }
 
-    l.options[i].value    = l.options[j].value;
-    l.options[i].text     = l.options[j].text;
-    l.options[i].disabled = l.options[j].disabled;
-    l.options[j].value    = valeur;
-    l.options[j].text     = texte;
-    l.options[j].disabled = nosel;
-    l.selectedIndex       = j;
-};
-
-/**
- * QFAMS.getStyles
- * returns the CSS Style Declaration
- *
- * @param      dom element   e
- *
- * @method     getStyles
- * @static
- * @return     array
- * @public
- * @since      1.5.0
- */
-QFAMS.getStyles = function (e) {
-    var eAttr = e.style;
-    var propertyName, propertyValue, propertyPrior;
-    var n, p, properties = [];
-
-    n = eAttr.length;
-    for (p = 0; p < n; p++) {
-        propertyName  = eAttr.item(p);
-        propertyValue = eAttr.getPropertyValue(propertyName);
-        propertyPrior = eAttr.getPropertyPriority(propertyName);
-        properties[p] = [propertyName, propertyValue, propertyPrior];
-    }
-    return properties;
+    l.selectedIndex = -1;
 };
 
 /**
