@@ -6,7 +6,7 @@
  * @author     Laurent Laville <pear@laurent-laville.org>
  * @copyright  2007-2009 Laurent Laville
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: qfamsHandler.js,v 1.12 2009-02-05 16:43:22 farell Exp $
+ * @version    CVS: $Id: qfamsHandler.js,v 1.13 2009-02-06 09:49:22 farell Exp $
  * @since      File available since Release 1.3.0
  */
 
@@ -22,6 +22,31 @@ if (typeof QFAMS === "undefined" || !QFAMS) {
      */
     var QFAMS = {};
 }
+
+/**
+ * QFAMS.env is used to keep track of end-user preferences
+ * for persistant values.
+ *
+ * @class QFAMS.env
+ * @static
+ */
+QFAMS.env = QFAMS.env || {
+    /**
+     * Keeps the persistant selection preference when items are selected or unselected
+     *
+     * @property persistantSelection
+     * @type     Boolean
+     */
+    persistantSelection: false,
+
+    /**
+     * Keeps the persistant selection preference when items are moved up or down
+     *
+     * @property persistantMove
+     * @type     Boolean
+     */
+    persistantMove: true
+};
 
 /**
  * Uses QFAMS.updateCounter as a
@@ -181,11 +206,11 @@ QFAMS.moveSelection = function (qfamsName, selectLeft, selectRight, selectHidden
             if (source.options[i].disabled === false) {
                 if (isIE) {
                     option = source.options[i].removeNode(true);
-                    option.selected = false;
+                    option.selected = QFAMS.env.persistantSelection;
                     target.appendChild(option);
                 } else {
                     option = source.options[i].cloneNode(true);
-                    option.selected = false;
+                    option.selected = QFAMS.env.persistantSelection;
                     target.options[target.options.length] = option;
                 }
             }
@@ -209,11 +234,11 @@ QFAMS.moveSelection = function (qfamsName, selectLeft, selectRight, selectHidden
             if (target.options[i].disabled === false) {
                 if (isIE) {
                     option = target.options[i].removeNode(true);
-                    option.selected = false;
+                    option.selected = QFAMS.env.persistantSelection;
                     source.appendChild(option);
                 } else {
                     option = target.options[i].cloneNode(true);
-                    option.selected = false;
+                    option.selected = QFAMS.env.persistantSelection;
                     source.options[source.options.length] = option;
                 }
             }
@@ -452,7 +477,11 @@ QFAMS.moveSwap = function (l, i, j) {
         l.insertBefore(node, l.options[i]);
     }
 
-    l.selectedIndex = -1;
+    if (QFAMS.env.persistantMove) {
+        l.selectedIndex = j;
+    } else {
+        l.selectedIndex = -1;
+    }
 };
 
 /**
