@@ -1085,6 +1085,71 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
         }
         return true;
     }
+
+    /**
+     * Sets which items should be persistant
+     *
+     * Sets which items should have the disabled attribute
+     * to keep it persistant
+     *
+     * @param mixed $optionValues Options (key-values) that should be persistant
+     * @param bool  $persistant   (optional) TRUE if persistant, FALSE otherwise
+     *
+     * @since      1.5.0
+     * @access     public
+     * @return     PEAR_Error on error and TRUE on success
+     * @throws     PEAR_Error
+     */
+    function setPersistantOptions($optionValues, $persistant = true)
+    {
+        if (!is_bool($persistant)) {
+            return PEAR::raiseError('Argument 2 of HTML_QuickForm_advmultiselect::' .
+                                    ' setPersistantOption ' .
+                                    ' is not a boolean');
+        }
+        if (is_string($optionValues)) {
+            $optionValues = array($optionValues);
+        }
+        if (!is_array($optionValues)) {
+            return PEAR::raiseError('Argument 1 of HTML_QuickForm_advmultiselect::' .
+                                    ' setPersistantOption ' .
+                                    ' is not a valid array');
+        }
+
+        foreach ($this->_options as $k => $v) {
+            if (in_array($v['attr']['value'], $optionValues)) {
+                if ($persistant) {
+                    $this->_options[$k]['attr']['disabled'] = 'disabled';
+                } else {
+                    unset($this->_options[$k]['attr']['disabled']);
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Returns list of persistant options
+     *
+     * Returns list of persistant options (key-values) that could not
+     * be selected or unselected.
+     *
+     * @since      1.5.0
+     * @access     public
+     * @return     array
+     */
+    function getPersistantOptions()
+    {
+        $options = array();
+
+        foreach ($this->_options as $k => $v) {
+            if (isset($v['attr']['disabled'])) {
+                $options[] = $this->_options[$k]['attr']['value'];
+            }
+        }
+
+        return $options;
+    }
 }
 
 if (class_exists('HTML_QuickForm')) {
