@@ -123,5 +123,44 @@ class HTML_QuickForm_advmultiselect_TestSuite_Basic extends PHPUnit_Framework_Te
             $ams->toHtml()
         );
     }
+
+    /**
+     * Tests advmultiselect element load options (with default values)
+     *
+     * @return void
+     */
+    public function testAmsLoadOptions()
+    {
+        $options = array('dodge' =>  'Dodge',
+                         'chevy' =>  'Chevy',
+                         'bmw'   =>  'BMW');
+        $ams = new HTML_QuickForm_advmultiselect('foo');
+        $ams->load($options, 'bmw,chevy');
+
+        $this->assertRegExp(
+            '!<option[^>]+selected="selected"[^>]*>BMW</option>!',
+            $ams->toHtml()
+        );
+        $this->assertRegExp(
+            '!<option[^>]+selected="selected"[^>]*>Chevy</option>!',
+            $ams->toHtml()
+        );
+    }
+
+    /**
+     * Tests advmultiselect element setting new html template
+     *
+     * @return void
+     */
+    public function testAmsDefineDefaultHtmlTemplateWithoutJavascript()
+    {
+        $ams  = new HTML_QuickForm_advmultiselect('foo');
+        // set apply the default html template without javascript
+        $tpl_default   = $ams->setElementTemplate(null, false);
+        $tpl_withoutJS = $ams->setElementTemplate(null, true);
+
+        $this->assertTrue(strpos('{javascript}', $tpl_default) >= 0);
+        $this->assertFalse(strpos('{javascript}', $tpl_withoutJS));
+    }
 }
 ?>
