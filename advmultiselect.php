@@ -502,11 +502,13 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      * @param string $js   (optional) if we need to include qfams javascript handler
      *
      * @access     public
-     * @return     void
+     * @return     string
      * @since      version 0.4.0 (2005-06-25)
      */
     function setElementTemplate($html = null, $js = true)
     {
+        $oldTemplate = $this->_elementTemplate;
+
         if (isset($html) && is_string($html)) {
             $this->_elementTemplate = $html;
         } else {
@@ -527,6 +529,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
             $this->_elementTemplate = str_replace('{javascript}', '',
                                                   $this->_elementTemplate);
         }
+        return $oldTemplate;
     }
 
     /**
