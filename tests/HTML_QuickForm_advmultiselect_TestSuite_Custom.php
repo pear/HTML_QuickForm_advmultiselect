@@ -206,5 +206,24 @@ class HTML_QuickForm_advmultiselect_TestSuite_Custom extends PHPUnit_Framework_T
 
         $this->assertEquals(array('pear'), $ams->getSelected());
     }
+
+    /**
+     * Tests dual advmultiselect element with persistant options sets
+     *
+     * @return void
+     */
+    public function testAms2WithPersistantOptions()
+    {
+        $fruit_opt = array('apple'  =>  'Apple',
+                           'orange' =>  array('Orange', array('disabled' => 'disabled')),
+                           'pear'   =>  'Pear'
+                           );
+
+        $ams = new HTML_QuickForm_advmultiselect('fruit', null, $fruit_opt);
+        $ams->setPersistantOptions(array('orange'), false);
+        $ams->setPersistantOptions('pear');
+
+        $this->assertEquals(array('pear'), $ams->getPersistantOptions());
+    }
 }
 ?>
