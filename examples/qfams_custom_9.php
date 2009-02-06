@@ -136,7 +136,14 @@ if (!isset($_POST['multiselect'])) {
 ?>
  -->
 </style>
-<?php echo $ams->getElementJs(false); ?>
+<script type="text/javascript">
+//<![CDATA[
+var QFAMS = {};
+QFAMS.env = {persistantSelection: false, persistantMove: false};
+
+<?php echo $ams->getElementJs(true); ?>
+//]]>
+</script>
 </head>
 <body>
 <?php
