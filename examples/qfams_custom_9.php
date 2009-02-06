@@ -79,13 +79,17 @@ $template2 = '
 </table>
 ';
 
+$ams->load($fruit_array, 'pear,kiwi,lime');
+
 if (isset($_POST['multiselect']) || $_SERVER['REQUEST_METHOD'] == 'GET') {
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $ams->setPersistantOptions(array('pear'), false);
+    }
     $ams->setElementTemplate($template2);
 } else {
     $ams->setElementTemplate($template1);
 }
-
-$ams->load($fruit_array, 'pear,kiwi,lime');
 
 $form->addElement($ams);
 
