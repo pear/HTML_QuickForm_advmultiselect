@@ -1098,7 +1098,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      * @param mixed $optionValues Options (key-values) that should be persistant
      * @param bool  $persistant   (optional) TRUE if persistant, FALSE otherwise
      *
-     * @since      1.5.0
+     * @since      version 1.5.0 (2009-02-15)
      * @access     public
      * @return     PEAR_Error on error and TRUE on success
      * @throws     PEAR_Error
@@ -1137,7 +1137,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
      * Returns list of persistant options (key-values) that could not
      * be selected or unselected.
      *
-     * @since      1.5.0
+     * @since      version 1.5.0 (2009-02-15)
      * @access     public
      * @return     array
      */
