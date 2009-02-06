@@ -1068,7 +1068,7 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
     {
         if (!is_array($arr)) {
             return PEAR::raiseError('Argument 1 of HTML_QuickForm_advmultiselect::' .
-                                    ' loadArray'
+                                    ' loadArray' .
                                     ' is not a valid array');
         }
         if (isset($values)) {
