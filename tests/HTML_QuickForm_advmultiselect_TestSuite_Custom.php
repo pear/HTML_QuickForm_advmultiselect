@@ -125,8 +125,9 @@ class HTML_QuickForm_advmultiselect_TestSuite_Custom extends PHPUnit_Framework_T
         $bottom_text_button = '! Bottom !';
         $class_button       = 'inputCommand';
 
-        $ams    = new HTML_QuickForm_advmultiselect('foo');
-        $amstpl = '
+        $ams = new HTML_QuickForm_advmultiselect('foo');
+
+        $amsDualTemplate = '
 <table{class}>
 <!-- BEGIN label_2 --><tr><th>{label_2}</th><!-- END label_2 -->
 <!-- BEGIN label_3 --><th>&nbsp;</th><th>{label_3}</th></tr><!-- END label_3 -->
@@ -141,7 +142,7 @@ class HTML_QuickForm_advmultiselect_TestSuite_Custom extends PHPUnit_Framework_T
 </tr>
 </table>
 ';
-        $ams->setElementTemplate($amstpl);
+        $ams->setElementTemplate($amsDualTemplate);
 
         $ams->setButtonAttributes('add',    array('value' => $add_text_button,
                                                   'class' => $class_button
@@ -332,6 +333,67 @@ class HTML_QuickForm_advmultiselect_TestSuite_Custom extends PHPUnit_Framework_T
         $ams->setPersistantOptions('pear');
 
         $this->assertEquals(array('pear'), $ams->getPersistantOptions());
+    }
+
+    /**
+     * Tests single advmultiselect element with persistant options sets
+     *
+     * @return void
+     */
+    public function testAms1WithPersistantOptions()
+    {
+        $fruits = array('apple'  =>  'Apple',
+                        'orange' =>  'Orange',
+                        'pear'   =>  'Pear');
+
+        $ams = new HTML_QuickForm_advmultiselect('fruit', null, $fruits);
+        $ams->setPersistantOptions(array('orange'));
+
+        $amsSingleTemplate = '
+<table{class}>
+<!-- BEGIN label_3 --><tr><th>{label_3}</th></tr><!-- END label_3 -->
+<tr>
+  <td>{selected}</td>
+</tr>
+</table>
+';
+        $ams->setElementTemplate($amsSingleTemplate);
+
+        $this->assertRegExp(
+            '!<label><input[^>]+disabled="disabled"[^>]*>Orange</label>!',
+            $ams->toHtml()
+        );
+    }
+
+    /**
+     * Tests single advmultiselect element with selected options sets
+     *
+     * @return void
+     */
+    public function testAms1WithSelectedOptions()
+    {
+        $fruits = array('apple'  =>  'Apple',
+                        'orange' =>  'Orange',
+                        'kiwi'   =>  'Kiwi',
+                        'pear'   =>  'Pear');
+
+        $ams = new HTML_QuickForm_advmultiselect('fruit', null, $fruits);
+        $ams->setSelected('pear,apple');
+
+        $amsSingleTemplate = '
+<table{class}>
+<!-- BEGIN label_3 --><tr><th>{label_3}</th></tr><!-- END label_3 -->
+<tr>
+  <td>{selected}</td>
+</tr>
+</table>
+';
+        $ams->setElementTemplate($amsSingleTemplate);
+
+        $this->assertRegExp(
+            '!<label><input[^>]+checked="checked"[^>]*>Apple</label>!',
+            $ams->toHtml()
+        );
     }
 }
 ?>
