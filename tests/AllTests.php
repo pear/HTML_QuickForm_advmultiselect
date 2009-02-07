@@ -22,6 +22,7 @@ require_once 'PHPUnit/TextUI/TestRunner.php';
 
 chdir(dirname(__FILE__));
 
+require_once 'HTML_QuickForm_advmultiselect_TestSuite_Exception.php';
 require_once 'HTML_QuickForm_advmultiselect_TestSuite_Basic.php';
 require_once 'HTML_QuickForm_advmultiselect_TestSuite_Custom.php';
 
@@ -59,6 +60,7 @@ class HTML_QuickForm_advmultiselect_AllTests
     public static function suite()
     {
         $suite = new PHPUnit_Framework_TestSuite('HTML_QuickForm_advmultiselect Test Suite');
+        $suite->addTestSuite('HTML_QuickForm_advmultiselect_TestSuite_Exception');
         $suite->addTestSuite('HTML_QuickForm_advmultiselect_TestSuite_Basic');
         $suite->addTestSuite('HTML_QuickForm_advmultiselect_TestSuite_Custom');
         return $suite;
