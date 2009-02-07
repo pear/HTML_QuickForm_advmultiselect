@@ -116,14 +116,59 @@ class HTML_QuickForm_advmultiselect_TestSuite_Custom extends PHPUnit_Framework_T
     {
         $add_text_button    = 'Add >>';
         $remove_text_button = '<< Remove';
+        $all_text_button    = 'Add all >>';
+        $none_text_button   = '<< Remove all';
+        $toggle_text_button = '<< Toggle >>';
+        $up_text_button     = '! Up !';
+        $down_text_button   = '! Down !';
+        $top_text_button    = '! Top !';
+        $bottom_text_button = '! Bottom !';
         $class_button       = 'inputCommand';
 
-        $ams = new HTML_QuickForm_advmultiselect('foo');
+        $ams    = new HTML_QuickForm_advmultiselect('foo');
+        $amstpl = '
+<table{class}>
+<!-- BEGIN label_2 --><tr><th>{label_2}</th><!-- END label_2 -->
+<!-- BEGIN label_3 --><th>&nbsp;</th><th>{label_3}</th></tr><!-- END label_3 -->
+<tr>
+  <td valign="top">{unselected}</td>
+  <td align="center">
+    {add}{remove}<br/>
+    {all}{none}{toggle}<br/>
+    {moveup}{movedown}{movetop}{movebottom}
+  </td>
+  <td valign="top">{selected}</td>
+</tr>
+</table>
+';
+        $ams->setElementTemplate($amstpl);
+
         $ams->setButtonAttributes('add',    array('value' => $add_text_button,
                                                   'class' => $class_button
         ));
         $ams->setButtonAttributes('remove', array('value' => $remove_text_button,
                                                   'class' => $class_button
+        ));
+        $ams->setButtonAttributes('all', array('value' => $all_text_button,
+                                               'class' => $class_button
+        ));
+        $ams->setButtonAttributes('none', array('value' => $none_text_button,
+                                                'class' => $class_button
+        ));
+        $ams->setButtonAttributes('toggle', array('value' => $toggle_text_button,
+                                                  'class' => $class_button
+        ));
+        $ams->setButtonAttributes('moveup', array('value' => $up_text_button,
+                                                  'class' => $class_button
+        ));
+        $ams->setButtonAttributes('movedown', array('value' => $down_text_button,
+                                                    'class' => $class_button
+        ));
+        $ams->setButtonAttributes('movetop', array('value' => $top_text_button,
+                                                   'class' => $class_button
+        ));
+        $ams->setButtonAttributes('movebottom', array('value' => $bottom_text_button,
+                                                      'class' => $class_button
         ));
 
         preg_match_all('!<input([^>]+)/>!', $ams->toHtml(), $matches, PREG_SET_ORDER);
@@ -144,6 +189,69 @@ class HTML_QuickForm_advmultiselect_TestSuite_Custom extends PHPUnit_Framework_T
                   'onclick' => 'QFAMS.moveSelection(\'foo\', this.form.elements[\'foo-f[]\'], this.form.elements[\'foo-t[]\'], this.form.elements[\'foo[]\'], \'remove\', \'none\'); return false;'
                   ),
             HTML_Common::_parseAttributes($matches[1][1])
+        );
+        $this->assertEquals(
+            array('name' => 'all',
+                  'value' => htmlspecialchars($all_text_button),
+                  'type' => 'button',
+                  'class' => $class_button,
+                  'onclick' => 'QFAMS.moveSelection(\'foo\', this.form.elements[\'foo-f[]\'], this.form.elements[\'foo-t[]\'], this.form.elements[\'foo[]\'], \'all\', \'none\'); return false;'
+                  ),
+            HTML_Common::_parseAttributes($matches[2][1])
+        );
+        $this->assertEquals(
+            array('name' => 'none',
+                  'value' => htmlspecialchars($none_text_button),
+                  'type' => 'button',
+                  'class' => $class_button,
+                  'onclick' => 'QFAMS.moveSelection(\'foo\', this.form.elements[\'foo-f[]\'], this.form.elements[\'foo-t[]\'], this.form.elements[\'foo[]\'], \'none\', \'none\'); return false;'
+                  ),
+            HTML_Common::_parseAttributes($matches[3][1])
+        );
+        $this->assertEquals(
+            array('name' => 'toggle',
+                  'value' => htmlspecialchars($toggle_text_button),
+                  'type' => 'button',
+                  'class' => $class_button,
+                  'onclick' => 'QFAMS.moveSelection(\'foo\', this.form.elements[\'foo-f[]\'], this.form.elements[\'foo-t[]\'], this.form.elements[\'foo[]\'], \'toggle\', \'none\'); return false;'
+                  ),
+            HTML_Common::_parseAttributes($matches[4][1])
+        );
+        $this->assertEquals(
+            array('name' => 'up',
+                  'value' => htmlspecialchars($up_text_button),
+                  'type' => 'button',
+                  'class' => $class_button,
+                  'onclick' => 'QFAMS.moveUp(this.form.elements[\'foo-t[]\'], this.form.elements[\'foo[]\']); return false;'
+                  ),
+            HTML_Common::_parseAttributes($matches[5][1])
+        );
+        $this->assertEquals(
+            array('name' => 'down',
+                  'value' => htmlspecialchars($down_text_button),
+                  'type' => 'button',
+                  'class' => $class_button,
+                  'onclick' => 'QFAMS.moveDown(this.form.elements[\'foo-t[]\'], this.form.elements[\'foo[]\']); return false;'
+                  ),
+            HTML_Common::_parseAttributes($matches[6][1])
+        );
+        $this->assertEquals(
+            array('name' => 'top',
+                  'value' => htmlspecialchars($top_text_button),
+                  'type' => 'button',
+                  'class' => $class_button,
+                  'onclick' => 'QFAMS.moveTop(this.form.elements[\'foo-t[]\'], this.form.elements[\'foo[]\']); return false;'
+                  ),
+            HTML_Common::_parseAttributes($matches[7][1])
+        );
+        $this->assertEquals(
+            array('name' => 'bottom',
+                  'value' => htmlspecialchars($bottom_text_button),
+                  'type' => 'button',
+                  'class' => $class_button,
+                  'onclick' => 'QFAMS.moveBottom(this.form.elements[\'foo-t[]\'], this.form.elements[\'foo[]\']); return false;'
+                  ),
+            HTML_Common::_parseAttributes($matches[8][1])
         );
     }
 
