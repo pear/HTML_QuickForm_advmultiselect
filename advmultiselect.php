@@ -44,6 +44,14 @@
 require_once 'HTML/QuickForm/select.php';
 
 /**
+ * Basic error codes
+ *
+ * @var        integer
+ * @since      1.5.0
+ */
+define('HTML_QUICKFORM_ADVMULTISELECT_ERROR_INVALID_INPUT', 1);
+
+/**
  * Element for HTML_QuickForm that emulate a multi-select.
  *
  * The HTML_QuickForm_advmultiselect package adds an element to the
@@ -385,8 +393,10 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
     function setButtonAttributes($button, $attributes = null)
     {
         if (!is_string($button)) {
-            return PEAR::raiseError('Argument 1 of ' .
-                       'advmultiselect::setButtonAttributes is not a string');
+            return PEAR::throwError('Argument 1 of HTML_QuickForm_advmultiselect::' .
+                       'setButtonAttributes is not a string',
+                       HTML_QUICKFORM_ADVMULTISELECT_ERROR_INVALID_INPUT,
+                       array('level' => 'exception'));
         }
 
         switch ($button) {
@@ -490,8 +500,10 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
             }
             break;
         default;
-            return PEAR::raiseError('Argument 1 of ' .
-                       'advmultiselect::setButtonAttributes has unexpected value');
+            return PEAR::throwError('Argument 1 of HTML_QuickForm_advmultiselect::' .
+                       'setButtonAttributes has unexpected value',
+                       HTML_QUICKFORM_ADVMULTISELECT_ERROR_INVALID_INPUT,
+                       array('level' => 'error'));
         }
     }
 
@@ -1070,9 +1082,10 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
     function loadArray($arr, $values = null)
     {
         if (!is_array($arr)) {
-            return PEAR::raiseError('Argument 1 of HTML_QuickForm_advmultiselect::' .
-                                    ' loadArray' .
-                                    ' is not a valid array');
+            return PEAR::throwError('Argument 1 of HTML_QuickForm_advmultiselect::' .
+                       'loadArray is not a valid array',
+                       HTML_QUICKFORM_ADVMULTISELECT_ERROR_INVALID_INPUT,
+                       array('level' => 'exception'));
         }
         if (isset($values)) {
             $this->setSelected($values);
@@ -1106,17 +1119,19 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
     function setPersistantOptions($optionValues, $persistant = true)
     {
         if (!is_bool($persistant)) {
-            return PEAR::raiseError('Argument 2 of HTML_QuickForm_advmultiselect::' .
-                                    ' setPersistantOption ' .
-                                    ' is not a boolean');
+            return PEAR::throwError('Argument 2 of HTML_QuickForm_advmultiselect::' .
+                       'setPersistantOptions is not a boolean',
+                       HTML_QUICKFORM_ADVMULTISELECT_ERROR_INVALID_INPUT,
+                       array('level' => 'exception'));
         }
         if (is_string($optionValues)) {
             $optionValues = array($optionValues);
         }
         if (!is_array($optionValues)) {
-            return PEAR::raiseError('Argument 1 of HTML_QuickForm_advmultiselect::' .
-                                    ' setPersistantOption ' .
-                                    ' is not a valid array');
+            return PEAR::throwError('Argument 1 of HTML_QuickForm_advmultiselect::' .
+                       'setPersistantOptions is not a valid array',
+                       HTML_QUICKFORM_ADVMULTISELECT_ERROR_INVALID_INPUT,
+                       array('level' => 'exception'));
         }
 
         foreach ($this->_options as $k => $v) {
