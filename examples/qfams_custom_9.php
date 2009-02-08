@@ -81,11 +81,9 @@ $template2 = '
 
 $ams->load($fruit_array, 'pear,kiwi,lime');
 
-if (isset($_POST['multiselect']) || $_SERVER['REQUEST_METHOD'] == 'GET') {
+$ams->setPersistantOptions(array('pear', 'tangerine'));
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $ams->setPersistantOptions(array('pear'), false);
-    }
+if (isset($_POST['multiselect']) || $_SERVER['REQUEST_METHOD'] == 'GET') {
     $ams->setElementTemplate($template2);
 } else {
     $ams->setElementTemplate($template1);
@@ -157,6 +155,18 @@ if ($form->validate()) {
     echo '<pre>';
     print_r($clean);
     echo '</pre>';
+
+    // if apple fruit is selected, then pear may be remove from next selection
+    if (in_array('apple', $clean['fruit'])) {
+        $ams->setPersistantOptions('pear', false);
+    } else {
+        $ams->setPersistantOptions('pear', true);
+        $selection = $ams->getSelected();
+        if (!in_array('pear', $selection)) {
+            array_push($selection, 'pear');
+            $ams->setSelected($selection);
+        }
+    }
 }
 $form->display();
 ?>
