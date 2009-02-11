@@ -56,11 +56,17 @@ $p2->setNotes('* news
   allow to use only one instance of javascript code
 - remove embedded version of TDG (The Definitive Guide)
   now it was included in the new PEAR
+- new example qfams_custom_9.php show how to handle fancy options attributes
+  (disabled, style:color background-color ...)
+- handle of persistant options at run-time
+  (see new methods: getPersistantOptions, setPersistantOptions)
+- PEAR_Error instance throws have now a level (exception or error)
+  and a code identified by HTML_QUICKFORM_ADVMULTISELECT_ERROR_INVALID_INPUT constant
 
 * QA
 - Old User Guide 1.4.0 that was previously included in past releases, was removed.
   The most up-to-date documentation is now part of the new PEAR Manual.
-- Add unit test suites (for PHPUnit 3.2+) with code coverage around 80%
+- Add unit test suites (for PHPUnit 3.2+) with code coverage closest to 100% (97.30)
 ');
 
 //$p2->setLicense('BSD', 'http://www.opensource.org/licenses/bsd-license.php');
