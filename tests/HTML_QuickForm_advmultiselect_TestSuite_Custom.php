@@ -263,9 +263,6 @@ class HTML_QuickForm_advmultiselect_TestSuite_Custom extends PHPUnit_Framework_T
      */
     public function testAms2WithImageButtons()
     {
-        $this->markTestSkipped('Test incomplete until bug #15787 fixed');
-        return;
-
         $add_text_button    = ' >> ';
         $add_image_src      = '/img/qfams/down.png';
         $remove_text_button = ' << ';
