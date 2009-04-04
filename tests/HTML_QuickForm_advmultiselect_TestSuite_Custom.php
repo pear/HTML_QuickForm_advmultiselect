@@ -392,5 +392,247 @@ class HTML_QuickForm_advmultiselect_TestSuite_Custom extends PHPUnit_Framework_T
             $ams->toHtml()
         );
     }
+
+    /**
+     * Tests dual advmultiselect element with html comment and compressed javascript
+     *
+     * @return void
+     */
+    public function testAms2MinimizedWithAnnotation()
+    {
+        $fruit_opt = array('apple'  =>  'Apple',
+                           'orange' =>  'Orange',
+                           'pear'   =>  'Pear'
+                           );
+
+        $ams = new HTML_QuickForm_advmultiselect('fruit', null, $fruit_opt);
+        $rem = 'my first QFAMS element with auto-arrange feature';
+        $ams->setComment($rem);
+
+        $js = $ams->getElementJs(true, true);
+        $this->assertFalse(empty($js));
+
+        $this->assertRegExp('!'.$rem.'!', $ams->toHtml());
+    }
+
+    /**
+     * Tests dual advmultiselect frozen element
+     *
+     * @return void
+     */
+    public function testFrozenAms2()
+    {
+        $fruit_opt = array('apple'  =>  'Apple',
+                           'orange' =>  'Orange',
+                           'pear'   =>  'Pear'
+                           );
+
+        $ams = new HTML_QuickForm_advmultiselect('fruit', null, $fruit_opt);
+        $ams->setSelected('orange');
+        $ams->freeze();
+
+        $this->assertRegExp(
+            '!Orange<input type="hidden" name="fruit\[\]" value="orange" />!',
+            $ams->toHtml()
+        );
+    }
+
+    /**
+     * Tests dual advmultiselect element with auto-arrange feature (sort ascending option)
+     *
+     * @return void
+     */
+    public function testAms2WithSortAscOption()
+    {
+        $fruit_opt = array('orange' =>  array('Orange', array('disabled' => 'disabled')),
+                           'pear'   =>  'Pear',
+                           'apple'  =>  'Apple',
+                           'lemon'  =>  'Lemon'
+                           );
+
+        $ams = new HTML_QuickForm_advmultiselect('fruit', null, $fruit_opt,
+                                                 array('style' => 'width:200px;'),
+                                                 SORT_ASC);
+        $ams->setSelected('orange');
+
+        $amsDualTemplate = '
+<table{class}>
+<!-- BEGIN label_2 --><tr><th>{label_2}</th><!-- END label_2 -->
+<!-- BEGIN label_3 --><th>&nbsp;</th><th>{label_3}</th></tr><!-- END label_3 -->
+<tr>
+  <td valign="top">{unselected}</td>
+  <td align="center">
+    {add}{remove}<br/>
+    {all}{none}{toggle}
+  </td>
+  <td valign="top">{selected}</td>
+</tr>
+</table>
+';
+        $ams->setElementTemplate($amsDualTemplate);
+
+        $add_text_button    = ' >> ';
+        $remove_text_button = ' << ';
+        $all_text_button    = ' Select All ';
+        $none_text_button   = ' Select None ';
+        $toggle_text_button = ' Toggle Selection ';
+
+        preg_match_all('!<input([^>]+)/>!', $ams->toHtml(), $matches, PREG_SET_ORDER);
+        $this->assertEquals(
+            array('name' => 'add',
+                  'value' => htmlspecialchars($add_text_button),
+                  'type' => 'button',
+                  'onclick' => 'QFAMS.moveSelection(\'fruit\', this.form.elements[\'fruit-f[]\'], this.form.elements[\'fruit-t[]\'], this.form.elements[\'fruit[]\'], \'add\', \'asc\'); return false;'
+                  ),
+            HTML_Common::_parseAttributes($matches[0][1])
+        );
+        $this->assertEquals(
+            array('name' => 'remove',
+                  'value' => htmlspecialchars($remove_text_button),
+                  'type' => 'button',
+                  'onclick' => 'QFAMS.moveSelection(\'fruit\', this.form.elements[\'fruit-f[]\'], this.form.elements[\'fruit-t[]\'], this.form.elements[\'fruit[]\'], \'remove\', \'asc\'); return false;'
+                  ),
+            HTML_Common::_parseAttributes($matches[1][1])
+        );
+        $this->assertEquals(
+            array('name' => 'all',
+                  'value' => htmlspecialchars($all_text_button),
+                  'type' => 'button',
+                  'onclick' => 'QFAMS.moveSelection(\'fruit\', this.form.elements[\'fruit-f[]\'], this.form.elements[\'fruit-t[]\'], this.form.elements[\'fruit[]\'], \'all\', \'asc\'); return false;'
+                  ),
+            HTML_Common::_parseAttributes($matches[2][1])
+        );
+        $this->assertEquals(
+            array('name' => 'none',
+                  'value' => htmlspecialchars($none_text_button),
+                  'type' => 'button',
+                  'onclick' => 'QFAMS.moveSelection(\'fruit\', this.form.elements[\'fruit-f[]\'], this.form.elements[\'fruit-t[]\'], this.form.elements[\'fruit[]\'], \'none\', \'asc\'); return false;'
+                  ),
+            HTML_Common::_parseAttributes($matches[3][1])
+        );
+        $this->assertEquals(
+            array('name' => 'toggle',
+                  'value' => htmlspecialchars($toggle_text_button),
+                  'type' => 'button',
+                  'onclick' => 'QFAMS.moveSelection(\'fruit\', this.form.elements[\'fruit-f[]\'], this.form.elements[\'fruit-t[]\'], this.form.elements[\'fruit[]\'], \'toggle\', \'asc\'); return false;'
+                  ),
+            HTML_Common::_parseAttributes($matches[4][1])
+        );
+    }
+
+    /**
+     * Tests dual advmultiselect element with auto-arrange feature (sort descending option)
+     *
+     * @return void
+     */
+    public function testAms2WithSortDescOption()
+    {
+        $fruit_opt = array('orange' =>  'Orange',
+                           'pear'   =>  'Pear',
+                           'apple'  =>  'Apple',
+                           'lemon'  =>  'Lemon'
+                           );
+
+        $ams = new HTML_QuickForm_advmultiselect('fruit', null, $fruit_opt,
+                                                 array('style' => 'width:200px;'),
+                                                 SORT_DESC);
+
+        $amsDualTemplate = '
+<table{class}>
+<!-- BEGIN label_2 --><tr><th>{label_2}</th><!-- END label_2 -->
+<!-- BEGIN label_3 --><th>&nbsp;</th><th>{label_3}</th></tr><!-- END label_3 -->
+<tr>
+  <td valign="top">{unselected}</td>
+  <td align="center">
+    {add}{remove}<br/>
+    {all}{none}{toggle}
+  </td>
+  <td valign="top">{selected}</td>
+</tr>
+</table>
+';
+        $ams->setElementTemplate($amsDualTemplate);
+
+        $add_text_button    = ' >> ';
+        $remove_text_button = ' << ';
+        $all_text_button    = ' Select All ';
+        $none_text_button   = ' Select None ';
+        $toggle_text_button = ' Toggle Selection ';
+
+        preg_match_all('!<input([^>]+)/>!', $ams->toHtml(), $matches, PREG_SET_ORDER);
+        $this->assertEquals(
+            array('name' => 'add',
+                  'value' => htmlspecialchars($add_text_button),
+                  'type' => 'button',
+                  'onclick' => 'QFAMS.moveSelection(\'fruit\', this.form.elements[\'fruit-f[]\'], this.form.elements[\'fruit-t[]\'], this.form.elements[\'fruit[]\'], \'add\', \'desc\'); return false;'
+                  ),
+            HTML_Common::_parseAttributes($matches[0][1])
+        );
+        $this->assertEquals(
+            array('name' => 'remove',
+                  'value' => htmlspecialchars($remove_text_button),
+                  'type' => 'button',
+                  'onclick' => 'QFAMS.moveSelection(\'fruit\', this.form.elements[\'fruit-f[]\'], this.form.elements[\'fruit-t[]\'], this.form.elements[\'fruit[]\'], \'remove\', \'desc\'); return false;'
+                  ),
+            HTML_Common::_parseAttributes($matches[1][1])
+        );
+        $this->assertEquals(
+            array('name' => 'all',
+                  'value' => htmlspecialchars($all_text_button),
+                  'type' => 'button',
+                  'onclick' => 'QFAMS.moveSelection(\'fruit\', this.form.elements[\'fruit-f[]\'], this.form.elements[\'fruit-t[]\'], this.form.elements[\'fruit[]\'], \'all\', \'desc\'); return false;'
+                  ),
+            HTML_Common::_parseAttributes($matches[2][1])
+        );
+        $this->assertEquals(
+            array('name' => 'none',
+                  'value' => htmlspecialchars($none_text_button),
+                  'type' => 'button',
+                  'onclick' => 'QFAMS.moveSelection(\'fruit\', this.form.elements[\'fruit-f[]\'], this.form.elements[\'fruit-t[]\'], this.form.elements[\'fruit[]\'], \'none\', \'desc\'); return false;'
+                  ),
+            HTML_Common::_parseAttributes($matches[3][1])
+        );
+        $this->assertEquals(
+            array('name' => 'toggle',
+                  'value' => htmlspecialchars($toggle_text_button),
+                  'type' => 'button',
+                  'onclick' => 'QFAMS.moveSelection(\'fruit\', this.form.elements[\'fruit-f[]\'], this.form.elements[\'fruit-t[]\'], this.form.elements[\'fruit[]\'], \'toggle\', \'desc\'); return false;'
+                  ),
+            HTML_Common::_parseAttributes($matches[4][1])
+        );
+    }
+
+    /**
+     * Tests single advmultiselect element with fancy attributes
+     *
+     * @return void
+     */
+    public function testAms1WithFancyOptions()
+    {
+        $fruit_opt = array('apple'  =>  'Apple',
+                           'orange' =>  'Orange',
+                           'pear'   =>  'Pear',
+                           'lemon'  =>  array('Lemon', array('style' => 'color:yellow'))
+                           );
+
+        $ams = new HTML_QuickForm_advmultiselect('fruit', null, $fruit_opt);
+
+        $template1 = '
+<table{class}>
+<!-- BEGIN label_3 --><tr><th>{label_3}</th><th>&nbsp;</th></tr><!-- END label_3 -->
+<tr>
+ <td>{selected}</td>
+ <td>{all}<br />{none}<br />{toggle}</td>
+</tr>
+</table>
+';
+
+        $ams->setElementTemplate($template1);
+
+        $this->assertRegExp(
+            '!<label style="color:yellow"><input[^>]*/>Lemon</label>!',
+            $ams->toHtml()
+        );
+    }
 }
 ?>
