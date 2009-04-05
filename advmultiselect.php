@@ -591,11 +591,6 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
 
         $tabs    = $this->_getTabs();
         $tab     = $this->_getTab();
-        $strHtml = '';
-
-        if ($this->getComment() != '') {
-            $strHtml .= $tabs . '<!-- ' . $this->getComment() . " //-->" . PHP_EOL;
-        }
 
         $selectId       = $this->getName();
         $selectName     = $this->getName() . '[]';
@@ -993,6 +988,12 @@ class HTML_QuickForm_advmultiselect extends HTML_QuickForm_select
         );
 
         $strHtml = str_replace($placeHolders, $htmlElements, $strHtml);
+
+        $comment = $this->getComment();
+
+        if (!empty($comment)) {
+            $strHtml = $tabs . '<!-- ' . $comment . " //-->" . PHP_EOL . $strHtml;
+        }
 
         return $strHtml;
     }
