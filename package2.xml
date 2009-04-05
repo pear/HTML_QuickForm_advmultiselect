@@ -12,10 +12,10 @@
   <email>pear@laurent-laville.org</email>
   <active>yes</active>
  </lead>
- <date>2009-02-15</date>
- <time>09:20:35</time>
+ <date>2009-04-05</date>
+ <time>09:17:46</time>
  <version>
-  <release>1.5.0</release>
+  <release>1.5.1</release>
   <api>1.5.0</api>
  </version>
  <stability>
@@ -23,32 +23,19 @@
   <api>stable</api>
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
- <notes>* news
-- copyright bump to 2009
-- fix dependencies
-- remove dreprecated function (setJsElement) since version 1.3.0
-- rewrites JS in object literal notation (uses namespace)
-- add two new buttons to move up to top or down to bottom a selected item
-- add a minimized/compressed version of Javascript code; uses getElementJs()
-- may now load options (class constructor) with fancy attributes
-  without additional code
-- qfams_custom_3.php show that it is now possible
-  to define one or more item (preselected) that cannot be remove by end-user
-- setElementTemplate() function signature changed (but keep BC) :
-  allow to use only one instance of javascript code
-- remove embedded version of TDG (The Definitive Guide)
-  now it was included in the new PEAR
-- new example qfams_custom_9.php show how to handle fancy options attributes
-  (disabled, style:color background-color ...)
-- handle of persistant options at run-time
-  (see new methods: getPersistantOptions, setPersistantOptions)
-- PEAR_Error instance throws have now a level (exception or error)
-  and a code identified by HTML_QUICKFORM_ADVMULTISELECT_ERROR_INVALID_INPUT constant
+ <notes>
+[+] New features
+ -  None
 
-* QA
-- Old User Guide 1.4.0 that was previously included in past releases, was removed.
-  The most up-to-date documentation is now part of the new PEAR Manual.
-- Add unit test suites (for PHPUnit 3.2+) with code coverage closest to 100% (97.30)
+[*] Improvements / changes
+ -  None
+
+[-] Bugfixes
+ -  single or dual shape is now well commented when using setComment()
+
+[!] Quality Assurance
+ -  Improve unit test suites (for PHPUnit 3.2+) with code coverage closest to 100% (99.81)
+ -  Upgrade HTML_Common dependency from 1.2.4 to 1.2.5
  </notes>
  <contents>
   <dir baseinstalldir="HTML" name="/">
@@ -108,7 +95,7 @@
    <package>
     <name>HTML_Common</name>
     <channel>pear.php.net</channel>
-    <min>1.2.4</min>
+    <min>1.2.5</min>
    </package>
    <package>
     <name>HTML_QuickForm</name>
@@ -129,6 +116,32 @@
  </dependencies>
  <phprelease />
  <changelog>
+  <release>
+   <version>
+    <release>1.5.1</release>
+    <api>1.5.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2009-04-05</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+[+] New features
+ -  None
+
+[*] Improvements / changes
+ -  None
+
+[-] Bugfixes
+ -  single or dual shape is now well commented when using setComment()
+
+[!] Quality Assurance
+ -  Improve unit test suites (for PHPUnit 3.2+) with code coverage closest to 100% (99.81)
+ -  Upgrade HTML_Common dependency from 1.2.4 to 1.2.5
+   </notes>
+  </release>
   <release>
    <version>
     <release>1.5.0</release>
