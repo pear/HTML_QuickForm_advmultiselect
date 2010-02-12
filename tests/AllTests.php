@@ -17,7 +17,6 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'HTML_QuickForm_advmultiselect_AllTests::main');
 }
 
-require_once 'PHPUnit/Framework/TestSuite.php';
 require_once 'PHPUnit/TextUI/TestRunner.php';
 
 chdir(dirname(__FILE__));
