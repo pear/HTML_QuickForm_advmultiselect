@@ -38,27 +38,27 @@
  -  Upgrade HTML_Common dependency from 1.2.4 to 1.2.5
  </notes>
  <contents>
-  <dir baseinstalldir="HTML" name="/">
+  <dir baseinstalldir="/" name="/">
    <dir name="examples">
-    <file baseinstalldir="HTML/QuickForm" name="bluestar-12.gif" role="doc" />
-    <file baseinstalldir="HTML/QuickForm" name="down.png" role="doc" />
-    <file baseinstalldir="HTML/QuickForm" name="goldstar-12.gif" role="doc" />
-    <file baseinstalldir="HTML/QuickForm" name="itdynamic.html" role="doc" />
-    <file baseinstalldir="HTML/QuickForm" name="qfams_basic_1.php" role="doc" />
-    <file baseinstalldir="HTML/QuickForm" name="qfams_basic_2.php" role="doc" />
-    <file baseinstalldir="HTML/QuickForm" name="qfams_custom_1.php" role="doc" />
-    <file baseinstalldir="HTML/QuickForm" name="qfams_custom_2.php" role="doc" />
-    <file baseinstalldir="HTML/QuickForm" name="qfams_custom_3.php" role="doc" />
-    <file baseinstalldir="HTML/QuickForm" name="qfams_custom_4.php" role="doc" />
-    <file baseinstalldir="HTML/QuickForm" name="qfams_custom_5.php" role="doc" />
-    <file baseinstalldir="HTML/QuickForm" name="qfams_custom_6.php" role="doc" />
-    <file baseinstalldir="HTML/QuickForm" name="qfams_custom_7.php" role="doc" />
-    <file baseinstalldir="HTML/QuickForm" name="qfams_custom_8.php" role="doc" />
-    <file baseinstalldir="HTML/QuickForm" name="qfams_custom_9.php" role="doc" />
-    <file baseinstalldir="HTML/QuickForm" name="qfams_multiple_1.php" role="doc" />
-    <file baseinstalldir="HTML/QuickForm" name="qfams_multiple_2.php" role="doc" />
-    <file baseinstalldir="HTML/QuickForm" name="qfams_template_1.php" role="doc" />
-    <file baseinstalldir="HTML/QuickForm" name="up.png" role="doc" />
+    <file name="bluestar-12.gif" role="doc" />
+    <file name="down.png" role="doc" />
+    <file name="goldstar-12.gif" role="doc" />
+    <file name="itdynamic.html" role="doc" />
+    <file name="qfams_basic_1.php" role="doc" />
+    <file name="qfams_basic_2.php" role="doc" />
+    <file name="qfams_custom_1.php" role="doc" />
+    <file name="qfams_custom_2.php" role="doc" />
+    <file name="qfams_custom_3.php" role="doc" />
+    <file name="qfams_custom_4.php" role="doc" />
+    <file name="qfams_custom_5.php" role="doc" />
+    <file name="qfams_custom_6.php" role="doc" />
+    <file name="qfams_custom_7.php" role="doc" />
+    <file name="qfams_custom_8.php" role="doc" />
+    <file name="qfams_custom_9.php" role="doc" />
+    <file name="qfams_multiple_1.php" role="doc" />
+    <file name="qfams_multiple_2.php" role="doc" />
+    <file name="qfams_template_1.php" role="doc" />
+    <file name="up.png" role="doc" />
    </dir> <!-- /examples -->
    <dir name="tests">
     <file name="AllTests.php" role="test">

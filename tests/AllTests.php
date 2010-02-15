@@ -19,8 +19,6 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 
 require_once 'PHPUnit/TextUI/TestRunner.php';
 
-chdir(dirname(__FILE__));
-
 require_once 'HTML_QuickForm_advmultiselect_TestSuite_Exception.php';
 require_once 'HTML_QuickForm_advmultiselect_TestSuite_Basic.php';
 require_once 'HTML_QuickForm_advmultiselect_TestSuite_Custom.php';

@@ -22,11 +22,11 @@ require_once 'PEAR/PackageFileManager2.php';
 
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$packagefile = 'c:/php/pear/HTML_QuickForm_advmultiselect/package2.xml';
+$packagefile = dirname(__FILE__) . '/package.xml';
 
-$options = array('filelistgenerator' => 'cvs',
-    'packagefile' => 'package2.xml',
-    'baseinstalldir' => 'HTML',
+$options = array('filelistgenerator' => 'svn',
+    'packagefile' => 'package.xml',
+    'baseinstalldir' => '/',
     'simpleoutput' => true,
     'clearcontents' => false,
     'changelogoldtonew' => false,
