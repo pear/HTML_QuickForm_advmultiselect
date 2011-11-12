@@ -43,7 +43,7 @@ class HTML_QuickForm_advmultiselect_TestSuite_Exception extends PHPUnit_Framewor
      */
     public function catchError($error, $code = null, $level = null)
     {
-        $this->assertType(PHPUnit_Framework_Constraint_IsType::TYPE_OBJECT, $error);
+        $this->assertTrue(is_object($error));
         if ($error instanceof PEAR_Error) {
             if (isset($code)) {
                 $this->assertEquals($error->getCode(), $code);
