@@ -1,0 +1,32 @@
+{
+    "authors": [
+        {
+            "email": "pear@laurent-laville.org",
+            "name": "Laurent Laville",
+            "role": "Lead"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "HTML": "./"
+        }
+    },
+    "description": "More info available on: http://pear.php.net/package/HTML_QuickForm_advmultiselect",
+    "include-path": [
+        "./"
+    ],
+    "license": "BSD",
+    "name": "pear/html_quickform_advmultiselect",
+    "support": {
+        "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=HTML_QuickForm_advmultiselect",
+        "source": "https://github.com/pear/HTML_QuickForm_advmultiselect"
+    },
+    "type": "library",
+    "require": {
+        "pear/pear_exception": "*",
+        "pear/html_common": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
